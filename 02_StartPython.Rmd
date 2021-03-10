@@ -396,97 +396,97 @@ mpg_new['hwy'].mean()
 
 ---
 
-<!-- --- -->
-<!-- name: select -->
-<!-- class: title1 -->
+---
+name: select
+class: title1
 
-<!-- 필요한 변수만 추출하기 -->
+필요한 변수만 추출하기
 
-<!-- --- -->
+---
 
-<!-- <br> -->
-<!-- ### .center[필요한 변수만 추출하기] -->
+<br>
+### .center[필요한 변수만 추출하기]
 
-<!-- <br> -->
-<!-- ```{r echo=F, out.width = '600px', fig.align='center'} -->
-<!-- knitr::include_graphics('img/select.png') -->
-<!-- ``` -->
+<br>
+```{r echo=F, out.width = '600px', fig.align='center'}
+knitr::include_graphics('img/select.png')
+```
 
-<!-- --- -->
+---
 
-<!-- ```{python} -->
-<!-- exam %>% select(math)  # math 추출 -->
-<!-- ``` -->
+```{python}
+exam %>% select(math)  # math 추출
+```
 
-<!-- --- -->
+---
 
-<!-- ```{python} -->
-<!-- exam %>% select(english)  # english 추출 -->
-<!-- ``` -->
+```{python}
+exam %>% select(english)  # english 추출
+```
 
-<!-- --- -->
+---
 
-<!-- #### 여러 변수 추출하기 -->
+#### 여러 변수 추출하기
 
-<!-- ```{python} -->
-<!-- exam %>% select(class, math, english)  # class, math, english 변수 추출 -->
-<!-- ``` -->
+```{python}
+exam %>% select(class, math, english)  # class, math, english 변수 추출
+```
 
-<!-- --- -->
+---
 
-<!-- #### 변수 제외하기 -->
+#### 변수 제외하기
 
-<!-- ```{python} -->
-<!-- exam %>% select(-math)  # math 제외 -->
-<!-- ``` -->
+```{python}
+exam %>% select(-math)  # math 제외
+```
 
-<!-- --- -->
+---
 
-<!-- #### 변수 제외하기 -->
+#### 변수 제외하기
 
-<!-- ```{python} -->
-<!-- exam %>% select(-math, -english)  # math, english 제외 -->
-<!-- ``` -->
+```{python}
+exam %>% select(-math, -english)  # math, english 제외
+```
 
-<!-- --- -->
+---
 
-<!-- #### filter()와 select() 조합하기 -->
+#### filter()와 select() 조합하기
 
-<!-- ```{python} -->
-<!-- # class가 1인 행만 추출한 다음 english 추출 -->
-<!-- exam %>% filter(class == 1) %>% select(english) -->
-<!-- ``` -->
+```{python}
+# class가 1인 행만 추출한 다음 english 추출
+exam %>% filter(class == 1) %>% select(english)
+```
 
-<!-- --- -->
+---
 
-<!-- #### dplyr Tip - 줄 바꿔서 가독성 높은 코드 만들기 -->
-<!-- ```{python} -->
-<!-- exam %>% -->
-<!--   filter(class == 1) %>%  # class가 1인 행 추출 -->
-<!--   select(english)         # english 추출 -->
-<!-- ``` -->
+#### dplyr Tip - 줄 바꿔서 가독성 높은 코드 만들기
+```{python}
+exam %>%
+  filter(class == 1) %>%  # class가 1인 행 추출
+  select(english)         # english 추출
+```
 
-<!-- --- -->
+---
 
-<!-- #### dplyr Tip - 일부만 출력하기 -->
+#### dplyr Tip - 일부만 출력하기
 
-<!-- ```{python} -->
-<!-- exam %>% -->
-<!--   select(id, math) %>%  # id, math 추출 -->
-<!--   head                  # 앞부분 6행까지 추출 -->
-<!-- ``` -->
+```{python}
+exam %>%
+  select(id, math) %>%  # id, math 추출
+  head                  # 앞부분 6행까지 추출
+```
 
-<!-- --- -->
+---
 
-<!-- #### dplyr Tip - 일부만 출력하기 -->
+#### dplyr Tip - 일부만 출력하기
 
-<!-- ```{python} -->
-<!-- exam %>% -->
-<!--   select(id, math) %>%  # id, math 추출 -->
-<!--   head(10)              # 앞부분 10행까지 추출 -->
-<!-- ``` -->
+```{python}
+exam %>%
+  select(id, math) %>%  # id, math 추출
+  head(10)              # 앞부분 10행까지 추출
+```
 
-<!-- --- -->
+---
 
 
 
