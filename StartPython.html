@@ -6,13 +6,10 @@
     <meta name="author" content="김영우" />
     <script src="libs/header-attrs-2.7.1/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="libs/tile-view-0.2.5.9000/tile-view.css" rel="stylesheet" />
-    <script src="libs/tile-view-0.2.5.9000/tile-view.js"></script>
     <link rel="stylesheet" href="css/custom.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
-
 
 
 
@@ -1131,8 +1128,11 @@ df
 
 ---
 
+#### 특정 변수의 값으로 연산하기
 
-#### 특정 변수의 값만 추출하기
+
+#### 1. 특정 변수의 값만 추출
+
 
 
 ```python
@@ -1149,28 +1149,11 @@ df['history']
 
 --
 
-
-```python
-df['math']
-```
-
-```
-## 0     50
-## 1     60
-## 2    100
-## 3     20
-## Name: math, dtype: int64
-```
-
----
-
-#### 특정 변수의 값으로 연산하기
-
-##### 합계
+#### 2. 함수에 적용
 
 
 ```python
-sum(df['history'])
+sum(df['history'])  # 합계
 ```
 
 ```
@@ -1179,19 +1162,17 @@ sum(df['history'])
 
 --
 
-##### 평균
-
 
 ```python
-sum(df['history'])/4
+sum(df['history'])/4  # 평균
 ```
 
 ```
 ## 75.0
 ```
 
-
 ---
+
 
 #### Q. `math` 합계와 평균 구하기
 
@@ -1403,6 +1384,9 @@ csv_exam
 
 ```
 ## Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'csv_exam' is not defined
+## 
+## Detailed traceback: 
+##   File "&lt;string&gt;", line 1, in &lt;module&gt;
 ```
 
 ---
@@ -2108,7 +2092,7 @@ mpg['total'].describe()  # 요약 통계량 산출
 mpg['total'].plot(kind = 'hist')      # 히스토그램 생성
 ```
 
-&lt;img src="StartPython_files/figure-html/unnamed-chunk-117-1.png" width="536" /&gt;
+&lt;img src="StartPython_files/figure-html/unnamed-chunk-116-1.png" width="973" /&gt;
 
 ---
 
@@ -2117,7 +2101,7 @@ mpg['total'].plot(kind = 'hist')      # 히스토그램 생성
 plt.show()
 ```
 
-&lt;img src="StartPython_files/figure-html/unnamed-chunk-118-1.png" width="536" /&gt;
+&lt;img src="StartPython_files/figure-html/unnamed-chunk-117-1.png" width="973" /&gt;
 
 ---
 
@@ -2218,7 +2202,7 @@ count_test.plot(kind = 'bar')            # 빈도 막대 그래프 생성
 
 &lt;br-back-10&gt;
 
-&lt;img src="StartPython_files/figure-html/unnamed-chunk-125-1.png" width="35%" /&gt;
+&lt;img src="StartPython_files/figure-html/unnamed-chunk-124-1.png" width="35%" /&gt;
 ---
 
 #### 빈도표, 막대 그래프로 합격 판정 자동차 수 살펴보기
@@ -2243,7 +2227,7 @@ count_test.plot(kind = 'bar', rot = 0)   # 빈도 막대 그래프 생성, x축 
 
 &lt;br-back-10&gt;
 
-&lt;img src="StartPython_files/figure-html/unnamed-chunk-128-1.png" width="35%" /&gt;
+&lt;img src="StartPython_files/figure-html/unnamed-chunk-127-1.png" width="35%" /&gt;
 ---
 
 
@@ -2331,7 +2315,7 @@ count_grade.plot(kind = 'bar', rot = 0)    # 빈도 막대 그래프 생성
 
 &lt;br-back-10&gt;
 
-&lt;img src="StartPython_files/figure-html/unnamed-chunk-133-1.png" width="35%" /&gt;
+&lt;img src="StartPython_files/figure-html/unnamed-chunk-132-1.png" width="35%" /&gt;
 ---
 
 #### 빈도표, 막대 그래프로 연비 등급 살펴보기
@@ -2356,7 +2340,7 @@ count_grade.plot(kind = 'bar', rot = 0)    # 빈도 막대 그래프 생성
 
 &lt;br-back-10&gt;
 
-&lt;img src="StartPython_files/figure-html/unnamed-chunk-136-1.png" width="35%" /&gt;
+&lt;img src="StartPython_files/figure-html/unnamed-chunk-135-1.png" width="35%" /&gt;
 
 
 ---
@@ -2527,7 +2511,7 @@ midwest['ratio'] = midwest['asian']/midwest['total']*100
 midwest['ratio'].plot(kind = 'hist')
 ```
 
-&lt;img src="StartPython_files/figure-html/unnamed-chunk-145-1.png" width="536" /&gt;
+&lt;img src="StartPython_files/figure-html/unnamed-chunk-144-1.png" width="973" /&gt;
 
 ---
 Q4. 아시아 인구 백분율 전체 평균을 초과하면 `'large'`, 그 외에는 `'small'`을 부여한 파생변수를 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;만드세요.
@@ -2586,14 +2570,11 @@ count_group
 count_group.plot(kind = 'bar', rot = 0)
 ```
 
-&lt;img src="StartPython_files/figure-html/unnamed-chunk-150-1.png" width="35%" /&gt;
+&lt;img src="StartPython_files/figure-html/unnamed-chunk-149-1.png" width="35%" /&gt;
 
 
 
 
-&lt;!-- 변수 지칭, 시리즈 뽑아내기 추가 --&gt;
-&lt;!-- 내장 함수에 넣어도 되나? --&gt;
-&lt;!-- 리스트로 만들어서 넣어야 하나? --&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="libs/remark-latest.min.js"></script>

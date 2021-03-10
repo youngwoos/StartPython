@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Start Python</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="김영우" />
+    <script src="libs/header-attrs-2.7.1/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+```python
+import pandas as pd
+```
+
+
+
+class: title0
+
+자유자재로 데이터 가공하기
+
+---
+
+&lt;br&gt;
+
+## .center[자유자재로 데이터 가공하기]
+
+&lt;br&gt;
+&lt;img src="img/preprocessing.png" width="600px" style="display: block; margin: auto;" /&gt;
+
+---
+
+#### 데이터 전처리(Preprocessing) - dplyr 패키지
+
+.left[
+&amp;nbsp; &amp;nbsp; 함수       |&amp;nbsp; 기능
+-----------|-------
+&amp;nbsp; &amp;nbsp; filter()   &amp;nbsp; | &amp;nbsp; 행 추출&amp;nbsp; &amp;nbsp;
+&amp;nbsp; &amp;nbsp; select()   &amp;nbsp; | &amp;nbsp; 열(변수) 추출&amp;nbsp; &amp;nbsp;
+&amp;nbsp; &amp;nbsp; mutate()   &amp;nbsp; | &amp;nbsp; 변수 추가&amp;nbsp; &amp;nbsp;
+&amp;nbsp; &amp;nbsp; arrange()  &amp;nbsp; | &amp;nbsp; 정렬&amp;nbsp; &amp;nbsp;
+&amp;nbsp; &amp;nbsp; summarise()&amp;nbsp; | &amp;nbsp; 통계치 산출&amp;nbsp; &amp;nbsp;
+&amp;nbsp; &amp;nbsp; group_by() &amp;nbsp; | &amp;nbsp; 집단별로 나누기&amp;nbsp; &amp;nbsp;
+&amp;nbsp; &amp;nbsp; left_join()&amp;nbsp; | &amp;nbsp; 데이터 합치기(열)&amp;nbsp; &amp;nbsp;
+&amp;nbsp; &amp;nbsp; bind_rows()&amp;nbsp; | &amp;nbsp; 데이터 합치기(행)&amp;nbsp; &amp;nbsp;
+
+]
+
+---
+
+name: filter
+class: title1
+
+조건에 맞는 데이터만 추출하기
+
+---
+&lt;br&gt;&lt;br&gt;
+### .center[조건에 맞는 데이터만 추출하기]
+&lt;br&gt;
+&lt;img src="img/filter.png" width="600px" style="display: block; margin: auto;" /&gt;
+
+---
+
+#### 데이터 불러오기
+
+```python
+exam = pd.read_csv('csv_exam.csv')
+exam
+```
+
+---
+
+
+
+```
+##     id  class  math  english  science
+## 0    1      1    50       98       50
+## 1    2      1    60       97       60
+## 2    3      1    45       86       78
+## 3    4      1    30       98       58
+## 4    5      2    25       80       65
+## 5    6      2    50       89       98
+## 6    7      2    80       90       45
+## 7    8      2    90       78       25
+## 8    9      3    20       98       15
+## 9   10      3    50       98       45
+## 10  11      3    65       65       65
+## 11  12      3    45       85       32
+## 12  13      4    46       98       65
+## 13  14      4    48       87       12
+## 14  15      4    75       56       78
+## 15  16      4    58       98       65
+## 16  17      5    65       68       98
+## 17  18      5    80       78       90
+## 18  19      5    89       68       87
+## 19  20      5    78       83       58
+```
+
+
+---
+
+
+```python
+# 1반인 경우만 추출
+exam[exam['class'] == 1]
+```
+
+```
+##    id  class  math  english  science
+## 0   1      1    50       98       50
+## 1   2      1    60       97       60
+## 2   3      1    45       86       78
+## 3   4      1    30       98       58
+```
+
+---
+
+#### (1) `class` 추출
+
+
+```python
+exam['class']
+```
+
+```
+## 0     1
+## 1     1
+## 2     1
+## 3     1
+## 4     2
+## 5     2
+## 6     2
+## 7     2
+## 8     3
+## 9     3
+## 10    3
+## 11    3
+## 12    4
+## 13    4
+## 14    4
+## 15    4
+## 16    5
+## 17    5
+## 18    5
+## 19    5
+## Name: class, dtype: int64
+```
+---
+
+#### (2) `class`가 1인지 확인
+
+
+```python
+exam['class'] == 1
+```
+
+```
+## 0      True
+## 1      True
+## 2      True
+## 3      True
+## 4     False
+## 5     False
+## 6     False
+## 7     False
+## 8     False
+## 9     False
+## 10    False
+## 11    False
+## 12    False
+## 13    False
+## 14    False
+## 15    False
+## 16    False
+## 17    False
+## 18    False
+## 19    False
+## Name: class, dtype: bool
+```
+
+---
+
+
+#### (3) `class`가 1이면 추출
+
+
+```python
+exam[exam['class'] == 1]
+```
+
+```
+##    id  class  math  english  science
+## 0   1      1    50       98       50
+## 1   2      1    60       97       60
+## 2   3      1    45       86       78
+## 3   4      1    30       98       58
+```
+
+
+---
+
+#### `class`가 1인지 확인
+
+
+```python
+exam['class'] == 1
+```
+
+--
+
+#### `class`가 1이면 추출
+
+
+```python
+exam[exam['class'] == 1]
+```
+
+---
+
+
+```python
+# 2반인 경우만 추출
+exam[exam['class'] == 2]
+```
+
+```
+##    id  class  math  english  science
+## 4   5      2    25       80       65
+## 5   6      2    50       89       98
+## 6   7      2    80       90       45
+## 7   8      2    90       78       25
+```
+
+---
+
+
+```python
+# 1반이 아닌 경우
+exam[exam['class'] != 1]
+```
+
+```
+##     id  class  math  english  science
+## 4    5      2    25       80       65
+## 5    6      2    50       89       98
+## 6    7      2    80       90       45
+## 7    8      2    90       78       25
+## 8    9      3    20       98       15
+## 9   10      3    50       98       45
+## 10  11      3    65       65       65
+## 11  12      3    45       85       32
+## 12  13      4    46       98       65
+## 13  14      4    48       87       12
+## 14  15      4    75       56       78
+## 15  16      4    58       98       65
+## 16  17      5    65       68       98
+## 17  18      5    80       78       90
+## 18  19      5    89       68       87
+## 19  20      5    78       83       58
+```
+
+---
+
+
+```python
+# 2반이 아닌 경우
+exam[exam['class'] != 2]
+```
+
+```
+##     id  class  math  english  science
+## 0    1      1    50       98       50
+## 1    2      1    60       97       60
+## 2    3      1    45       86       78
+## 3    4      1    30       98       58
+## 8    9      3    20       98       15
+## 9   10      3    50       98       45
+## 10  11      3    65       65       65
+## 11  12      3    45       85       32
+## 12  13      4    46       98       65
+## 13  14      4    48       87       12
+## 14  15      4    75       56       78
+## 15  16      4    58       98       65
+## 16  17      5    65       68       98
+## 17  18      5    80       78       90
+## 18  19      5    89       68       87
+## 19  20      5    78       83       58
+```
+
+---
+
+#### 초과, 미만, 이상, 이하 조건 걸기
+
+
+```python
+# 수학 점수가 50점을 초과한 경우
+exam[exam['math'] &gt; 50]
+```
+
+```
+##     id  class  math  english  science
+## 1    2      1    60       97       60
+## 6    7      2    80       90       45
+## 7    8      2    90       78       25
+## 10  11      3    65       65       65
+## 14  15      4    75       56       78
+## 15  16      4    58       98       65
+## 16  17      5    65       68       98
+## 17  18      5    80       78       90
+## 18  19      5    89       68       87
+## 19  20      5    78       83       58
+```
+
+---
+
+
+```python
+# 수학 점수가 50점 미만인 경우
+exam[exam['math'] &lt; 50]
+```
+
+```
+##     id  class  math  english  science
+## 2    3      1    45       86       78
+## 3    4      1    30       98       58
+## 4    5      2    25       80       65
+## 8    9      3    20       98       15
+## 11  12      3    45       85       32
+## 12  13      4    46       98       65
+## 13  14      4    48       87       12
+```
+
+---
+
+
+```python
+# 영어 점수가 80점 이상인 경우
+exam[exam['english'] &gt;= 80]
+```
+
+```
+##     id  class  math  english  science
+## 0    1      1    50       98       50
+## 1    2      1    60       97       60
+## 2    3      1    45       86       78
+## 3    4      1    30       98       58
+## 4    5      2    25       80       65
+## 5    6      2    50       89       98
+## 6    7      2    80       90       45
+## 8    9      3    20       98       15
+## 9   10      3    50       98       45
+## 11  12      3    45       85       32
+## 12  13      4    46       98       65
+## 13  14      4    48       87       12
+## 15  16      4    58       98       65
+## 19  20      5    78       83       58
+```
+
+---
+
+
+```python
+# 영어 점수가 80점 이하인 경우
+exam[exam['english'] &lt;= 80]
+```
+
+```
+##     id  class  math  english  science
+## 4    5      2    25       80       65
+## 7    8      2    90       78       25
+## 10  11      3    65       65       65
+## 14  15      4    75       56       78
+## 16  17      5    65       68       98
+## 17  18      5    80       78       90
+## 18  19      5    89       68       87
+```
+
+
+---
+
+#### 여러 조건을 충족하는 행 추출하기
+
+
+```python
+# 1반인 경우
+exam[exam['class'] == 1]
+```
+
+```
+##    id  class  math  english  science
+## 0   1      1    50       98       50
+## 1   2      1    60       97       60
+## 2   3      1    45       86       78
+## 3   4      1    30       98       58
+```
+
+--
+
+
+```python
+# 1반 이면서 수학 점수가 50점 이상인 경우
+exam[(exam['class'] == 1) &amp; (exam['math'] &gt;= 50)]
+```
+
+```
+##    id  class  math  english  science
+## 0   1      1    50       98       50
+## 1   2      1    60       97       60
+```
+
+---
+
+
+```python
+# 2반 이면서 영어 점수가 80점 이상인 경우
+exam[(exam['class'] == 2) &amp; (exam['english'] &gt;= 80)]
+```
+
+```
+##    id  class  math  english  science
+## 4   5      2    25       80       65
+## 5   6      2    50       89       98
+## 6   7      2    80       90       45
+```
+
+---
+
+#### 여러 조건 중 하나 이상 충족하는 행 추출하기
+
+
+```python
+# 수학 점수가 90점 이상이거나 영어 점수가 90점 이상인 경우
+exam[(exam['math'] &gt;= 90) | (exam['english'] &gt;= 90)]
+```
+
+```
+##     id  class  math  english  science
+## 0    1      1    50       98       50
+## 1    2      1    60       97       60
+## 3    4      1    30       98       58
+## 6    7      2    80       90       45
+## 7    8      2    90       78       25
+## 8    9      3    20       98       15
+## 9   10      3    50       98       45
+## 12  13      4    46       98       65
+## 15  16      4    58       98       65
+```
+
+---
+
+
+```python
+# 영어 점수가 90점 미만이거나 과학점수가 50점 미만인 경우
+exam[(exam['english'] &lt; 90) | (exam['science'] &lt; 50)]
+```
+
+```
+##     id  class  math  english  science
+## 2    3      1    45       86       78
+## 4    5      2    25       80       65
+## 5    6      2    50       89       98
+## 6    7      2    80       90       45
+## 7    8      2    90       78       25
+## 8    9      3    20       98       15
+## 9   10      3    50       98       45
+## 10  11      3    65       65       65
+## 11  12      3    45       85       32
+## 13  14      4    48       87       12
+## 14  15      4    75       56       78
+## 16  17      5    65       68       98
+## 17  18      5    80       78       90
+## 18  19      5    89       68       87
+## 19  20      5    78       83       58
+```
+
+---
+
+#### 목록에 해당되는 행 추출하기
+
+
+```python
+# 1, 3, 5반 추출
+exam[(exam['class'] == 1) | (exam['class'] == 3) | (exam['class'] == 5)] 
+```
+
+```
+##     id  class  math  english  science
+## 0    1      1    50       98       50
+## 1    2      1    60       97       60
+## 2    3      1    45       86       78
+## 3    4      1    30       98       58
+## 8    9      3    20       98       15
+## 9   10      3    50       98       45
+## 10  11      3    65       65       65
+## 11  12      3    45       85       32
+## 16  17      5    65       68       98
+## 17  18      5    80       78       90
+## 18  19      5    89       68       87
+## 19  20      5    78       83       58
+```
+
+---
+
+#### 목록에 해당되는 행 추출하기
+
+
+```python
+exam[exam['class'].isin([1, 3, 5])]
+```
+
+```
+##     id  class  math  english  science
+## 0    1      1    50       98       50
+## 1    2      1    60       97       60
+## 2    3      1    45       86       78
+## 3    4      1    30       98       58
+## 8    9      3    20       98       15
+## 9   10      3    50       98       45
+## 10  11      3    65       65       65
+## 11  12      3    45       85       32
+## 16  17      5    65       68       98
+## 17  18      5    80       78       90
+## 18  19      5    89       68       87
+## 19  20      5    78       83       58
+```
+
+---
+- `df.isin[]`
+
+
+```python
+exam['class'].isin([1, 3, 5])
+```
+
+```
+## 0      True
+## 1      True
+## 2      True
+## 3      True
+## 4     False
+## 5     False
+## 6     False
+## 7     False
+## 8      True
+## 9      True
+## 10     True
+## 11     True
+## 12    False
+## 13    False
+## 14    False
+## 15    False
+## 16     True
+## 17     True
+## 18     True
+## 19     True
+## Name: class, dtype: bool
+```
+
+---
+
+#### 추출한 행으로 데이터 만들기
+
+
+```python
+class1 = exam[exam['class'] == 1]  # class가 1인 행 추출, class1에 할당
+class2 = exam[exam['class'] == 2]  # class가 2인 행 추출, class2에 할당
+```
+
+
+
+```python
+sum(class1['math'])/4              # 1반 수학 점수 평균 구하기
+```
+
+```
+## 46.25
+```
+
+```python
+sum(class2['math'])/4              # 1반 수학 점수 평균 구하기
+```
+
+```
+## 61.25
+```
+
+---
+
+#### `len()` 활용하기
+
+
+```python
+len(exam)                        # 전체 학생 수 구하기
+```
+
+```
+## 20
+```
+--
+
+
+```python
+sum(exam['math'])/len(exam)      # 전체 수학 평균 구하기
+```
+
+```
+## 57.45
+```
+
+--
+
+
+```python
+sum(class1['math'])/len(class1)  # 1반 수학 점수 평균 구하기
+```
+
+```
+## 46.25
+```
+
+```python
+sum(class2['math'])/len(class2)  # 2반 수학 점수 평균 구하기
+```
+
+```
+## 61.25
+```
+
+---
+
+#### `df.mean()` 활용하기
+
+
+```python
+exam['math'].mean()   # 전체 수학 평균 구하기
+```
+
+```
+## 57.45
+```
+
+--
+
+
+```python
+class1['math'].mean()  # 1반 수학 평균 구하기
+```
+
+```
+## 46.25
+```
+
+```python
+class2['math'].mean()  # 2반 수학 평균 구하기
+```
+
+```
+## 61.25
+```
+
+
+---
+
+
+#### Python에서 사용하는 기호들
+
+.left[
+
+논리 연산자  | &amp;nbsp; &amp;nbsp; 기능
+:-----------:|---
+&lt;            | &amp;nbsp; &amp;nbsp; 작다
+&lt;=           | &amp;nbsp; &amp;nbsp; 작거나 같다 &amp;nbsp;
+&gt;            | &amp;nbsp; &amp;nbsp; 크다
+&gt;=           | &amp;nbsp; &amp;nbsp; 크거나 같다
+==           | &amp;nbsp; &amp;nbsp; 같다
+!=           | &amp;nbsp; &amp;nbsp; 같지 않다
+&amp;            | &amp;nbsp; &amp;nbsp; 그리고
+│            | &amp;nbsp; &amp;nbsp; 또는
+
+
+&lt;svg viewBox="0 0 352 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;"&gt;  [ comment ]  &lt;path d="M176 80c-52.94 0-96 43.06-96 96 0 8.84 7.16 16 16 16s16-7.16 16-16c0-35.3 28.72-64 64-64 8.84 0 16-7.16 16-16s-7.16-16-16-16zM96.06 459.17c0 3.15.93 6.22 2.68 8.84l24.51 36.84c2.97 4.46 7.97 7.14 13.32 7.14h78.85c5.36 0 10.36-2.68 13.32-7.14l24.51-36.84c1.74-2.62 2.67-5.7 2.68-8.84l.05-43.18H96.02l.04 43.18zM176 0C73.72 0 0 82.97 0 176c0 44.37 16.45 84.85 43.56 115.78 16.64 18.99 42.74 58.8 52.42 92.16v.06h48v-.12c-.01-4.77-.72-9.51-2.15-14.07-5.59-17.81-22.82-64.77-62.17-109.67-20.54-23.43-31.52-53.15-31.61-84.14-.2-73.64 59.67-128 127.95-128 70.58 0 128 57.42 128 128 0 30.97-11.24 60.85-31.65 84.14-39.11 44.61-56.42 91.47-62.1 109.46a47.507 47.507 0 0 0-2.22 14.3v.1h48v-.05c9.68-33.37 35.78-73.18 52.42-92.16C335.55 260.85 352 220.37 352 176 352 78.8 273.2 0 176 0z"&gt;&lt;/path&gt;&lt;/svg&gt; `df.isin()` : 매칭 확인
+
+]
+
+---
+
+---
+### 혼자서 해보기
+
+**`mpg` 데이터를 이용해서 분석 문제를 해결해 보세요.**
+
+Q1. 자동차 배기량에 따라 고속도로 연비가 다른지 알아보려고 합니다. `displ`(배기량)이 `4` 이하인 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;자동차와 `5` 이상인 자동차 중 어떤 자동차의 `hwy`(고속도로 연비)가 평균적으로 더 높은지 알아보세요.
+
+Q2. 자동차 제조 회사에 따라 도시 연비가 다른지 알아보려고 합니다. `'audi'`와 `'toyota'` 중 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;어느 `manufacturer`(자동차 제조 회사)의 `cty`(도시 연비)가 평균적으로 더 높은지 알아보세요.
+
+Q3. `'chevrolet'`, `'ford'`, `'honda'` 자동차의 고속도로 연비 평균을 알아보려고 합니다. &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 이 회사들의 자동차를 추출한 뒤 `hwy` 전체 평균을 구해보세요.
+
+---
+
+Q1. 자동차 배기량에 따라 고속도로 연비가 다른지 알아보려고 합니다. `displ`(배기량)이 `4` 이하인 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;자동차와 `5` 이상인 자동차 중 어떤 자동차의 `hwy`(고속도로 연비)가 평균적으로 더 높은지 알아보세요.
+
+
+```python
+mpg = pd.read_csv('data_mpg.csv')  # mpg 데이터 불러오기
+
+mpg_a = mpg[mpg['displ'] &lt;= 4]    # displ 4 이하 추출
+mpg_b = mpg[mpg['displ'] &gt;= 5]    # displ 5 이상 추출
+```
+
+
+```python
+mpg_a['displ'].mean()  # displ 4 이하 hwy 평균
+```
+
+```
+## 2.7527607361963193
+```
+
+```python
+mpg_b['displ'].mean()  # displ 5 이상 hwy 평균
+```
+
+```
+## 5.578947368421052
+```
+
+---
+
+Q2. 자동차 제조 회사에 따라 도시 연비가 다른지 알아보려고 합니다. `'audi'`와 `'toyota'` 중 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;어느 `manufacturer`(자동차 제조 회사)의 `cty`(도시 연비)가 평균적으로 더 높은지 알아보세요.
+
+```python
+mpg_audi   = mpg[mpg['manufacturer'] == 'audi']    # audi 추출
+mpg_toyota = mpg[mpg['manufacturer'] == 'toyota']  # toyota 추출
+
+mpg_audi['cty'].mean()    # audi의 cty 평균
+```
+
+```
+## 17.61111111111111
+```
+
+```python
+mpg_toyota['cty'].mean()  # toyota의 cty 평균
+```
+
+```
+## 18.529411764705884
+```
+
+---
+
+Q3. `'chevrolet'`, `'ford'`, `'honda'` 자동차의 고속도로 연비 평균을 알아보려고 합니다. &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 이 회사들의 자동차를 추출한 뒤 `hwy` 전체 평균을 구해보세요.
+
+```python
+# manufacturer가 chevrolet, ford, honda에 해당하면 추출
+mpg_new = mpg[mpg['manufacturer'].isin(['chevrolet', 'ford', 'honda'])]
+mpg_new['hwy'].mean()
+```
+
+```
+## 22.50943396226415
+```
+
+---
+
+&lt;!-- --- --&gt;
+&lt;!-- name: select --&gt;
+&lt;!-- class: title1 --&gt;
+
+&lt;!-- 필요한 변수만 추출하기 --&gt;
+
+&lt;!-- --- --&gt;
+
+&lt;!-- &lt;br&gt; --&gt;
+&lt;!-- ### .center[필요한 변수만 추출하기] --&gt;
+
+&lt;!-- &lt;br&gt; --&gt;
+&lt;!-- ```{r echo=F, out.width = '600px', fig.align='center'} --&gt;
+&lt;!-- knitr::include_graphics('img/select.png') --&gt;
+&lt;!-- ``` --&gt;
+
+&lt;!-- --- --&gt;
+
+&lt;!-- ```{python} --&gt;
+&lt;!-- exam %&gt;% select(math)  # math 추출 --&gt;
+&lt;!-- ``` --&gt;
+
+&lt;!-- --- --&gt;
+
+&lt;!-- ```{python} --&gt;
+&lt;!-- exam %&gt;% select(english)  # english 추출 --&gt;
+&lt;!-- ``` --&gt;
+
+&lt;!-- --- --&gt;
+
+&lt;!-- #### 여러 변수 추출하기 --&gt;
+
+&lt;!-- ```{python} --&gt;
+&lt;!-- exam %&gt;% select(class, math, english)  # class, math, english 변수 추출 --&gt;
+&lt;!-- ``` --&gt;
+
+&lt;!-- --- --&gt;
+
+&lt;!-- #### 변수 제외하기 --&gt;
+
+&lt;!-- ```{python} --&gt;
+&lt;!-- exam %&gt;% select(-math)  # math 제외 --&gt;
+&lt;!-- ``` --&gt;
+
+&lt;!-- --- --&gt;
+
+&lt;!-- #### 변수 제외하기 --&gt;
+
+&lt;!-- ```{python} --&gt;
+&lt;!-- exam %&gt;% select(-math, -english)  # math, english 제외 --&gt;
+&lt;!-- ``` --&gt;
+
+&lt;!-- --- --&gt;
+
+&lt;!-- #### filter()와 select() 조합하기 --&gt;
+
+&lt;!-- ```{python} --&gt;
+&lt;!-- # class가 1인 행만 추출한 다음 english 추출 --&gt;
+&lt;!-- exam %&gt;% filter(class == 1) %&gt;% select(english) --&gt;
+&lt;!-- ``` --&gt;
+
+&lt;!-- --- --&gt;
+
+&lt;!-- #### dplyr Tip - 줄 바꿔서 가독성 높은 코드 만들기 --&gt;
+&lt;!-- ```{python} --&gt;
+&lt;!-- exam %&gt;% --&gt;
+&lt;!--   filter(class == 1) %&gt;%  # class가 1인 행 추출 --&gt;
+&lt;!--   select(english)         # english 추출 --&gt;
+&lt;!-- ``` --&gt;
+
+&lt;!-- --- --&gt;
+
+&lt;!-- #### dplyr Tip - 일부만 출력하기 --&gt;
+
+&lt;!-- ```{python} --&gt;
+&lt;!-- exam %&gt;% --&gt;
+&lt;!--   select(id, math) %&gt;%  # id, math 추출 --&gt;
+&lt;!--   head                  # 앞부분 6행까지 추출 --&gt;
+&lt;!-- ``` --&gt;
+
+&lt;!-- --- --&gt;
+
+&lt;!-- #### dplyr Tip - 일부만 출력하기 --&gt;
+
+&lt;!-- ```{python} --&gt;
+&lt;!-- exam %&gt;% --&gt;
+&lt;!--   select(id, math) %&gt;%  # id, math 추출 --&gt;
+&lt;!--   head(10)              # 앞부분 10행까지 추출 --&gt;
+&lt;!-- ``` --&gt;
+
+&lt;!-- --- --&gt;
+
+
+
+&lt;!-- ### 혼자서 해보기 --&gt;
+
+&lt;!-- `mpg` 데이터를 이용해서 분석 문제를 해결해보세요. --&gt;
+
+&lt;!-- Q1. `mpg` 데이터는 11개 변수로 구성되어 있습니다. 이 중 일부만 추출해서 분석에 활용하려고 합니다. &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; `mpg` 데이터에서 `class`(자동차 종류), `cty`(도시 연비) 변수를 추출해 새로운 데이터를 만드세요. &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 새로 만든 데이터의 일부를 출력해서 두 변수로만 구성되어 있는지 확인하세요. --&gt;
+
+&lt;!-- Q2. 자동차 종류에 따라 도시 연비가 다른지 알아보려고 합니다. 앞에서 추출한 데이터를 이용해서 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; `class`(자동차 종류)가 `'suv'`인 자동차와 `'compact'`인 자동차 중 어떤 자동차의 `cty`(도시 연비) &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 평균이 더 높은지 알아보세요. --&gt;
+
+&lt;!-- --- --&gt;
+
+&lt;!-- Q1. `mpg` 데이터는 11개 변수로 구성되어 있습니다. 이 중 일부만 추출해서 분석에 활용하려고 합니다. &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; `mpg` 데이터에서 `class`(자동차 종류), `cty`(도시 연비) 변수를 추출해 새로운 데이터를 만드세요. &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 새로 만든 데이터의 일부를 출력해서 두 변수로만 구성되어 있는지 확인하세요. --&gt;
+
+&lt;!-- ```{python} --&gt;
+&lt;!-- mpg = ggplot2::mpg                 # mpg 데이터 불러오기 --&gt;
+
+&lt;!-- df = mpg %&gt;% select(class, cty)    # class, cty 변수 추출 --&gt;
+&lt;!-- head(df)                            # df 일부 출력 --&gt;
+
+&lt;!-- ``` --&gt;
+
+&lt;!-- --- --&gt;
+
+&lt;!-- Q2. 자동차 종류에 따라 도시 연비가 다른지 알아보려고 합니다. 앞에서 추출한 데이터를 이용해서 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; `class`(자동차 종류)가 `'suv'`인 자동차와 `'compact'`인 자동차 중 어떤 자동차의 `cty`(도시 연비) &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 평균이 더 높은지 알아보세요. --&gt;
+
+&lt;!-- ```{python} --&gt;
+&lt;!-- df_suv = df %&gt;% filter(class == 'suv')          # class가 suv인 행 추출 --&gt;
+&lt;!-- df_compact = df %&gt;% filter(class == 'compact')  # class가 compact인 행 추출 --&gt;
+
+&lt;!-- mean(df_suv$cty)                                 # suv의 cty 평균 --&gt;
+&lt;!-- mean(df_compact$cty)                             # compact의 cty 평균 --&gt;
+&lt;!-- ``` --&gt;
+
+&lt;!-- --- --&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": true,
+"ratio": "16:10",
+"navigation": {
+"scroll": true
+}
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

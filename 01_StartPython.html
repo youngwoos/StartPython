@@ -1,0 +1,2705 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Start Python</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="김영우" />
+    <script src="libs/header-attrs-2.7.1/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+class: title0
+
+쉽게 배우는 Python 데이터 분석
+
+---
+
+class: no-page-num
+
+&lt;br&gt;
+
+.pull-left[
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&lt;img src="https://raw.githubusercontent.com/youngwoos/Doit_textmining/main/cover.png" width="70%" height="70%" /&gt;
+]
+
+.pull-right[
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;svg viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;"&gt;  [ comment ]  &lt;path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"&gt;&lt;/path&gt;&lt;/svg&gt; [github.com/youngwoos/Doit_textmining](https://github.com/youngwoos/Doit_textmining)
+
+&lt;svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;"&gt;  [ comment ]  &lt;path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"&gt;&lt;/path&gt;&lt;/svg&gt; [facebook.com/groups/datacommunity](https://facebook.com/groups/datacommunity)
+
+- [네이버책](https://book.naver.com/bookdb/book_detail.nhn?bid=17891971)
+  - [yes24](http://bit.ly/3oUuJOB)
+  - [알라딘](http://bit.ly/3oXOSDn)
+  - [교보문고](https://bit.ly/2LtNOcB)
+]
+
+---
+
+class: no-page-num
+
+### 김영우
+
+&lt;img src='img/photo.jpg' style='width: 15%' /&gt;
+
+#### &lt;https://facebook.com/groups/datacommunity&gt;
+#### &lt;https://github.com/youngwoos&gt;
+#### &lt;stats7445@gmail.com&gt;
+
+---
+
+### 목차
+
+#### 1. 안녕 R? - 친해지기
+- [변수](#variable)
+- [함수](#function)
+- [라이브러리](#library)
+
+#### 2. 데이터 프레임의 세계로
+- [데이터 프레임 만들기](#dataframe)
+- [외부 데이터를 R로 가져오기](#read_file)
+- [데이터 프레임을 csv 파일로 저장하기](#write_file)
+
+#### 3. 데이터 분석 기초
+- [데이터 파악하기](#eda)
+- [변수명 바꾸기](#rename)
+- [파생 변수 만들기](#derived_variable)
+- [조건 함수](#ifelse)
+
+---
+
+### 목차
+
+#### 4. 자유자재로 데이터 가공하기
+- [조건에 맞는 데이터만 추출하기](#filter)
+- [필요한 변수만 추출하기](#select)
+- [순서대로 정렬하기](#arrange)
+- [파생변수 추가하기](#mutate)
+- [집단별로 요약하기](#groupby_summarise)
+
+#### 5. 그래프 만들기
+- [산점도](#point)
+- [선 그래프](#line)
+- [막대 그래프](#bar)
+- [상자그림](#boxplot)
+
+---
+### 목차
+
+#### 6. 데이터 합치기
+- [가로로 합치기 - 열 추가](#left_join)
+- [세로로 합치기 - 행 추가](#bind_rows)
+
+#### 7. 데이터 정제하기
+- [빠진 데이터를 찾아라! - 결측치 정제하기](#missing_value)
+- [이상한 데이터를 찾아라! - 이상치 정제하기](#outlier)
+
+
+---
+
+
+class: title0
+
+안녕 Python? - 친해지기
+
+---
+
+
+### 무작정 따라 해보기!
+
+#### 라이브러리 로드  
+
+
+```python
+import pandas as pd
+import seaborn as sns
+```
+
+
+#### 데이터 불러오기
+
+
+
+```python
+mpg = pd.read_csv('data_mpg.csv')
+```
+
+---
+
+
+#### 데이터 검토
+
+
+```python
+mpg.head()
+```
+
+```
+##    Unnamed: 0 manufacturer model  displ  year  ...  drv cty hwy  fl    class
+## 0           1         audi    a4    1.8  1999  ...    f  18  29   p  compact
+## 1           2         audi    a4    1.8  1999  ...    f  21  29   p  compact
+## 2           3         audi    a4    2.0  2008  ...    f  20  31   p  compact
+## 3           4         audi    a4    2.0  2008  ...    f  21  30   p  compact
+## 4           5         audi    a4    2.8  1999  ...    f  16  26   p  compact
+## 
+## [5 rows x 12 columns]
+```
+
+---
+
+
+```python
+mpg.shape
+```
+
+```
+## (234, 12)
+```
+
+---
+
+
+```python
+mpg.info()
+```
+
+```
+## &lt;class 'pandas.core.frame.DataFrame'&gt;
+## RangeIndex: 234 entries, 0 to 233
+## Data columns (total 12 columns):
+##  #   Column        Non-Null Count  Dtype  
+## ---  ------        --------------  -----  
+##  0   Unnamed: 0    234 non-null    int64  
+##  1   manufacturer  234 non-null    object 
+##  2   model         234 non-null    object 
+##  3   displ         234 non-null    float64
+##  4   year          234 non-null    int64  
+##  5   cyl           234 non-null    int64  
+##  6   trans         234 non-null    object 
+##  7   drv           234 non-null    object 
+##  8   cty           234 non-null    int64  
+##  9   hwy           234 non-null    int64  
+##  10  fl            234 non-null    object 
+##  11  class         234 non-null    object 
+## dtypes: float64(1), int64(5), object(6)
+## memory usage: 22.1+ KB
+```
+
+---
+
+
+```python
+mpg.describe()
+```
+
+```
+##        Unnamed: 0       displ         year         cyl         cty         hwy
+## count  234.000000  234.000000   234.000000  234.000000  234.000000  234.000000
+## mean   117.500000    3.471795  2003.500000    5.888889   16.858974   23.440171
+## std     67.694165    1.291959     4.509646    1.611534    4.255946    5.954643
+## min      1.000000    1.600000  1999.000000    4.000000    9.000000   12.000000
+## 25%     59.250000    2.400000  1999.000000    4.000000   14.000000   18.000000
+## 50%    117.500000    3.300000  2003.500000    6.000000   17.000000   24.000000
+## 75%    175.750000    4.600000  2008.000000    8.000000   19.000000   27.000000
+## max    234.000000    7.000000  2008.000000    8.000000   35.000000   44.000000
+```
+
+---
+
+#### 데이터 분석
+
+&lt;br-back-10&gt;
+
+##### 1.회사별 평균 연비 높은순 정렬
+
+```python
+mpg.groupby('manufacturer')\
+    .agg(mean_hwy = ('hwy', 'mean'))\
+    .sort_values('mean_hwy', ascending = False)\
+    .reset_index()
+```
+
+```
+##    manufacturer   mean_hwy
+## 0         honda  32.555556
+## 1    volkswagen  29.222222
+## 2       hyundai  26.857143
+## 3          audi  26.444444
+## 4       pontiac  26.400000
+## 5        subaru  25.571429
+## 6        toyota  24.911765
+## 7        nissan  24.615385
+## 8     chevrolet  21.894737
+## 9          ford  19.360000
+## 10      mercury  18.000000
+## 11        dodge  17.945946
+## 12         jeep  17.625000
+## 13      lincoln  17.000000
+## 14   land rover  16.500000
+```
+
+---
+
+
+#### 데이터 분석
+
+##### 2.배기량이 연비에 미치는 영향 회귀분석
+
+```python
+import statsmodels.api as sm
+
+mpg['const'] = 1
+x = mpg[['const', 'displ']]
+y = mpg['hwy']
+
+mod = sm.OLS(y, x).fit()
+mod.summary()
+```
+
+---
+
+```
+## &lt;class 'statsmodels.iolib.summary.Summary'&gt;
+## """
+##                             OLS Regression Results                            
+## ==============================================================================
+## Dep. Variable:                    hwy   R-squared:                       0.587
+## Model:                            OLS   Adj. R-squared:                  0.585
+## Method:                 Least Squares   F-statistic:                     329.5
+## Date:                Wed, 10 Mar 2021   Prob (F-statistic):           2.04e-46
+## Time:                        06:24:12   Log-Likelihood:                -645.62
+## No. Observations:                 234   AIC:                             1295.
+## Df Residuals:                     232   BIC:                             1302.
+## Df Model:                           1                                         
+## Covariance Type:            nonrobust                                         
+## ==============================================================================
+##                  coef    std err          t      P&gt;|t|      [0.025      0.975]
+## ------------------------------------------------------------------------------
+## const         35.6977      0.720     49.555      0.000      34.278      37.117
+## displ         -3.5306      0.195    -18.151      0.000      -3.914      -3.147
+## ==============================================================================
+## Omnibus:                       45.280   Durbin-Watson:                   0.954
+## Prob(Omnibus):                  0.000   Jarque-Bera (JB):               90.192
+## Skew:                           0.961   Prob(JB):                     2.60e-20
+## Kurtosis:                       5.357   Cond. No.                         11.3
+## ==============================================================================
+## 
+## Notes:
+## [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+## """
+```
+
+---
+
+#### 그래프 만들기
+
+#### 3.배기량과 연비의 관계 그래프
+
+```python
+sns.lmplot(data = mpg, x = 'displ', y = 'hwy', ci = False)
+```
+
+&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-13-1.png" width="40%" /&gt;
+
+---
+
+class: title0
+
+데이터 분석을 위한 연장 챙기기
+
+---
+name: variable
+class: title1
+
+변수
+
+---
+
+#### mpg 데이터의 변수 다뤄보기
+
+
+```python
+mpg
+```
+
+```
+##      Unnamed: 0 manufacturer   model  displ  year  ...  cty hwy fl    class  const
+## 0             1         audi      a4    1.8  1999  ...   18  29  p  compact      1
+## 1             2         audi      a4    1.8  1999  ...   21  29  p  compact      1
+## 2             3         audi      a4    2.0  2008  ...   20  31  p  compact      1
+## 3             4         audi      a4    2.0  2008  ...   21  30  p  compact      1
+## 4             5         audi      a4    2.8  1999  ...   16  26  p  compact      1
+## ..          ...          ...     ...    ...   ...  ...  ...  .. ..      ...    ...
+## 229         230   volkswagen  passat    2.0  2008  ...   19  28  p  midsize      1
+## 230         231   volkswagen  passat    2.0  2008  ...   21  29  p  midsize      1
+## 231         232   volkswagen  passat    2.8  1999  ...   16  26  p  midsize      1
+## 232         233   volkswagen  passat    2.8  1999  ...   18  26  p  midsize      1
+## 233         234   volkswagen  passat    3.6  2008  ...   17  26  p  midsize      1
+## 
+## [234 rows x 13 columns]
+```
+---
+
+
+```python
+mpg['hwy'].mean()
+```
+
+```
+## 23.44017094017094
+```
+
+--
+
+```python
+mpg['hwy'].max()
+```
+
+```
+## 44
+```
+---
+
+
+
+```python
+mpg['hwy'].plot(kind = 'hist')
+```
+
+&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-17-1.png" width="480" /&gt;
+
+
+---
+
+#### 변수 만들기
+
+
+```python
+a = 1
+a
+```
+
+```
+## 1
+```
+
+--
+
+
+```python
+b = 2
+b
+```
+
+```
+## 2
+```
+
+```python
+c = 3
+c
+```
+
+```
+## 3
+```
+
+```python
+ab = 3.5
+ab
+```
+
+```
+## 3.5
+```
+
+
+---
+
+
+#### 변수로 연산하기
+
+```python
+a + b
+```
+
+```
+## 3
+```
+
+```python
+a + b + c
+```
+
+```
+## 6
+```
+
+```python
+4 / b
+```
+
+```
+## 2.0
+```
+
+```python
+5 * b
+```
+
+```
+## 10
+```
+
+---
+
+#### 연속값이 들어 있는 변수 만들기 - List
+
+```python
+d = [1, 2, 3]
+d
+```
+
+```
+## [1, 2, 3]
+```
+
+```python
+e = [3, 4, 5]
+e
+```
+
+```
+## [3, 4, 5]
+```
+
+---
+
+#### List 더하기
+
+```python
+d + e
+```
+
+```
+## [1, 2, 3, 3, 4, 5]
+```
+
+
+---
+
+
+#### 문자 변수 만들기
+
+```python
+a2 = 'a'
+a2
+```
+
+```
+## 'a'
+```
+
+```python
+b2 = 'text'
+b2
+```
+
+```
+## 'text'
+```
+
+```python
+c2 = 'Hello world!'
+c2
+```
+
+```
+## 'Hello world!'
+```
+
+
+---
+
+
+#### 연속 문자 변수 List 만들기
+
+```python
+d2 = ['a', 'b', 'c']
+d2
+```
+
+```
+## ['a', 'b', 'c']
+```
+
+```python
+e2 = ['Hello!', 'World', 'is', 'good!']
+e2
+
+```
+
+```
+## ['Hello!', 'World', 'is', 'good!']
+```
+
+
+---
+
+#### 문자 변수끼리 더하기
+
+```python
+b2 + c2
+```
+
+```
+## 'textHello world!'
+```
+
+--
+
+
+```python
+b2 + ' ' + c2
+```
+
+```
+## 'text Hello world!'
+```
+
+---
+
+#### 문자 변수는 연산 불가
+
+
+```python
+b2 + 2
+```
+
+--
+
+
+```
+## Error in py_call_impl(callable, dots$args, dots$keywords): TypeError: can only concatenate str (not "int") to str
+```
+
+---
+
+
+name: function
+class: title1
+
+함수
+
+---
+
+
+```python
+a = [1, 2, 3]
+a
+```
+
+```
+## [1, 2, 3]
+```
+
+--
+
+
+
+```python
+sum(a)  # 합계
+```
+
+```
+## 6
+```
+
+--
+
+
+```python
+max(a)  # 최대값
+```
+
+```
+## 3
+```
+
+```python
+min(a)  # 최소값
+```
+
+```
+## 1
+```
+
+```python
+len(a)  # 길이
+```
+
+```
+## 3
+```
+
+---
+name: library
+class: title1
+
+라이브러리
+
+---
+
+#### 저장하기
+
+- 노트북 저장하기
+- 주피터랩 재실행
+
+---
+
+
+
+
+
+```python
+mpg.head()
+```
+
+```
+## Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'mpg' is not defined
+```
+
+--
+
+
+```python
+mpg = pd.read_csv('data_mpg.csv')
+```
+
+```
+## Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'pd' is not defined
+```
+
+---
+
+#### import
+
+
+```python
+import pandas as pd
+mpg = pd.read_csv('data_mpg.csv')
+mpg.head()
+```
+
+```
+##    Unnamed: 0 manufacturer model  displ  year  ...  drv cty hwy  fl    class
+## 0           1         audi    a4    1.8  1999  ...    f  18  29   p  compact
+## 1           2         audi    a4    1.8  1999  ...    f  21  29   p  compact
+## 2           3         audi    a4    2.0  2008  ...    f  20  31   p  compact
+## 3           4         audi    a4    2.0  2008  ...    f  21  30   p  compact
+## 4           5         audi    a4    2.8  1999  ...    f  16  26   p  compact
+## 
+## [5 rows x 12 columns]
+```
+
+---
+
+#### 라이브러리 함수
+
+
+```python
+pd.read_csv('data_mpg.csv')
+```
+
+```
+##      Unnamed: 0 manufacturer   model  displ  year  ...  drv cty hwy  fl    class
+## 0             1         audi      a4    1.8  1999  ...    f  18  29   p  compact
+## 1             2         audi      a4    1.8  1999  ...    f  21  29   p  compact
+## 2             3         audi      a4    2.0  2008  ...    f  20  31   p  compact
+## 3             4         audi      a4    2.0  2008  ...    f  21  30   p  compact
+## 4             5         audi      a4    2.8  1999  ...    f  16  26   p  compact
+## ..          ...          ...     ...    ...   ...  ...  ...  ..  ..  ..      ...
+## 229         230   volkswagen  passat    2.0  2008  ...    f  19  28   p  midsize
+## 230         231   volkswagen  passat    2.0  2008  ...    f  21  29   p  midsize
+## 231         232   volkswagen  passat    2.8  1999  ...    f  16  26   p  midsize
+## 232         233   volkswagen  passat    2.8  1999  ...    f  18  26   p  midsize
+## 233         234   volkswagen  passat    3.6  2008  ...    f  17  26   p  midsize
+## 
+## [234 rows x 12 columns]
+```
+
+---
+
+#### 라이브러리 함수
+
+
+
+```python
+a = ['a', 'a', 'b', 'c']
+a
+```
+
+```
+## ['a', 'a', 'b', 'c']
+```
+
+--
+
+
+```python
+pd.value_counts(a)
+```
+
+```
+## a    2
+## c    1
+## b    1
+## dtype: int64
+```
+
+
+---
+
+
+#### 내장 함수와 라이브러리 함수
+
+
+.pull-left[
+##### 내장 함수
+
+
+```python
+sum()
+max()
+```
+
+- function()
+]
+
+--
+
+
+.pull-right[
+
+##### 라이브러리 함수
+
+
+```python
+pd.read_csv()
+pd.value_counts()
+```
+
+- library.function()
+]
+
+
+
+---
+
+#### 라이브러리 메서드(Method)
+
+
+```python
+mpg = pd.read_csv('data_mpg.csv')
+type(mpg)
+```
+
+```
+## &lt;class 'pandas.core.frame.DataFrame'&gt;
+```
+
+---
+
+
+```python
+mpg.head()
+```
+
+```
+##    Unnamed: 0 manufacturer model  displ  year  ...  drv cty hwy  fl    class
+## 0           1         audi    a4    1.8  1999  ...    f  18  29   p  compact
+## 1           2         audi    a4    1.8  1999  ...    f  21  29   p  compact
+## 2           3         audi    a4    2.0  2008  ...    f  20  31   p  compact
+## 3           4         audi    a4    2.0  2008  ...    f  21  30   p  compact
+## 4           5         audi    a4    2.8  1999  ...    f  16  26   p  compact
+## 
+## [5 rows x 12 columns]
+```
+
+---
+
+
+```python
+mpg.info()
+```
+
+```
+## &lt;class 'pandas.core.frame.DataFrame'&gt;
+## RangeIndex: 234 entries, 0 to 233
+## Data columns (total 12 columns):
+##  #   Column        Non-Null Count  Dtype  
+## ---  ------        --------------  -----  
+##  0   Unnamed: 0    234 non-null    int64  
+##  1   manufacturer  234 non-null    object 
+##  2   model         234 non-null    object 
+##  3   displ         234 non-null    float64
+##  4   year          234 non-null    int64  
+##  5   cyl           234 non-null    int64  
+##  6   trans         234 non-null    object 
+##  7   drv           234 non-null    object 
+##  8   cty           234 non-null    int64  
+##  9   hwy           234 non-null    int64  
+##  10  fl            234 non-null    object 
+##  11  class         234 non-null    object 
+## dtypes: float64(1), int64(5), object(6)
+## memory usage: 22.1+ KB
+```
+
+---
+
+
+```python
+a = [1, 2, 3]
+type(a)
+```
+
+```
+## &lt;class 'list'&gt;
+```
+
+--
+
+
+```python
+a.info()
+```
+
+```
+## Error in py_call_impl(callable, dots$args, dots$keywords): AttributeError: 'list' object has no attribute 'info'
+```
+
+---
+
+#### 함수와 메서드
+
+
+.pull-left[
+##### 함수
+
+
+```python
+pd.read_csv()
+pd.value_counts()
+```
+
+- library.function()
+
+]
+
+
+--
+
+
+.pull-right[
+
+
+
+
+##### 메서드
+
+```python
+mpg.head()
+mpg.describe()
+```
+
+- data.method()
+
+]
+
+---
+
+#### 함수와 메서드, 어트리뷰트(Attribute)
+
+
+.pull-left[
+##### 함수
+
+
+```python
+pd.read_csv()
+pd.value_counts()
+```
+
+- library.function()
+
+]
+
+
+.pull-right[
+
+##### 메서드
+
+```python
+mpg.head()
+mpg.describe()
+```
+
+- data.method()
+
+]
+
+
+&lt;br&gt;
+.pull-right[
+##### 어트리뷰트
+
+
+```python
+mpg.shape
+mpg.dtypes
+```
+
+- data.attribute
+
+]
+
+---
+
+#### 함수 파라미터(parameter) 지정하기
+
+
+```python
+mpg.head()
+```
+
+```
+##    Unnamed: 0 manufacturer model  displ  year  ...  drv cty hwy  fl    class
+## 0           1         audi    a4    1.8  1999  ...    f  18  29   p  compact
+## 1           2         audi    a4    1.8  1999  ...    f  21  29   p  compact
+## 2           3         audi    a4    2.0  2008  ...    f  20  31   p  compact
+## 3           4         audi    a4    2.0  2008  ...    f  21  30   p  compact
+## 4           5         audi    a4    2.8  1999  ...    f  16  26   p  compact
+## 
+## [5 rows x 12 columns]
+```
+
+---
+
+
+```python
+mpg.head(n = 10)
+```
+
+```
+##    Unnamed: 0 manufacturer       model  displ  year  ...  drv cty hwy  fl    class
+## 0           1         audi          a4    1.8  1999  ...    f  18  29   p  compact
+## 1           2         audi          a4    1.8  1999  ...    f  21  29   p  compact
+## 2           3         audi          a4    2.0  2008  ...    f  20  31   p  compact
+## 3           4         audi          a4    2.0  2008  ...    f  21  30   p  compact
+## 4           5         audi          a4    2.8  1999  ...    f  16  26   p  compact
+## 5           6         audi          a4    2.8  1999  ...    f  18  26   p  compact
+## 6           7         audi          a4    3.1  2008  ...    f  18  27   p  compact
+## 7           8         audi  a4 quattro    1.8  1999  ...    4  18  26   p  compact
+## 8           9         audi  a4 quattro    1.8  1999  ...    4  16  25   p  compact
+## 9          10         audi  a4 quattro    2.0  2008  ...    4  20  28   p  compact
+## 
+## [10 rows x 12 columns]
+```
+
+--
+
+
+```python
+mpg.head(n = 3)
+```
+
+```
+##    Unnamed: 0 manufacturer model  displ  year  ...  drv cty hwy  fl    class
+## 0           1         audi    a4    1.8  1999  ...    f  18  29   p  compact
+## 1           2         audi    a4    1.8  1999  ...    f  21  29   p  compact
+## 2           3         audi    a4    2.0  2008  ...    f  20  31   p  compact
+## 
+## [3 rows x 12 columns]
+```
+
+
+---
+
+
+```python
+import seaborn as sns
+sns.relplot(data = mpg, x = 'displ', y = 'hwy')
+```
+
+&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-55-1.png" width="480" /&gt;
+
+---
+
+
+```python
+sns.relplot(data = mpg, x = 'displ', y = 'hwy', hue = 'cyl')
+```
+
+&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-57-1.png" width="536" /&gt;
+
+---
+
+
+```python
+sns.relplot(data = mpg, x = 'displ', y = 'hwy', hue = 'drv')
+```
+
+&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-59-1.png" width="536" /&gt;
+
+---
+
+
+```python
+sns.relplot(data = mpg, x = 'displ', y = 'hwy', hue = 'drv', marker = 'x')
+```
+
+&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-61-1.png" width="536" /&gt;
+
+---
+
+#### 함수 사용법이 궁금할 땐 help
+
+
+```python
+sns.relplot?
+```
+
+
+---
+
+
+#### 자동 완성 기능
+
+- `mpg.` → [Tab]
+
+&lt;img src="img/autocomplation.png" width="537" /&gt;
+
+
+---
+
+class: title0
+
+데이터 프레임의 세계로!
+
+---
+name: dataframe
+class: title1
+
+데이터 프레임 만들기
+
+---
+
+#### 데이터 프레임 만들기
+
+
+```python
+df = pd.DataFrame({'history' : [90, 80, 60, 70],
+                   'math' : [50, 60, 100, 20],
+                   'class' : [1, 1, 2, 2]})
+df
+```
+
+```
+##    history  math  class
+## 0       90    50      1
+## 1       80    60      1
+## 2       60   100      2
+## 3       70    20      2
+```
+
+---
+
+#### 특정 변수의 값으로 연산하기
+
+
+#### 1. 특정 변수의 값만 추출
+
+
+
+```python
+df['history']
+```
+
+```
+## 0    90
+## 1    80
+## 2    60
+## 3    70
+## Name: history, dtype: int64
+```
+
+--
+
+#### 2. 함수에 적용
+
+
+```python
+sum(df['history'])  # 합계
+```
+
+```
+## 300
+```
+
+--
+
+
+```python
+sum(df['history'])/4  # 평균
+```
+
+```
+## 75.0
+```
+
+---
+
+
+#### Q. `math` 합계와 평균 구하기
+
+--
+
+##### (1) 추출
+
+
+```python
+df['math']
+```
+
+```
+## 0     50
+## 1     60
+## 2    100
+## 3     20
+## Name: math, dtype: int64
+```
+
+&lt;br-back-10&gt;
+--
+
+##### (2) 합계
+
+
+```python
+sum(df['math'])
+```
+
+```
+## 230
+```
+
+&lt;br-back-10&gt;
+--
+
+##### (3) 평균
+
+
+```python
+sum(df['math'])/4
+```
+
+```
+## 57.5
+```
+
+---
+
+
+name: read_file
+class: title1
+
+외부 데이터를 R로 가져오기
+
+---
+
+#### 엑셀 파일 불러오기
+
+
+
+```python
+df_finalexam = pd.read_excel('finalexam.xlsx')
+df_finalexam
+```
+
+&lt;svg viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;position:relative;display:inline-block;top:.1em;fill:#FF7333;"&gt;  [ comment ]  &lt;path d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"&gt;&lt;/path&gt;&lt;/svg&gt;  노트북(.ipynb)과 같은 경로에 불러올 파일이 있어야 함
+
+
+---
+
+```
+##     id  class  math  history  english
+## 0    1      1    50       98       50
+## 1    2      1    60       97       60
+## 2    3      1    45       86       78
+## 3    4      1    30       98       58
+## 4    5      2    25       80       65
+## 5    6      2    50       89       98
+## 6    7      2    80       90       45
+## 7    8      2    90       78       25
+## 8    9      3    20       98       15
+## 9   10      3    50       98       45
+## 10  11      3    65       65       65
+## 11  12      3    45       85       32
+## 12  13      4    46       98       65
+## 13  14      4    48       87       12
+## 14  15      4    75       56       78
+## 15  16      4    58       98       65
+## 16  17      5    65       68       98
+## 17  18      5    80       78       90
+## 18  19      5    89       68       87
+## 19  20      5    78       83       58
+```
+
+
+
+---
+
+##### Q. math, history, english 평균 각각 구하기
+
+&lt;br10&gt;
+
+--
+
+
+```python
+df_finalexam['math'].mean()
+```
+
+```
+## 57.45
+```
+
+
+```python
+df_finalexam['history'].mean()
+```
+
+```
+## 84.9
+```
+
+
+
+```python
+df_finalexam['english'].mean()
+```
+
+```
+## 59.45
+```
+
+---
+
+##### 모든 변수의 평균 구하기
+
+
+```python
+df_finalexam.mean()
+```
+
+```
+## id         10.50
+## class       3.00
+## math       57.45
+## history    84.90
+## english    59.45
+## dtype: float64
+```
+
+
+
+---
+
+
+#### CSV 파일 불러오기
+
+&lt;br-back-20&gt;
+.pull-left[
+
+
+```python
+pd.read_csv('csv_exam.csv')
+```
+
+```
+##     id  class  math  english  science
+## 0    1      1    50       98       50
+## 1    2      1    60       97       60
+## 2    3      1    45       86       78
+## 3    4      1    30       98       58
+## 4    5      2    25       80       65
+## 5    6      2    50       89       98
+## 6    7      2    80       90       45
+## 7    8      2    90       78       25
+## 8    9      3    20       98       15
+## 9   10      3    50       98       45
+## 10  11      3    65       65       65
+## 11  12      3    45       85       32
+## 12  13      4    46       98       65
+## 13  14      4    48       87       12
+## 14  15      4    75       56       78
+## 15  16      4    58       98       65
+## 16  17      5    65       68       98
+## 17  18      5    80       78       90
+## 18  19      5    89       68       87
+## 19  20      5    78       83       58
+```
+]
+
+.pull-right[
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+- 범용 데이터 형식, 다양한 소프트웨어에서 사용
+- 값 사이를 쉼표(,)로 구분
+- 용량 작음
+]
+
+---
+
+
+
+
+```python
+csv_exam
+```
+
+```
+## Error in py_call_impl(callable, dots$args, dots$keywords): NameError: name 'csv_exam' is not defined
+```
+
+---
+
+
+```python
+csv_exam = pd.read_csv('csv_exam.csv')
+csv_exam
+```
+
+```
+##     id  class  math  english  science
+## 0    1      1    50       98       50
+## 1    2      1    60       97       60
+## 2    3      1    45       86       78
+## 3    4      1    30       98       58
+## 4    5      2    25       80       65
+## 5    6      2    50       89       98
+## 6    7      2    80       90       45
+## 7    8      2    90       78       25
+## 8    9      3    20       98       15
+## 9   10      3    50       98       45
+## 10  11      3    65       65       65
+## 11  12      3    45       85       32
+## 12  13      4    46       98       65
+## 13  14      4    48       87       12
+## 14  15      4    75       56       78
+## 15  16      4    58       98       65
+## 16  17      5    65       68       98
+## 17  18      5    80       78       90
+## 18  19      5    89       68       87
+## 19  20      5    78       83       58
+```
+
+---
+
+name: write_file
+class: title1
+
+데이터 프레임을  
+CSV 파일로 저장하기
+
+---
+
+#### 데이터 프레임을 CSV 파일로 저장하기
+
+
+```python
+df_finalexam.to_csv('output_newdata.csv')
+```
+
+--
+
+##### index 제거
+
+```python
+df_finalexam.to_csv('output_newdata2.csv', index = False)
+```
+
+---
+
+#### 데이터 프레임을 엑셀 파일로 저장하기
+
+
+
+```python
+df_finalexam.to_excel('output_newdata3.xlsx')
+```
+
+--
+
+##### index 제거
+
+
+```python
+df_finalexam.to_excel('output_newdata4.xlsx', index = False)
+```
+
+---
+
+
+
+class: title0
+
+데이터 분석 기초
+
+---
+name: eda
+class: title1
+
+데이터 파악하기
+
+---
+
+### 데이터 파악하기
+
+.left[
+
+&amp;nbsp; &amp;nbsp; 함수     |&amp;nbsp; &amp;nbsp; 기능
+---------|----------------------------------
+&amp;nbsp; &amp;nbsp; df.head()   &amp;nbsp; |&amp;nbsp; &amp;nbsp; 데이터 앞부분 출력      &amp;nbsp; &amp;nbsp;
+&amp;nbsp; &amp;nbsp; df.tail()   &amp;nbsp; |&amp;nbsp; &amp;nbsp; 데이터 뒷부분 출력      &amp;nbsp; &amp;nbsp;
+&amp;nbsp; &amp;nbsp; df.shape    &amp;nbsp; |&amp;nbsp; &amp;nbsp; 데이터 차원 출력        &amp;nbsp; &amp;nbsp;           &amp;nbsp; &amp;nbsp;
+&amp;nbsp; &amp;nbsp; df.info()    &amp;nbsp; |&amp;nbsp; &amp;nbsp; 데이터 속성 출력        &amp;nbsp; &amp;nbsp;           &amp;nbsp; &amp;nbsp;
+&amp;nbsp; &amp;nbsp; df.describe()&amp;nbsp; |&amp;nbsp; &amp;nbsp; 요약 통계량 출력&amp;nbsp; &amp;nbsp;
+
+]
+
+
+---
+
+#### 데이터 준비하기
+
+.pull-left[
+
+```python
+exam = pd.read_csv('csv_exam.csv')
+exam
+```
+]
+.pull-right[
+
+
+```
+##     id  class  math  english  science
+## 0    1      1    50       98       50
+## 1    2      1    60       97       60
+## 2    3      1    45       86       78
+## 3    4      1    30       98       58
+## 4    5      2    25       80       65
+## 5    6      2    50       89       98
+## 6    7      2    80       90       45
+## 7    8      2    90       78       25
+## 8    9      3    20       98       15
+## 9   10      3    50       98       45
+## 10  11      3    65       65       65
+## 11  12      3    45       85       32
+## 12  13      4    46       98       65
+## 13  14      4    48       87       12
+## 14  15      4    75       56       78
+## 15  16      4    58       98       65
+## 16  17      5    65       68       98
+## 17  18      5    80       78       90
+## 18  19      5    89       68       87
+## 19  20      5    78       83       58
+```
+]
+
+---
+
+#### df.head() - 데이터 앞부분 확인하기
+
+```python
+exam.head()    # 앞에서부터 5행까지 출력
+```
+
+```
+##    id  class  math  english  science
+## 0   1      1    50       98       50
+## 1   2      1    60       97       60
+## 2   3      1    45       86       78
+## 3   4      1    30       98       58
+## 4   5      2    25       80       65
+```
+
+```python
+exam.head(10)  # 앞에서부터 10행까지 출력
+```
+
+```
+##    id  class  math  english  science
+## 0   1      1    50       98       50
+## 1   2      1    60       97       60
+## 2   3      1    45       86       78
+## 3   4      1    30       98       58
+## 4   5      2    25       80       65
+## 5   6      2    50       89       98
+## 6   7      2    80       90       45
+## 7   8      2    90       78       25
+## 8   9      3    20       98       15
+## 9  10      3    50       98       45
+```
+
+---
+
+#### df.tail() - 데이터 뒷부분 확인하기
+
+
+```python
+exam.tail()    # 뒤에서부터 5행까지 출력
+```
+
+```
+##     id  class  math  english  science
+## 15  16      4    58       98       65
+## 16  17      5    65       68       98
+## 17  18      5    80       78       90
+## 18  19      5    89       68       87
+## 19  20      5    78       83       58
+```
+
+```python
+exam.tail(10)  # 뒤에서부터 10행까지 출력
+```
+
+```
+##     id  class  math  english  science
+## 10  11      3    65       65       65
+## 11  12      3    45       85       32
+## 12  13      4    46       98       65
+## 13  14      4    48       87       12
+## 14  15      4    75       56       78
+## 15  16      4    58       98       65
+## 16  17      5    65       68       98
+## 17  18      5    80       78       90
+## 18  19      5    89       68       87
+## 19  20      5    78       83       58
+```
+
+---
+
+#### df.shape - 몇 행 몇 열로 구성되는지 알아보기
+
+
+```python
+exam.shape  # 행, 열 출력
+```
+
+```
+## (20, 5)
+```
+
+
+---
+
+#### df.info() - 속성 파악하기
+
+
+```python
+exam.info()  # 데이터 속성 확인
+```
+
+```
+## &lt;class 'pandas.core.frame.DataFrame'&gt;
+## RangeIndex: 20 entries, 0 to 19
+## Data columns (total 5 columns):
+##  #   Column   Non-Null Count  Dtype
+## ---  ------   --------------  -----
+##  0   id       20 non-null     int64
+##  1   class    20 non-null     int64
+##  2   math     20 non-null     int64
+##  3   english  20 non-null     int64
+##  4   science  20 non-null     int64
+## dtypes: int64(5)
+## memory usage: 928.0 bytes
+```
+
+---
+
+#### df.describe() - 요약 통계량 산출하기
+
+
+```python
+exam.describe()  # 요약 통계량 출력
+```
+
+```
+##              id      class       math    english    science
+## count  20.00000  20.000000  20.000000  20.000000  20.000000
+## mean   10.50000   3.000000  57.450000  84.900000  59.450000
+## std     5.91608   1.450953  20.299015  12.875517  25.292968
+## min     1.00000   1.000000  20.000000  56.000000  12.000000
+## 25%     5.75000   2.000000  45.750000  78.000000  45.000000
+## 50%    10.50000   3.000000  54.000000  86.500000  62.500000
+## 75%    15.25000   4.000000  75.750000  98.000000  78.000000
+## max    20.00000   5.000000  90.000000  98.000000  98.000000
+```
+
+---
+
+#### Q. mpg 데이터 파악하기
+
+
+```python
+# mpg 데이터 불러오기
+mpg = pd.read_csv('data_mpg.csv')
+```
+
+---
+
+
+```python
+mpg.head()  # 데이터 앞부분 확인
+```
+
+```
+##    Unnamed: 0 manufacturer model  displ  year  ...  drv cty hwy  fl    class
+## 0           1         audi    a4    1.8  1999  ...    f  18  29   p  compact
+## 1           2         audi    a4    1.8  1999  ...    f  21  29   p  compact
+## 2           3         audi    a4    2.0  2008  ...    f  20  31   p  compact
+## 3           4         audi    a4    2.0  2008  ...    f  21  30   p  compact
+## 4           5         audi    a4    2.8  1999  ...    f  16  26   p  compact
+## 
+## [5 rows x 12 columns]
+```
+
+--
+
+
+```python
+mpg.tail()  # 데이터 뒷부분 확인
+```
+
+```
+##      Unnamed: 0 manufacturer   model  displ  year  ...  drv cty hwy  fl    class
+## 229         230   volkswagen  passat    2.0  2008  ...    f  19  28   p  midsize
+## 230         231   volkswagen  passat    2.0  2008  ...    f  21  29   p  midsize
+## 231         232   volkswagen  passat    2.8  1999  ...    f  16  26   p  midsize
+## 232         233   volkswagen  passat    2.8  1999  ...    f  18  26   p  midsize
+## 233         234   volkswagen  passat    3.6  2008  ...    f  17  26   p  midsize
+## 
+## [5 rows x 12 columns]
+```
+
+---
+
+```python
+mpg.shape  # 행, 열 출력
+```
+
+```
+## (234, 12)
+```
+
+---
+
+
+```python
+mpg.info()  # 데이터 속성 확인
+```
+
+```
+## &lt;class 'pandas.core.frame.DataFrame'&gt;
+## RangeIndex: 234 entries, 0 to 233
+## Data columns (total 12 columns):
+##  #   Column        Non-Null Count  Dtype  
+## ---  ------        --------------  -----  
+##  0   Unnamed: 0    234 non-null    int64  
+##  1   manufacturer  234 non-null    object 
+##  2   model         234 non-null    object 
+##  3   displ         234 non-null    float64
+##  4   year          234 non-null    int64  
+##  5   cyl           234 non-null    int64  
+##  6   trans         234 non-null    object 
+##  7   drv           234 non-null    object 
+##  8   cty           234 non-null    int64  
+##  9   hwy           234 non-null    int64  
+##  10  fl            234 non-null    object 
+##  11  class         234 non-null    object 
+## dtypes: float64(1), int64(5), object(6)
+## memory usage: 22.1+ KB
+```
+
+---
+
+
+```python
+mpg.describe() # 요약 통계량 출력
+```
+
+```
+##        Unnamed: 0       displ         year         cyl         cty         hwy
+## count  234.000000  234.000000   234.000000  234.000000  234.000000  234.000000
+## mean   117.500000    3.471795  2003.500000    5.888889   16.858974   23.440171
+## std     67.694165    1.291959     4.509646    1.611534    4.255946    5.954643
+## min      1.000000    1.600000  1999.000000    4.000000    9.000000   12.000000
+## 25%     59.250000    2.400000  1999.000000    4.000000   14.000000   18.000000
+## 50%    117.500000    3.300000  2003.500000    6.000000   17.000000   24.000000
+## 75%    175.750000    4.600000  2008.000000    8.000000   19.000000   27.000000
+## max    234.000000    7.000000  2008.000000    8.000000   35.000000   44.000000
+```
+
+
+
+---
+name: rename
+class: title1
+
+데이터 수정하기:  
+변수명 바꾸기
+
+---
+
+#### 데이터 프레임 만들기
+
+
+```python
+df_raw = pd.DataFrame({'var1' : [1, 2, 1],
+                       'var2' : [2, 3, 2]})
+df_raw
+```
+
+```
+##    var1  var2
+## 0     1     2
+## 1     2     3
+## 2     1     2
+```
+
+--
+
+#### 데이터 프레임 복사본 만들기
+
+
+```python
+df_new = df_raw  # 복사본 생성
+df_new           # 출력
+```
+
+```
+##    var1  var2
+## 0     1     2
+## 1     2     3
+## 2     1     2
+```
+
+---
+
+#### 변수명 바꾸기: `df.rename()`
+
+
+```python
+df_new = df_new.rename(columns = {'var2' : 'v2'})  # var2를 v2로 수정
+df_new
+```
+
+```
+##    var1  v2
+## 0     1   2
+## 1     2   3
+## 2     1   2
+```
+
+--
+
+#### 원본과 비교
+
+
+```python
+df_raw
+```
+
+```
+##    var1  var2
+## 0     1     2
+## 1     2     3
+## 2     1     2
+```
+
+
+
+---
+
+### 혼자서 해보기
+
+
+
+**`mpg` 데이터를 이용해서 분석 문제를 해결해 보세요.**
+
+`mpg` 데이터의 변수명은 긴 단어를 짧게 줄인 축약어로 되어있습니다. `cty` 변수는 도시 연비, `hwy` 변수는 &lt;br&gt; 고속도로 연비를 의미합니다. 변수명을 이해하기 쉬운 단어로 바꾸려고 합니다. `data_mpg.csv`를 이용해서 아래 문제를 해결해 보세요.
+
+Q1. `data_mpg.csv`를 불러와 복사본을 만드세요.
+
+Q2. 복사본 데이터를 이용해서 `cty`는 `city`로, `hwy`는 `highway`로 변수명을 수정하세요.
+
+Q3. 데이터 일부를 출력해 변수명이 바뀌었는지 확인해 보세요. 아래와 같은 결과물이 출력되어야 합니다.
+
+&lt;!-- 코드 없이 결과물만 출력 --&gt;
+
+```
+##    Unnamed: 0 manufacturer model  displ  year  ...  drv city highway  fl    class
+## 0           1         audi    a4    1.8  1999  ...    f   18      29   p  compact
+## 1           2         audi    a4    1.8  1999  ...    f   21      29   p  compact
+## 2           3         audi    a4    2.0  2008  ...    f   20      31   p  compact
+## 3           4         audi    a4    2.0  2008  ...    f   21      30   p  compact
+## 4           5         audi    a4    2.8  1999  ...    f   16      26   p  compact
+## 
+## [5 rows x 12 columns]
+```
+
+---
+
+### 정답
+
+Q1. `data_mpg.csv`를 불러와 복사본을 만드세요.
+
+```python
+mpg = pd.read_csv('data_mpg.csv')  # mpg 데이터 불러오기
+mpg_new = mpg                      # 복사본 만들기
+```
+
+---
+
+Q2. 복사본 데이터를 이용해서 `cty`는 `city`로, `hwy`는 `highway`로 변수명을 수정하세요.
+
+
+```python
+mpg_new = mpg_new.rename(columns = {'cty' : 'city'})     # cty를 city로 수정
+mpg_new = mpg_new.rename(columns = {'hwy' : 'highway'})  # cty를 city로 수정
+```
+
+--
+
+&lt;br&gt;
+
+Q3. 데이터 일부를 출력해 변수명이 바뀌었는지 확인해 보세요. 아래와 같은 결과물이 출력되어야 합니다.
+
+```python
+mpg_new.head(5)  # 데이터 일부 출력
+```
+
+```
+##    Unnamed: 0 manufacturer model  displ  year  ...  drv city highway  fl    class
+## 0           1         audi    a4    1.8  1999  ...    f   18      29   p  compact
+## 1           2         audi    a4    1.8  1999  ...    f   21      29   p  compact
+## 2           3         audi    a4    2.0  2008  ...    f   20      31   p  compact
+## 3           4         audi    a4    2.0  2008  ...    f   21      30   p  compact
+## 4           5         audi    a4    2.8  1999  ...    f   16      26   p  compact
+## 
+## [5 rows x 12 columns]
+```
+
+---
+
+&lt;svg viewBox="0 0 352 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;"&gt;  [ comment ]  &lt;path d="M176 80c-52.94 0-96 43.06-96 96 0 8.84 7.16 16 16 16s16-7.16 16-16c0-35.3 28.72-64 64-64 8.84 0 16-7.16 16-16s-7.16-16-16-16zM96.06 459.17c0 3.15.93 6.22 2.68 8.84l24.51 36.84c2.97 4.46 7.97 7.14 13.32 7.14h78.85c5.36 0 10.36-2.68 13.32-7.14l24.51-36.84c1.74-2.62 2.67-5.7 2.68-8.84l.05-43.18H96.02l.04 43.18zM176 0C73.72 0 0 82.97 0 176c0 44.37 16.45 84.85 43.56 115.78 16.64 18.99 42.74 58.8 52.42 92.16v.06h48v-.12c-.01-4.77-.72-9.51-2.15-14.07-5.59-17.81-22.82-64.77-62.17-109.67-20.54-23.43-31.52-53.15-31.61-84.14-.2-73.64 59.67-128 127.95-128 70.58 0 128 57.42 128 128 0 30.97-11.24 60.85-31.65 84.14-39.11 44.61-56.42 91.47-62.1 109.46a47.507 47.507 0 0 0-2.22 14.3v.1h48v-.05c9.68-33.37 35.78-73.18 52.42-92.16C335.55 260.85 352 220.37 352 176 352 78.8 273.2 0 176 0z"&gt;&lt;/path&gt;&lt;/svg&gt; 여러 변수명 한 번에 바꾸기
+
+
+```python
+mpg.rename(columns = {'cty' : 'city', 
+                      'hwy' : 'highway'})
+```
+
+
+
+---
+name: derived_variable
+class: title1
+
+데이터 수정하기:  
+파생변수 만들기
+
+---
+
+&lt;br&gt;
+.center[
+## 파생변수 만들기
+]
+
+&lt;br&gt;
+&lt;img src="img/new_var.png" width="600px" style="display: block; margin: auto;" /&gt;
+
+---
+
+#### 데이터 프레임 만들기
+
+
+```python
+df = pd.DataFrame({'var1' : [4, 3, 8],
+                   'var2' : [2, 6, 1]})
+df
+```
+
+```
+##    var1  var2
+## 0     4     2
+## 1     3     6
+## 2     8     1
+```
+
+---
+
+#### 파생변수 만들기
+
+```python
+df['var_sum'] = df['var1'] + df['var2']  # var_sum 파생변수 생성
+df
+```
+
+```
+##    var1  var2  var_sum
+## 0     4     2        6
+## 1     3     6        9
+## 2     8     1        9
+```
+
+--
+
+#### Q. `var_mean` 만들기
+
+--
+
+
+```python
+df['var_mean'] = (df['var1'] + df['var2'])/2  # var_mean 파생변수 생성
+df
+```
+
+```
+##    var1  var2  var_sum  var_mean
+## 0     4     2        6       3.0
+## 1     3     6        9       4.5
+## 2     8     1        9       4.5
+```
+
+---
+
+### mpg에 적용하기
+
+
+#### mpg 통합 연비 변수 만들기
+
+--
+
+
+```python
+mpg['total'] = (mpg['cty'] + mpg['hwy'])/2  # 통합 연비 변수 생성
+```
+
+--
+
+
+```python
+mpg.info()
+```
+
+```
+## &lt;class 'pandas.core.frame.DataFrame'&gt;
+## RangeIndex: 234 entries, 0 to 233
+## Data columns (total 13 columns):
+##  #   Column        Non-Null Count  Dtype  
+## ---  ------        --------------  -----  
+##  0   Unnamed: 0    234 non-null    int64  
+##  1   manufacturer  234 non-null    object 
+##  2   model         234 non-null    object 
+##  3   displ         234 non-null    float64
+##  4   year          234 non-null    int64  
+##  5   cyl           234 non-null    int64  
+##  6   trans         234 non-null    object 
+##  7   drv           234 non-null    object 
+##  8   cty           234 non-null    int64  
+##  9   hwy           234 non-null    int64  
+##  10  fl            234 non-null    object 
+##  11  class         234 non-null    object 
+##  12  total         234 non-null    float64
+## dtypes: float64(2), int64(5), object(6)
+## memory usage: 23.9+ KB
+```
+
+```python
+mpg['total'].mean()
+```
+
+```
+## 20.14957264957265
+```
+
+---
+
+name: ifelse
+class: title1
+
+데이터 수정하기:  
+조건 함수로 파생 변수 만들기
+
+---
+
+#### 기준값 정하기
+
+
+```python
+mpg['total'].describe()  # 요약 통계량 산출
+```
+
+
+
+```
+## count    234.000000
+## mean      20.149573
+## std        5.050290
+## min       10.500000
+## 25%       15.500000
+## 50%       20.500000
+## 75%       23.500000
+## max       39.500000
+## Name: total, dtype: float64
+```
+
+
+---
+
+
+```python
+mpg['total'].plot(kind = 'hist')      # 히스토그램 생성
+```
+
+&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-116-1.png" width="536" /&gt;
+
+---
+
+```python
+mpg['total'].plot(kind = 'hist')      # 히스토그램 생성
+plt.show()
+```
+
+&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-117-1.png" width="536" /&gt;
+
+---
+
+#### 조건 함수로 합격 판정 변수 만들기
+
+&lt;img src="img/np.where.png" width="80%" /&gt;
+
+
+```python
+import numpy as np
+
+# 20 이상이면 pass, 그렇지 않으면 fail 부여
+mpg['test'] = np.where(mpg['total'] &gt;= 20, 'pass', 'fail')
+```
+
+---
+
+
+
+```python
+mpg['test'].head(20)
+```
+
+```
+## 0     pass
+## 1     pass
+## 2     pass
+## 3     pass
+## 4     pass
+## 5     pass
+## 6     pass
+## 7     pass
+## 8     pass
+## 9     pass
+## 10    pass
+## 11    pass
+## 12    pass
+## 13    pass
+## 14    pass
+## 15    fail
+## 16    pass
+## 17    fail
+## 18    fail
+## 19    fail
+## Name: test, dtype: object
+```
+
+---
+
+
+```python
+mpg[['total', 'test']].head(20)
+```
+
+```
+##     total  test
+## 0    23.5  pass
+## 1    25.0  pass
+## 2    25.5  pass
+## 3    25.5  pass
+## 4    21.0  pass
+## 5    22.0  pass
+## 6    22.5  pass
+## 7    22.0  pass
+## 8    20.5  pass
+## 9    24.0  pass
+## 10   23.0  pass
+## 11   20.0  pass
+## 12   21.0  pass
+## 13   21.0  pass
+## 14   20.0  pass
+## 15   19.5  fail
+## 16   21.0  pass
+## 17   19.5  fail
+## 18   17.0  fail
+## 19   13.0  fail
+```
+
+
+---
+
+#### 빈도표, 막대 그래프로 합격 판정 자동차 수 살펴보기
+
+
+```python
+count_test = mpg['test'].value_counts()  # 연비 합격 빈도표 생성
+count_test
+```
+
+```
+## pass    128
+## fail    106
+## Name: test, dtype: int64
+```
+
+--
+
+
+```python
+count_test.plot(kind = 'bar')            # 빈도 막대 그래프 생성
+```
+
+&lt;br-back-10&gt;
+
+&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-124-1.png" width="35%" /&gt;
+---
+
+#### 빈도표, 막대 그래프로 합격 판정 자동차 수 살펴보기
+
+
+```python
+count_test = mpg['test'].value_counts()  # 연비 합격 빈도표 생성
+count_test
+```
+
+```
+## pass    128
+## fail    106
+## Name: test, dtype: int64
+```
+
+
+
+```python
+count_test.plot(kind = 'bar', rot = 0)   # 빈도 막대 그래프 생성, x축 label 회전
+```
+
+&lt;br-back-10&gt;
+
+&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-127-1.png" width="35%" /&gt;
+---
+
+
+
+---
+
+### 중첩 조건문 활용하기 - 연비 등급 변수 만들기
+
+.left[
+
+&amp;nbsp; 등급|&amp;nbsp; &amp;nbsp;total 기준
+----|---
+&amp;nbsp; &amp;nbsp; A &amp;nbsp; &amp;nbsp;   |&amp;nbsp; &amp;nbsp; 30 이상 &amp;nbsp; &amp;nbsp;
+&amp;nbsp; &amp;nbsp; B &amp;nbsp; &amp;nbsp;   |&amp;nbsp; &amp;nbsp; 20~29 &amp;nbsp; &amp;nbsp;
+&amp;nbsp; &amp;nbsp; C &amp;nbsp; &amp;nbsp;   |&amp;nbsp; &amp;nbsp; 20 미만 &amp;nbsp; &amp;nbsp;
+
+]
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+--
+
+
+```python
+# total 기준으로 A, B, C 등급 부여
+mpg['grade'] = np.where(mpg['total'] &gt;= 30, 'A',
+               np.where(mpg['total'] &gt;= 20, 'B', 'C'))
+```
+
+&lt;svg viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;position:relative;display:inline-block;top:.1em;fill:#FF7333;"&gt;  [ comment ]  &lt;path d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"&gt;&lt;/path&gt;&lt;/svg&gt; np.where()가 두 번 반복되므로 열리는 괄호와 닫히는 괄호가 각각 두 개, 쉼표도 각각 두 개
+
+---
+
+
+```python
+mpg[['total', 'test', 'grade']].head(20)
+```
+
+```
+##     total  test grade
+## 0    23.5  pass     B
+## 1    25.0  pass     B
+## 2    25.5  pass     B
+## 3    25.5  pass     B
+## 4    21.0  pass     B
+## 5    22.0  pass     B
+## 6    22.5  pass     B
+## 7    22.0  pass     B
+## 8    20.5  pass     B
+## 9    24.0  pass     B
+## 10   23.0  pass     B
+## 11   20.0  pass     B
+## 12   21.0  pass     B
+## 13   21.0  pass     B
+## 14   20.0  pass     B
+## 15   19.5  fail     C
+## 16   21.0  pass     B
+## 17   19.5  fail     C
+## 18   17.0  fail     C
+## 19   13.0  fail     C
+```
+
+---
+
+#### 빈도표, 막대 그래프로 연비 등급 살펴보기
+
+--
+
+
+```python
+count_grade = mpg['grade'].value_counts()  # 등급 빈도표 생성
+count_grade
+```
+
+```
+## B    118
+## C    106
+## A     10
+## Name: grade, dtype: int64
+```
+
+
+```python
+count_grade.plot(kind = 'bar', rot = 0)    # 빈도 막대 그래프 생성
+```
+
+&lt;br-back-10&gt;
+
+&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-132-1.png" width="35%" /&gt;
+---
+
+#### 빈도표, 막대 그래프로 연비 등급 살펴보기
+
+
+```python
+count_grade = mpg['grade'].value_counts().sort_index()  # 등급 빈도표 생성, index 정렬
+count_grade
+```
+
+```
+## A     10
+## B    118
+## C    106
+## Name: grade, dtype: int64
+```
+
+
+```python
+count_grade.plot(kind = 'bar', rot = 0)    # 빈도 막대 그래프 생성
+```
+
+&lt;br-back-10&gt;
+
+&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-135-1.png" width="35%" /&gt;
+
+
+---
+
+
+---
+#### 원하는 만큼 범주 만들기: 범주 개수 - 1
+
+.left[
+등급|total 기준
+:----:|:---:
+&amp;nbsp; &amp;nbsp; &amp;nbsp; A &amp;nbsp;&amp;nbsp; &amp;nbsp;    |&amp;nbsp; &amp;nbsp; 30 이상&amp;nbsp; &amp;nbsp;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; B &amp;nbsp;&amp;nbsp; &amp;nbsp;    |&amp;nbsp; &amp;nbsp; 25 이상&amp;nbsp; &amp;nbsp;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; C &amp;nbsp;&amp;nbsp; &amp;nbsp;    |&amp;nbsp; &amp;nbsp; 20 이상&amp;nbsp; &amp;nbsp;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; D &amp;nbsp;&amp;nbsp; &amp;nbsp;    |&amp;nbsp; &amp;nbsp; 20 미만&amp;nbsp; &amp;nbsp;
+]
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+```python
+# A, B, C, D 등급 부여
+mpg['grade2'] = np.where(mpg['total'] &gt;= 30, 'A',
+                np.where(mpg['total'] &gt;= 25, 'B',
+                np.where(mpg['total'] &gt;= 20, 'C', 'D')))
+```
+---
+
+### 정리하기
+
+
+```python
+# 1. 라이브러리 로드 
+import pandas as pd
+import numpy as np
+
+# 2. 데이터 불러오기
+mpg = pd.read_csv('data_mpg.csv')
+
+# 2. 데이터 파악
+mpg.head()      # 데이터 앞부분
+mpg.tail()      # 데이터 뒷부분
+mpg.shape       # 행, 열 수
+mpg.info()      # 속성
+mpg.describe()  # 요약 통계량
+```
+
+---
+
+
+```python
+# 3. 변수명 수정
+mpg = mpg.rename(columns = {'company' : 'manufacturer'})
+
+# 4. 파생변수 생성
+mpg['total'] = (mpg['cty'] + mpg['hwy'])/2                  # 변수 조합
+mpg['test'] = np.where(mpg['total'] &gt;= 20, 'pass', 'fail')  # 조건문 활용
+
+# 5. 빈도 확인
+count_test = mpg['test'].value_counts()  # 빈도표 생성
+count_test.plot(kind = 'bar', rot = 0)   # 빈도 막대 그래프 생성
+```
+
+---
+
+class: title1
+
+분석 도전
+
+---
+
+### 분석 도전
+
+**`midwest` 데이터는 미국 동북중부 437개 지역의 인구통계 정보를 담고 있습니다. `data_midwest.csv`를 &lt;br&gt;이용해서 데이터 분석 문제를 해결해보세요.**
+
+Q1. `data_midwest.csv`를 불러와 데이터의 특성을 파악하세요.
+
+Q2. `poptotal`(전체 인구) 변수를 `total`로, `popasian`(아시아 인구) 변수를 `asian`으로 변수명을 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 수정하세요.
+
+Q3. `total`, `asian` 변수를 이용해서 '전체 인구 대비 아시아 인구 백분율' 파생변수를 만들고, &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 히스토그램을 만들어 도시들이 어떻게 분포하는지 살펴보세요.
+
+Q4. 아시아 인구 백분율 전체 평균을 초과하면 `'large'`, 그 외에는 `'small'`을 부여한 파생변수를 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;만드세요.
+
+Q5.`'large'`와 `'small'`에 해당하는 지역이 얼마나 되는지, 빈도표와 빈도 막대 그래프를 만들어 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 확인해보세요.
+
+
+
+---
+
+Q1. `data_midwest.csv`를 불러와 데이터의 특성을 파악하세요.
+
+
+```python
+midwest = pd.read_csv('data_midwest.csv')
+midwest.head()
+midwest.tail()
+midwest.shape
+midwest.info()
+midwest.describe()
+```
+
+
+
+---
+
+Q2. `poptotal`(전체 인구) 변수를 `total`로, `popasian`(아시아 인구) 변수를 `asian`으로 변수명을 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 수정하세요.
+
+
+```python
+midwest = midwest.rename(columns = {'poptotal' : 'total'})
+midwest = midwest.rename(columns = {'popasian' : 'asian'})
+```
+
+--
+&lt;br-10&gt;
+
+.scroll-box-20[
+
+```python
+midwest.info()
+```
+
+```
+## &lt;class 'pandas.core.frame.DataFrame'&gt;
+## RangeIndex: 437 entries, 0 to 436
+## Data columns (total 29 columns):
+##  #   Column                Non-Null Count  Dtype  
+## ---  ------                --------------  -----  
+##  0   Unnamed: 0            437 non-null    int64  
+##  1   PID                   437 non-null    int64  
+##  2   county                437 non-null    object 
+##  3   state                 437 non-null    object 
+##  4   area                  437 non-null    float64
+##  5   total                 437 non-null    int64  
+##  6   popdensity            437 non-null    float64
+##  7   popwhite              437 non-null    int64  
+##  8   popblack              437 non-null    int64  
+##  9   popamerindian         437 non-null    int64  
+##  10  asian                 437 non-null    int64  
+##  11  popother              437 non-null    int64  
+##  12  percwhite             437 non-null    float64
+##  13  percblack             437 non-null    float64
+##  14  percamerindan         437 non-null    float64
+##  15  percasian             437 non-null    float64
+##  16  percother             437 non-null    float64
+##  17  popadults             437 non-null    int64  
+##  18  perchsd               437 non-null    float64
+##  19  percollege            437 non-null    float64
+##  20  percprof              437 non-null    float64
+##  21  poppovertyknown       437 non-null    int64  
+##  22  percpovertyknown      437 non-null    float64
+##  23  percbelowpoverty      437 non-null    float64
+##  24  percchildbelowpovert  437 non-null    float64
+##  25  percadultpoverty      437 non-null    float64
+##  26  percelderlypoverty    437 non-null    float64
+##  27  inmetro               437 non-null    int64  
+##  28  category              437 non-null    object 
+## dtypes: float64(15), int64(11), object(3)
+## memory usage: 99.1+ KB
+```
+]
+
+---
+Q3. `total`, `asian` 변수를 이용해서 '전체 인구 대비 아시아 인구 백분율' 파생변수를 만들고, &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 히스토그램을 만들어 도시들이 어떻게 분포하는지 살펴보세요.
+
+
+```python
+midwest['ratio'] = midwest['asian']/midwest['total']*100
+midwest['ratio'].plot(kind = 'hist')
+```
+
+&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-144-1.png" width="536" /&gt;
+
+---
+Q4. 아시아 인구 백분율 전체 평균을 초과하면 `'large'`, 그 외에는 `'small'`을 부여한 파생변수를 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;만드세요.
+
+```python
+midwest['ratio'].mean()
+```
+
+```
+## 0.4872461834357345
+```
+
+```python
+midwest['group'] = np.where(midwest['ratio'] &gt; 0.4872, 'large', 'small')
+```
+
+---
+
+Q4. 아시아 인구 백분율 전체 평균을 초과하면 `'large'`, 그 외에는 `'small'`을 부여한 파생변수를 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;만드세요.
+
+
+```python
+midwest['group'] = np.where(midwest['ratio'] &gt; midwest['ratio'].mean(),'large', 'small')
+```
+
+---
+
+Q4. 아시아 인구 백분율 전체 평균을 초과하면 `'large'`, 그 외에는 `'small'`을 부여한 파생변수를 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;만드세요.
+
+
+```python
+m_ratio = midwest['ratio'].mean()
+midwest['group'] = np.where(midwest['ratio'] &gt; m_ratio, 'large', 'small')
+```
+---
+
+Q5.`'large'`와 `'small'`에 해당하는 지역이 얼마나 되는지, 빈도표와 빈도 막대 그래프를 만들어 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 확인해보세요.
+
+
+
+```python
+count_group = midwest['group'].value_counts()
+count_group
+```
+
+```
+## small    318
+## large    119
+## Name: group, dtype: int64
+```
+
+&lt;br-back-10&gt;
+
+
+```python
+count_group.plot(kind = 'bar', rot = 0)
+```
+
+&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-149-1.png" width="35%" /&gt;
+
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": true,
+"ratio": "16:10",
+"navigation": {
+"scroll": true
+}
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
