@@ -62,9 +62,7 @@ class: title1
 - 나이와 소득처럼, 연속 값으로 된 두 변수의 관계를 표현할 때 사용
 
 
-
-
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-6-1.png" width="60%" /&gt;
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-5-1.png" width="60%" /&gt;
 
 ---
 
@@ -90,7 +88,7 @@ sns.scatterplot(data = mpg, x = 'displ', y = 'hwy')
 
 &lt;br-back-20&gt;
 
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-10-1.png" width="60%" /&gt;
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-9-1.png" width="60%" /&gt;
 
 
 ---
@@ -103,7 +101,7 @@ sns.scatterplot(data = mpg, x = 'displ', y = 'hwy').set(xlim = (3, 6))
 
 &lt;br-back-20&gt;
 
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-12-1.png" width="60%" /&gt;
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-11-1.png" width="60%" /&gt;
 
 ---
 
@@ -117,7 +115,7 @@ sns.scatterplot(data = mpg, x = 'displ', y = 'hwy') \
 
 &lt;br-back-20&gt;
 
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-14-1.png" width="60%" /&gt;
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-13-1.png" width="60%" /&gt;
 
 ---
 
@@ -139,7 +137,7 @@ sns.scatterplot(data = mpg, x = 'cty', y = 'hwy')
 
 &lt;br-back-20&gt;
 
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-16-1.png" width="60%" /&gt;
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-15-1.png" width="60%" /&gt;
 
 ---
 
@@ -155,7 +153,7 @@ sns.scatterplot(data = midwest, x = 'poptotal', y = 'popasian') \
 
 &lt;br-back-20&gt;
 
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-19-1.png" width="55%" /&gt;
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-18-1.png" width="55%" /&gt;
 
 ---
 
@@ -172,7 +170,7 @@ class: title1
 - 시계열 그래프(Time Series Chart) : 일정 시간 간격을 두고 나열된 시계열 데이터(Time Series Data)를 선으로 표현한 그래프
 - 환율, 주가지수 등 경제 지표가 시간에 따라 어떻게 변하는지 표현할 때 활용
 
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-20-1.png" width="55%" /&gt;
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-19-1.png" width="55%" /&gt;
 
 ---
 
@@ -209,7 +207,7 @@ economics
 sns.lineplot(data = economics, x = 'date', y = 'unemploy')
 ```
 
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-23-1.png" width="60%" /&gt;
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-22-1.png" width="60%" /&gt;
 
 ---
 
@@ -359,6 +357,15 @@ economics['date'].dt.year
 
 ```
 ## Error in py_call_impl(callable, dots$args, dots$keywords): AttributeError: Can only use .dt accessor with datetimelike values
+## 
+## Detailed traceback: 
+##   File "&lt;string&gt;", line 1, in &lt;module&gt;
+##   File "/home/rstudio/.local/share/r-miniconda/envs/python_210307/lib/python3.8/site-packages/pandas/core/generic.py", line 5461, in __getattr__
+##     return object.__getattribute__(self, name)
+##   File "/home/rstudio/.local/share/r-miniconda/envs/python_210307/lib/python3.8/site-packages/pandas/core/accessor.py", line 180, in __get__
+##     accessor_obj = self._accessor(obj)
+##   File "/home/rstudio/.local/share/r-miniconda/envs/python_210307/lib/python3.8/site-packages/pandas/core/indexes/accessors.py", line 494, in __new__
+##     raise AttributeError("Can only use .dt accessor with datetimelike values")
 ```
 ]
 
@@ -446,7 +453,7 @@ economics
 sns.lineplot(data = economics, x = 'year', y = 'unemploy')
 ```
 
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-34-1.png" width="60%" /&gt;
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-33-1.png" width="60%" /&gt;
 
 ---
 
@@ -457,7 +464,7 @@ sns.lineplot(data = economics, x = 'year', y = 'unemploy')
 sns.lineplot(data = economics, x = 'year', y = 'unemploy', ci = None)
 ```
 
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-36-1.png" width="60%" /&gt;
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-35-1.png" width="60%" /&gt;
 
 ---
 
@@ -482,7 +489,7 @@ sns.lineplot(data = economics, x = 'year', y = 'psavert', ci = None)
 
 &lt;br-back-20&gt;
 
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-38-1.png" width="60%" /&gt;
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-37-1.png" width="60%" /&gt;
 
 ---
 
@@ -498,7 +505,7 @@ sns.lineplot(data = df, x = 'month', y = 'psavert', ci = None)  # 그래프 만�
 ```
 
 
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-40-1.png" width="55%" /&gt;
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-39-1.png" width="55%" /&gt;
 
 ---
 
@@ -511,7 +518,7 @@ sns.lineplot(data = df, x = 'month', y = 'psavert', ci = None).set(xticks = df['
 ```
 
 
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-42-1.png" width="55%" /&gt;
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-41-1.png" width="55%" /&gt;
 ---
 
 
@@ -523,7 +530,7 @@ sns.lineplot(data = df, x = 'month', y = 'psavert', ci = None).set(xticks = df['
 ```
 
 
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-44-1.png" width="55%" /&gt;
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-43-1.png" width="55%" /&gt;
 
 
 ---
@@ -542,7 +549,7 @@ class: title1
 - 막대 그래프(Bar Chart) : 데이터의 크기를 막대의 길이로 표현한 그래프
 - 성별 소득 차이처럼 집단 간 차이를 표현할 때 주로 사용
 
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-45-1.png" width="60%" /&gt;
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-44-1.png" width="60%" /&gt;
 
 ---
 
@@ -552,7 +559,7 @@ p = sns.barplot(data = tmp, x = 'drv', y = 'mean_hwy')
 plt.show()
 ```
 
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-46-1.png" width="60%" /&gt;
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-45-1.png" width="60%" /&gt;
 
 ---
 
@@ -584,6 +591,13 @@ df_mpg[df_mpg['drv'] == 'f']
 
 ```
 ## Error in py_call_impl(callable, dots$args, dots$keywords): KeyError: 'drv'
+## 
+## Detailed traceback: 
+##   File "&lt;string&gt;", line 1, in &lt;module&gt;
+##   File "/home/rstudio/.local/share/r-miniconda/envs/python_210307/lib/python3.8/site-packages/pandas/core/frame.py", line 3024, in __getitem__
+##     indexer = self.columns.get_loc(key)
+##   File "/home/rstudio/.local/share/r-miniconda/envs/python_210307/lib/python3.8/site-packages/pandas/core/indexes/base.py", line 3082, in get_loc
+##     raise KeyError(key) from err
 ```
 
 ---
@@ -643,7 +657,7 @@ df_mpg[df_mpg['drv'] == 'f']
 sns.barplot(data = df_mpg, x = 'drv', y = 'mean_hwy')
 ```
 
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-53-1.png" width="60%" /&gt;
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-52-1.png" width="60%" /&gt;
 
 ---
 
@@ -674,7 +688,7 @@ df_mpg
 sns.barplot(data = df_mpg, x = 'drv', y = 'mean_hwy')
 ```
 
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-56-1.png" width="60%" /&gt;
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-55-1.png" width="60%" /&gt;
 
 ---
 
@@ -732,7 +746,7 @@ Q. 어떤 회사가 도시 연비가 높은 `'suv'` 차종을 생산하는지 �
 sns.barplot(data = df, x = 'manufacturer', y = 'mean_cty')
 ```
 
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-60-1.png" width="60%" /&gt;
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-59-1.png" width="60%" /&gt;
 
 
 ---
@@ -750,12 +764,7 @@ class: title1
 - 상자 그림(Box Plot) : 데이터의 분포(퍼져 있는 형태)를 직사각형 상자 모양으로 표현한 그래프
 - 분포를 알 수 있기 때문에 평균만 볼 때보다 데이터의 특성을 좀 더 자세히 이해할 수 있음
 
-
-```python
-ggplot2::mpg %&gt;%
-  filter(class %in% c('compact', 'subcompact', 'suv')) %&gt;%
-  ggplot(aes(x = class, y = cty)) + geom_boxplot()
-```
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-60-1.png" width="60%" /&gt;
 
 ---
 
@@ -765,34 +774,156 @@ ggplot2::mpg %&gt;%
 sns.boxplot(data = mpg, x = 'drv', y = 'hwy')
 ```
 
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-63-1.png" width="60%" /&gt;
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-62-1.png" width="80%" /&gt;
 
 ---
 
-&lt;!-- ### 혼자서 해보기 --&gt;
 
-&lt;!-- **`mpg` 데이터를 이용해서 분석 문제를 해결해 보세요.** --&gt;
+```python
+mpg.groupby('drv').describe()['hwy'].round(1)
+```
 
-&lt;!-- Q. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요. --&gt;
+```
+##      count  mean  std   min   25%   50%   75%   max
+## drv                                                
+## 4    103.0  19.2  4.1  12.0  17.0  18.0  22.0  28.0
+## f    106.0  28.2  4.2  17.0  26.0  28.0  29.0  44.0
+## r     25.0  21.0  3.7  15.0  17.0  21.0  24.0  26.0
+```
 
-&lt;!-- --- --&gt;
+---
 
-&lt;!-- Q. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요. --&gt;
+#### 상자그림 정렬하기
 
-&lt;!-- ```{python} --&gt;
-&lt;!-- # mpg 데이터 불러오기 --&gt;
-&lt;!-- mpg = ggplot2::mpg --&gt;
 
-&lt;!-- class_mpg = mpg %&gt;% --&gt;
-&lt;!--   filter(class %in% c('compact', 'subcompact', 'suv')) --&gt;
-&lt;!-- ``` --&gt;
+```python
+sns.boxplot(data = mpg, x = 'drv', y = 'hwy', order = ['f', 'r', '4'])
+```
 
-&lt;!-- --- --&gt;
-&lt;!-- Q. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요. --&gt;
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-65-1.png" width="80%" /&gt;
 
-&lt;!-- ```{python} --&gt;
-&lt;!-- ggplot(data = class_mpg, aes(x = class, y = cty)) + geom_boxplot() --&gt;
-&lt;!-- ``` --&gt;
+---
+
+#### 상자그림 정렬하기
+
+
+```python
+# 순서 구하기
+class_order = mpg.groupby('drv') \
+                 .agg(median_hwy = ('hwy', 'median')) \
+                 .sort_values('median_hwy', ascending = False)
+class_order
+```
+
+```
+##      median_hwy
+## drv            
+## f            28
+## r            21
+## 4            18
+```
+
+```python
+class_order.index
+```
+
+```
+## Index(['f', 'r', '4'], dtype='object', name='drv')
+```
+
+---
+
+#### 상자그림 정렬하기
+
+
+```python
+# 상자 그림에 적용
+sns.boxplot(data = mpg, x = 'drv', y = 'hwy', order = class_order.index)
+```
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-68-1.png" width="80%" /&gt;
+
+
+
+---
+
+
+### 혼자서 해보기
+
+**`mpg` 데이터를 이용해서 분석 문제를 해결해 보세요.**
+
+Q. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요.
+
+---
+
+Q. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요.
+
+
+```python
+# mpg 데이터 불러오기
+mpg = pd.read_csv('data_mpg.csv')
+
+# class 추출
+df = mpg[mpg['class'].isin(['compact', 'subcompact', 'suv'])]
+
+# 박스플롯 만들기
+sns.boxplot(data = df, x = 'class', y = 'cty')
+```
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-70-1.png" width="60%" /&gt;
+
+
+---
+
+Q. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요.
+
+
+
+```python
+# 박스플롯 정렬하기
+sns.boxplot(data = df, x = 'class', y = 'cty', order = ['compact', 'subcompact', 'suv'])
+```
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-72-1.png" width="80%" /&gt;
+
+---
+
+Q. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요.
+
+
+
+
+```python
+# 순서 구하기
+class_order = df.groupby('class') \
+                .agg(median_cty = ('cty', 'median')) \
+                .sort_values('median_cty', ascending = False) \
+                .reset_index()
+                
+class_order
+```
+
+```
+##         class  median_cty
+## 0     compact          20
+## 1  subcompact          19
+## 2         suv          13
+```
+
+---
+
+Q. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요.
+
+
+
+```python
+# 박스플롯 정렬하기
+sns.boxplot(data = df, x = 'class', y = 'cty', order = class_order['class'])
+```
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-75-1.png" width="80%" /&gt;
+
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="libs/remark-latest.min.js"></script>

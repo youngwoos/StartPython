@@ -209,23 +209,66 @@ flights.head()
 
 
 
-# 그래프 설정 - knit가 아니라 직접 한번 실행해줘야 하는듯?
-# r코드 reticulate로 실행?
+# 그래프 재설정 절차
+# 1. 그래프 설정 코드 수정
+# 2. 캐시 지우기
+# 3. R 세션 재실행 (Ctrl+Shift+F10)
+# 4. RStudio refresh (F5)
+# 5. Knit
+ 
+# !조건: 그래프 설정, 생성 코드가 같은 청크 안에 있어야함
+# 
+# ```{python echo=F}
+# import seaborn as sns
+# mpg = pd.read_csv('data_mpg.csv')
+# 
+# # 그래프 설정
+# plt.rcParams['figure.figsize'] = [6, 4]
+# plt.rcParams.update({'font.size': '12'})
+# 
+# p = sns.scatterplot(data = mpg, x = 'displ', y = 'hwy')
+# plt.show()
+# ```
+
+
 
 # 글자 폰트 크기
-# 한번 설정하면 슬라이드 전체 적용되는듯
-# 재설정 하려면 캐시 지우기, R 재실행, RStudio 재실행, 생성된 파일 삭제
-
 plt.rcParams.update({'font.size': '15'})
 
 # 그래프 크기
-# 작동이 랜덤하다
 plt.rcParams['figure.figsize'] = [6, 4]
 
 
-# # 파이썬 리셋 R 코드
-# reticulate::py_config()
 
 
-del plt
-del sns
+
+
+
+# # 극단치 처리
+# 
+# 
+# 
+# ```{python}
+# # 요약 통계량
+# mpg['hwy'].describe()
+# 
+# # 1분위수
+# q1 = mpg['hwy'].describe()[4]
+# q1
+# 
+# # 3분위수
+# q3 = mpg['hwy'].describe()[6]
+# q3
+# 
+# # 1.5IQR
+# iqr15 = (q3 - q1)*1.5
+# iqr15
+# 
+# # 위 경계
+# upper = q3 + iqr15
+# upper
+# 
+# # 아래 경계
+# lower = q1 - iqr15
+# lower
+# ```
