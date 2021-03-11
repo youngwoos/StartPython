@@ -37,8 +37,9 @@ knitr::knit_hooks$set(source = function(x, options) {
 ```
 
 
-```{python}
+```{python echo = F}
 import pandas as pd
+import numpy as np
 ```
 
 
@@ -415,21 +416,22 @@ knitr::include_graphics('img/select.png')
 ---
 
 ```{python}
-exam %>% select(math)  # math 추출
+exam['math']  # math 추출
 ```
 
 ---
 
 ```{python}
-exam %>% select(english)  # english 추출
+exam[['math']]  # math 추출 - 데이터 프레임 형태로
 ```
+
 
 ---
 
 #### 여러 변수 추출하기
 
 ```{python}
-exam %>% select(class, math, english)  # class, math, english 변수 추출
+exam[['class', 'math', 'english']]  # class, math, english 변수 추출
 ```
 
 ---
@@ -437,7 +439,7 @@ exam %>% select(class, math, english)  # class, math, english 변수 추출
 #### 변수 제외하기
 
 ```{python}
-exam %>% select(-math)  # math 제외
+exam.drop(columns = 'math')  # math 제외
 ```
 
 ---
@@ -445,81 +447,502 @@ exam %>% select(-math)  # math 제외
 #### 변수 제외하기
 
 ```{python}
-exam %>% select(-math, -english)  # math, english 제외
+exam.drop(columns = ['math', 'english'])  # math, english 제외
 ```
 
 ---
 
-#### filter()와 select() 조합하기
+
+#### 행, 열 동시 추출하기
 
 ```{python}
 # class가 1인 행만 추출한 다음 english 추출
-exam %>% filter(class == 1) %>% select(english)
+exam[exam['class'] == 1]['english']
 ```
 
 ---
 
-#### dplyr Tip - 줄 바꿔서 가독성 높은 코드 만들기
+
+##### Q. 2반의 수학 점수 추출
+
+--
 ```{python}
-exam %>%
-  filter(class == 1) %>%  # class가 1인 행 추출
-  select(english)         # english 추출
+exam[exam['class'] == 2]['math']
 ```
 
----
+--
 
-#### dplyr Tip - 일부만 출력하기
+##### Q. 2반의 수학 점수 평균
 
-```{python}
-exam %>%
-  select(id, math) %>%  # id, math 추출
-  head                  # 앞부분 6행까지 추출
-```
 
----
-
-#### dplyr Tip - 일부만 출력하기
+--
 
 ```{python}
-exam %>%
-  select(id, math) %>%  # id, math 추출
-  head(10)              # 앞부분 10행까지 추출
+exam[exam['class'] == 2]['math'].mean()
+```
+
+
+
+---
+
+### 혼자서 해보기
+
+`mpg` 데이터를 이용해서 분석 문제를 해결해보세요.
+
+Q1. `mpg` 데이터는 11개 변수로 구성되어 있습니다. 이 중 일부만 추출해서 분석에 활용하려고 합니다. <br> &nbsp; &nbsp; &nbsp; &nbsp; `mpg` 데이터에서 `class`(자동차 종류), `cty`(도시 연비) 변수를 추출해 새로운 데이터를 만드세요. <br> &nbsp; &nbsp; &nbsp; &nbsp; 새로 만든 데이터의 일부를 출력해서 두 변수로만 구성되어 있는지 확인하세요.
+
+Q2. 자동차 종류에 따라 도시 연비가 다른지 알아보려고 합니다. 앞에서 추출한 데이터를 이용해서 <br> &nbsp; &nbsp; &nbsp; &nbsp; `class`(자동차 종류)가 `'suv'`인 자동차와 `'compact'`인 자동차 중 어떤 자동차의 `cty`(도시 연비) <br> &nbsp; &nbsp; &nbsp; &nbsp; 평균이 더 높은지 알아보세요.
+
+---
+
+Q1. `mpg` 데이터는 11개 변수로 구성되어 있습니다. 이 중 일부만 추출해서 분석에 활용하려고 합니다. <br> &nbsp; &nbsp; &nbsp; &nbsp; `mpg` 데이터에서 `class`(자동차 종류), `cty`(도시 연비) 변수를 추출해 새로운 데이터를 만드세요. <br> &nbsp; &nbsp; &nbsp; &nbsp; 새로 만든 데이터의 일부를 출력해서 두 변수로만 구성되어 있는지 확인하세요.
+
+```{python}
+mpg = pd.read_csv('data_mpg.csv')  # mpg 데이터 불러오기
+
+df = mpg[['class', 'cty']]         # class, cty 변수 추출
+df.head()                          # df 일부 출력
 ```
 
 ---
 
+Q2. 자동차 종류에 따라 도시 연비가 다른지 알아보려고 합니다. 앞에서 추출한 데이터를 이용해서 <br> &nbsp; &nbsp; &nbsp; &nbsp; `class`(자동차 종류)가 `'suv'`인 자동차와 `'compact'`인 자동차 중 어떤 자동차의 `cty`(도시 연비) <br> &nbsp; &nbsp; &nbsp; &nbsp; 평균이 더 높은지 알아보세요.
+
+##### 방법1
+```{python}
+df_suv = df[df['class'] == 'suv']          # class가 suv인 행 추출
+df_compact = df[df['class'] == 'compact']  # class가 compact인 행 추출
+```
 
 
-<!-- ### 혼자서 해보기 -->
+```{python}
+df_suv['cty'].mean()                       # suv의 cty 평균
+df_compact['cty'].mean()                   # compact의 cty 평균
+```
 
-<!-- `mpg` 데이터를 이용해서 분석 문제를 해결해보세요. -->
+---
 
-<!-- Q1. `mpg` 데이터는 11개 변수로 구성되어 있습니다. 이 중 일부만 추출해서 분석에 활용하려고 합니다. <br> &nbsp; &nbsp; &nbsp; &nbsp; `mpg` 데이터에서 `class`(자동차 종류), `cty`(도시 연비) 변수를 추출해 새로운 데이터를 만드세요. <br> &nbsp; &nbsp; &nbsp; &nbsp; 새로 만든 데이터의 일부를 출력해서 두 변수로만 구성되어 있는지 확인하세요. -->
+Q2. 자동차 종류에 따라 도시 연비가 다른지 알아보려고 합니다. 앞에서 추출한 데이터를 이용해서 <br> &nbsp; &nbsp; &nbsp; &nbsp; `class`(자동차 종류)가 `'suv'`인 자동차와 `'compact'`인 자동차 중 어떤 자동차의 `cty`(도시 연비) <br> &nbsp; &nbsp; &nbsp; &nbsp; 평균이 더 높은지 알아보세요.
 
-<!-- Q2. 자동차 종류에 따라 도시 연비가 다른지 알아보려고 합니다. 앞에서 추출한 데이터를 이용해서 <br> &nbsp; &nbsp; &nbsp; &nbsp; `class`(자동차 종류)가 `'suv'`인 자동차와 `'compact'`인 자동차 중 어떤 자동차의 `cty`(도시 연비) <br> &nbsp; &nbsp; &nbsp; &nbsp; 평균이 더 높은지 알아보세요. -->
+##### 방법2
+```{python}
+df[df['class'] == 'suv']['cty'].mean()
+df[df['class'] == 'compact']['cty'].mean()
+```
 
-<!-- --- -->
 
-<!-- Q1. `mpg` 데이터는 11개 변수로 구성되어 있습니다. 이 중 일부만 추출해서 분석에 활용하려고 합니다. <br> &nbsp; &nbsp; &nbsp; &nbsp; `mpg` 데이터에서 `class`(자동차 종류), `cty`(도시 연비) 변수를 추출해 새로운 데이터를 만드세요. <br> &nbsp; &nbsp; &nbsp; &nbsp; 새로 만든 데이터의 일부를 출력해서 두 변수로만 구성되어 있는지 확인하세요. -->
 
-<!-- ```{python} -->
-<!-- mpg = ggplot2::mpg                 # mpg 데이터 불러오기 -->
+---
 
-<!-- df = mpg %>% select(class, cty)    # class, cty 변수 추출 -->
-<!-- head(df)                            # df 일부 출력 -->
+name: arrange
+class: title1
 
-<!-- ``` -->
+순서대로 정렬하기
 
-<!-- --- -->
+---
+<br>
+### .center[순서대로 정렬하기]
 
-<!-- Q2. 자동차 종류에 따라 도시 연비가 다른지 알아보려고 합니다. 앞에서 추출한 데이터를 이용해서 <br> &nbsp; &nbsp; &nbsp; &nbsp; `class`(자동차 종류)가 `'suv'`인 자동차와 `'compact'`인 자동차 중 어떤 자동차의 `cty`(도시 연비) <br> &nbsp; &nbsp; &nbsp; &nbsp; 평균이 더 높은지 알아보세요. -->
+<br>
 
-<!-- ```{python} -->
-<!-- df_suv = df %>% filter(class == 'suv')          # class가 suv인 행 추출 -->
-<!-- df_compact = df %>% filter(class == 'compact')  # class가 compact인 행 추출 -->
+```{r echo=F, out.width = '600px', fig.align='center'}
+knitr::include_graphics('img/arrange.png')
+```
 
-<!-- mean(df_suv$cty)                                 # suv의 cty 평균 -->
-<!-- mean(df_compact$cty)                             # compact의 cty 평균 -->
-<!-- ``` -->
 
-<!-- --- -->
+---
+
+#### 오름차순으로 정렬하기
+
+```{python}
+exam.sort_values('math')  # math 오름차순 정렬
+```
+---
+
+#### 내림차순으로 정렬하기
+
+```{python}
+exam.sort_values('math', ascending = False)    # math 내림차순 정렬
+```
+---
+
+#### 여러 기준으로 정렬하기
+
+```{python}
+exam.sort_values(['class', 'math'])  # class 및 math 오름차순 정렬
+```
+
+---
+
+#### 여러 기준으로 정렬하기 - 정렬 순서 따로 정하기
+
+```{python}
+exam.sort_values(['class', 'math'], ascending = [True, False])  
+
+```
+
+
+---
+
+
+### 혼자서 해보기
+
+`mpg` 데이터를 이용해서 분석 문제를 해결해보세요.
+
+Q. `'audi'`에서 생산한 자동차 중에 어떤 자동차 모델의 `hwy`(고속도로 연비)가 높은지 알아보려고 합니다. <br> &nbsp; &nbsp; &nbsp; &nbsp; `'audi'`에서 생산한 자동차 중 `hwy`가 1~5위에 해당하는 자동차의 데이터 출력하세요.
+
+
+---
+
+Q. `'audi'`에서 생산한 자동차 중에 어떤 자동차 모델의 `hwy`(고속도로 연비)가 높은지 알아보려고 합니다. <br> &nbsp; &nbsp; &nbsp; &nbsp; `'audi'`에서 생산한 자동차 중 `hwy`가 1~5위에 해당하는 자동차의 데이터 출력하세요.
+
+```{python}
+mpg = pd.read_csv('data_mpg.csv')
+```
+
+```{python}
+mpg[mpg['manufacturer'] == 'audi'].sort_values('hwy', ascending = False).head(5)
+```
+
+--
+
+.left[
+```{python, eval = F}
+mpg[mpg['manufacturer'] == 'audi'] \
+  .sort_values('hwy', ascending = False) \
+  .head(5)   
+```
+]
+.pull-right[
+```{python, eval = F}
+# audi 추출
+# hwy 내림차순 정렬
+# 5행까지 출력
+```
+
+]
+
+---
+
+
+name: groupby_summarise
+class: title1
+
+집단별로 요약하기
+
+---
+<br>
+### .center[집단별로 요약하기]
+
+<br>
+
+```{r echo=F, out.width = '600px', fig.align='center'}
+knitr::include_graphics('img/groupby_summarise.png')
+```
+
+---
+
+#### 요약 통계량 구하기
+
+
+```{python}
+exam.agg(mean_math = ('math', 'mean'))  # math 평균 산출
+```
+
+---
+
+#### 집단별 요약 통계량 구하기
+```{python}
+exam.groupby('class').agg(mean_math = ('math', 'mean'))  # class별 math 평균 산출
+```
+
+--
+
+.pull-left[
+```{python eval = F}
+exam.groupby('class') \
+    .agg(mean_math = ('math', 'mean'))
+```
+]
+.pull-right[
+```{python eval = F}
+# class별로 분리
+# math 평균 산출
+```
+
+]
+
+---
+
+
+#### 여러 요약 통계량 한 번에 구하기
+```{python}
+exam.groupby('class').agg(mean_math   = ('math', 'mean'),    # class별로 분리
+                          sum_math    = ('math', 'sum'),     # 수학 점수 평균
+                          median_math = ('math', 'median'),  # 수학 점수 중앙값
+                          n           = ('class', 'count'))  # 빈도: 학생 수
+```
+
+---
+
+#### 자주 사용하는 요약 통계량 함수
+
+.left[
+&nbsp; &nbsp; &nbsp; &nbsp;함수    |&nbsp; &nbsp; &nbsp; 의미
+--------|-----
+&nbsp; &nbsp; mean()  &nbsp;|&nbsp; &nbsp; 평균&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp; std()   &nbsp;|&nbsp; &nbsp; 표준편차&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp; sum()   &nbsp;|&nbsp; &nbsp; 합계&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp; median()&nbsp;|&nbsp; &nbsp; 중앙값&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp; min()   &nbsp;|&nbsp; &nbsp; 최솟값&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp; max()   &nbsp;|&nbsp; &nbsp; 최댓값&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp; count() &nbsp;|&nbsp; &nbsp; 빈도&nbsp;&nbsp;&nbsp;
+]
+---
+
+#### 하위 집단별로 다시나누기
+
+.scroll-box-24[
+
+```{python, echo = F}
+mpg = pd.read_csv('data_mpg.csv')
+```
+
+```{python}
+mpg.groupby(['manufacturer', 'drv']).agg(mean_cty = ('cty', 'mean'))
+```
+]
+
+---
+
+#### reset_index()
+```{python}
+mpg.groupby(['manufacturer', 'drv']).agg(mean_cty = ('cty', 'mean')).reset_index()
+```
+
+
+---
+
+### 혼자서 해보기
+
+`mpg` 데이터를 이용해서 분석 문제를 해결해 보세요.
+
+Q1. `mpg` 데이터의 `class`는 자동차를 특징에 따라 `'suv'`, `'compact'` 등 일곱 종류로 분류한 <br> &nbsp; &nbsp; &nbsp; &nbsp; 변수입니다. 어떤 차종의 연비가 높은지 비교해보려고 합니다. `class`별 `cty` 평균을 구해보세요.
+
+Q2. 앞 문제의 출력 결과는 `class` 값 알파벳 순으로 정렬되어 있습니다. 어떤 차종의 도시 연비가 높은지 <br> &nbsp; &nbsp; &nbsp; &nbsp; 쉽게 알아볼 수 있도록 `cty` 평균이 높은 순으로 정렬하여 출력하세요.
+
+Q3. 어떤 회사 자동차의 `hwy`(고속도로 연비)가 가장 높은지 알아보려고 합니다. `hwy` 평균이 가장 높은 <br> &nbsp; &nbsp; &nbsp; &nbsp; 회사 세 곳을 출력하세요.
+
+Q4. 어떤 회사에서 `'compact'`(경차) 차종을 가장 많이 생산하는지 알아보려고 합니다. <br> &nbsp; &nbsp; &nbsp; &nbsp; 각 회사별 `'compact'` 차종 수를 내림차순으로 정렬해 출력하세요.
+
+---
+
+Q1. `mpg` 데이터의 `class`는 자동차를 특징에 따라 `'suv'`, `'compact'` 등 일곱 종류로 분류한 <br> &nbsp; &nbsp; &nbsp; &nbsp; 변수입니다. 어떤 차종의 연비가 높은지 비교해보려고 합니다. `class`별 `cty` 평균을 구해보세요.
+```{python}
+mpg = pd.read_csv('data_mpg.csv')
+```
+
+<br-back-20>
+
+.pull-left[
+```{python}
+mpg.groupby('class') \
+    .agg(mean_cty = ('cty', 'mean'))
+```
+]
+
+.pull-right[
+```{python eval=F}
+# class별 분리
+# cty 평균 구하기
+```
+]
+
+---
+
+Q2. 앞 문제의 출력 결과는 `class` 값 알파벳 순으로 정렬되어 있습니다. 어떤 차종의 도시 연비가 높은지 <br> &nbsp; &nbsp; &nbsp; &nbsp; 쉽게 알아볼 수 있도록 `cty` 평균이 높은 순으로 정렬하여 출력하세요.
+
+.pull-left-60[
+```{python}
+mpg.groupby('class') \
+  .agg(mean_cty = ('cty', 'mean')) \
+  .sort_values('mean_cty', ascending = False)
+```
+
+]
+
+.pull-right-40[
+```{python}
+# class별 분리
+# cty 평균 구하기
+# 내림차순 정렬하기
+
+```
+]
+
+
+---
+
+Q3. 어떤 회사 자동차의 `hwy`(고속도로 연비)가 가장 높은지 알아보려고 합니다. `hwy` 평균이 가장 높은 <br> &nbsp; &nbsp; &nbsp; &nbsp; 회사 세 곳을 출력하세요.
+
+
+.pull-left-60[
+```{python}
+mpg.groupby('manufacturer') \
+    .agg(mean_hwy = ('hwy', 'mean')) \
+    .sort_values('mean_hwy', ascending = False) \
+    .head(3)
+```
+
+]
+.pull-right-40[
+```{python}
+# manufacturer별 분리
+# hwy 평균 구하기
+# 내림차순 정렬하기
+# 상위 3행 추출
+```
+]
+
+---
+
+Q4. 어떤 회사에서 `'compact'`(경차) 차종을 가장 많이 생산하는지 알아보려고 합니다. <br> &nbsp; &nbsp; &nbsp; &nbsp; 각 회사별 `'compact'` 차종 수를 내림차순으로 정렬해 출력하세요.
+
+.pull-left-60[
+```{python}
+mpg[mpg['class'] == 'compact'] \
+    .groupby('manufacturer') \
+    .agg(n = ('manufacturer', 'count')) \
+    .sort_values('n', ascending = False)
+```
+
+]
+.pull-right-40[
+
+```{python}
+# compact 추출
+# manufacturer별 분리
+# 빈도 구하기
+# 내림차순 정렬
+```
+]
+
+---
+Q4. 어떤 회사에서 `'compact'`(경차) 차종을 가장 많이 생산하는지 알아보려고 합니다. <br> &nbsp; &nbsp; &nbsp; &nbsp; 각 회사별 `'compact'` 차종 수를 내림차순으로 정렬해 출력하세요.
+
+```{python}
+mpg[mpg['class'] == 'compact'].value_counts('manufacturer')
+```
+
+---
+
+class:title1
+
+분석 도전
+
+---
+
+### 분석 도전
+
+**`midwest` 데이터는 미국 동북중부 437개 지역의 인구통계 정보를 담고 있습니다. `data_midwest.csv`를 <br>이용해서 데이터 분석 문제를 해결해보세요.**
+
+Q1. `popadults`는 해당 지역의 성인 인구, `poptotal`은 전체 인구를 나타냅니다. `midwest` 데이터에 <br> &nbsp; &nbsp; &nbsp; &nbsp; '전체 인구 대비 미성년 인구 백분율' 변수를 추가하세요.
+
+Q2. 미성년 인구 백분율이 가장 높은 상위 5개 `county`(지역)의 미성년 인구 백분율을 출력하세요.
+
+Q3. 분류표의 기준에 따라 미성년 비율 등급 변수를 추가하고, 각 등급에 몇 개의 지역이 있는지 알아보세요.
+
+분류  |기준
+:------:|:----:
+&nbsp; &nbsp; &nbsp; large &nbsp; &nbsp; &nbsp; | 40% 이상
+&nbsp; &nbsp; &nbsp; middle &nbsp; &nbsp; &nbsp;| 30% ~ 40% 미만
+&nbsp;&nbsp; &nbsp;  small &nbsp; &nbsp; &nbsp; | 30% 미만
+
+Q4. `popasian`은 해당 지역의 아시아인 인구를 나타냅니다. '전체 인구 대비 아시아인 인구 백분율' 변수를 <br> &nbsp; &nbsp; &nbsp; &nbsp; 추가하고, 하위 10개 지역의 `state`(주), `county`(지역명), 아시아인 인구 백분율을 출력하세요.
+
+
+---
+Q1. `popadults`는 해당 지역의 성인 인구, `poptotal`은 전체 인구를 나타냅니다. `midwest` 데이터에 <br> &nbsp; &nbsp; &nbsp; &nbsp; '전체 인구 대비 미성년 인구 백분율' 변수를 추가하세요.
+```{python}
+# midwest 불러오기
+midwest = pd.read_csv('data_midwest.csv')
+```
+
+
+```{python}
+# midwest에 백분율 변수 추가
+midwest['ratio'] = (midwest['poptotal'] - midwest['popadults']) \
+                  / midwest['poptotal']*100
+```
+
+--
+
+```{python eval = F}
+midwest['ratio'] = (1 - midwest['popadults'] / midwest['poptotal'])*100
+```
+
+---
+Q2. 미성년 인구 백분율이 가장 높은 상위 5개 `county`(지역)의 미성년 인구 백분율을 출력하세요.
+
+.pull-left-60[
+
+```{python}
+midwest.sort_values('ratio', ascending = False) \
+       .head(5)[['county', 'ratio']]
+      
+```
+]
+.pull-right-40[
+```{python}
+# ratio 내림차순 정렬
+# 상위 5행 추출, 변수 추출
+```
+]
+
+---
+Q3. 분류표의 기준에 따라 미성년 비율 등급 변수를 추가하고, 각 등급에 몇 개의 지역이 있는지 알아보세요.
+
+
+분류  |기준
+:------:|:----:
+&nbsp; &nbsp; &nbsp; large &nbsp; &nbsp; &nbsp; | 40% 이상
+&nbsp; &nbsp; &nbsp; middle &nbsp; &nbsp; &nbsp;| 30% ~ 40% 미만
+&nbsp;&nbsp; &nbsp;  small &nbsp; &nbsp; &nbsp; | 30% 미만
+
+
+```{python}
+# 등급 변수 추가
+midwest['grade'] = np.where(midwest['ratio'] >= 40, 'large',
+                   np.where(midwest['ratio'] >= 30, 'middle', 'small'))
+
+# 미성년 비율 등급 빈도표
+midwest['grade'].value_counts()
+```
+
+
+
+---
+
+Q4. `popasian`은 해당 지역의 아시아인 인구를 나타냅니다. '전체 인구 대비 아시아인 인구 백분율' 변수를 <br> &nbsp; &nbsp; &nbsp; &nbsp; 추가하고, 하위 10개 지역의 `state`(주), `county`(지역명), 아시아인 인구 백분율을 출력하세요.
+```{python}
+# 아시안 비율 변수 추가
+midwest['ratio_asian'] = midwest['popasian']/midwest['poptotal']*100
+```
+
+
+.pull-left-60[
+
+```{python}
+midwest.sort_values('ratio_asian', ascending=True)\
+       .head(10)[['state', 'county', 'ratio_asian']]
+
+```
+
+]
+.pull-right-40[
+
+```{python}
+# 내림차순 정렬
+# 상위 10행 추출, 변수 추출
+```
+]
