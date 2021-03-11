@@ -242,7 +242,7 @@ import matplotlib.pyplot as plt
 
 p = sns.lmplot(data = mpg, x = 'displ', y = 'hwy', ci = False)
 
-plt.tight_layout()
+
 plt.show()
 ```
 
@@ -663,49 +663,49 @@ mpg.head(n = 3)
 
 ```{python eval = F}
 import seaborn as sns
-sns.relplot(data = mpg, x = 'displ', y = 'hwy')
+sns.scatterplot(data = mpg, x = 'displ', y = 'hwy')
 ```
 
 ```{python echo=F}
 import seaborn as sns
-g = sns.relplot(data = mpg, x = 'displ', y = 'hwy')
-plt.tight_layout()
+g = sns.scatterplot(data = mpg, x = 'displ', y = 'hwy')
+
 plt.show()
 ```
 
 ---
 
 ```{python eval = F}
-sns.relplot(data = mpg, x = 'displ', y = 'hwy', hue = 'cyl')
+sns.scatterplot(data = mpg, x = 'displ', y = 'hwy', hue = 'cyl')
 ```
 
 ```{python echo=F}
-g = sns.relplot(data = mpg, x = 'displ', y = 'hwy', hue = 'cyl')
-plt.tight_layout()
+g = sns.scatterplot(data = mpg, x = 'displ', y = 'hwy', hue = 'cyl')
+
 plt.show()
 ```
 
 ---
 
 ```{python eval = F}
-sns.relplot(data = mpg, x = 'displ', y = 'hwy', hue = 'drv')
+sns.scatterplot(data = mpg, x = 'displ', y = 'hwy', hue = 'drv')
 ```
 
 ```{python echo=F}
-g = sns.relplot(data = mpg, x = 'displ', y = 'hwy', hue = 'drv')
-plt.tight_layout()
+g = sns.scatterplot(data = mpg, x = 'displ', y = 'hwy', hue = 'drv')
+
 plt.show()
 ```
 
 ---
 
 ```{python eval = F}
-sns.relplot(data = mpg, x = 'displ', y = 'hwy', hue = 'drv', marker = 'x')
+sns.scatterplot(data = mpg, x = 'displ', y = 'hwy', hue = 'drv', marker = 'x')
 ```
 
 ```{python echo=F}
-g = sns.relplot(data = mpg, x = 'displ', y = 'hwy', hue = 'drv', marker = 'x')
-plt.tight_layout()
+g = sns.scatterplot(data = mpg, x = 'displ', y = 'hwy', hue = 'drv', marker = 'x')
+
 plt.show()
 ```
 
@@ -714,7 +714,7 @@ plt.show()
 #### 함수 사용법이 궁금할 땐 help
 
 ```{python eval=F}
-sns.relplot?
+sns.scatterplot?
 ```
 
 
@@ -1291,12 +1291,6 @@ plt.show()
 ```
 
 ---
-```{python}
-mpg['total'].plot(kind = 'hist')      # 히스토그램 생성
-plt.show()
-```
-
----
 
 #### 조건 함수로 합격 판정 변수 만들기
 
@@ -1342,7 +1336,7 @@ count_test.plot(kind = 'bar')            # 빈도 막대 그래프 생성
 
 <br-back-10>
 
-```{python echo=F, out.width = '35%'}
+```{python echo=F, out.width = '30%'}
 count_test.plot(kind = 'bar')            # 빈도 막대 그래프 생성
 plt.show()
 ```
@@ -1362,7 +1356,7 @@ count_test.plot(kind = 'bar', rot = 0)   # 빈도 막대 그래프 생성, x축 
 
 <br-back-10>
 
-```{python echo=F, out.width = '35%'}
+```{python echo=F, out.width = '30%'}
 count_test.plot(kind = 'bar', rot = 0)   # 빈도 막대 그래프 생성
 plt.show()
 ```
@@ -1418,7 +1412,7 @@ count_grade.plot(kind = 'bar', rot = 0)    # 빈도 막대 그래프 생성
 
 <br-back-10>
 
-```{python echo=F, out.width='35%'}
+```{python echo=F, out.width='30%'}
 count_grade.plot(kind = 'bar', rot = 0)    # 빈도 막대 그래프 생성
 plt.show()
 ```
@@ -1437,7 +1431,7 @@ count_grade.plot(kind = 'bar', rot = 0)    # 빈도 막대 그래프 생성
 
 <br-back-10>
 
-```{python echo=F, out.width='35%'}
+```{python echo=F, out.width='30%'}
 count_grade.plot(kind = 'bar', rot = 0)    # 빈도 막대 그래프 생성
 plt.show()
 ```
@@ -1608,7 +1602,7 @@ count_group
 
 <br-back-10>
 
-```{python out.width='35%'}
+```{python out.width='30%'}
 count_group.plot(kind = 'bar', rot = 0)
 ```
 

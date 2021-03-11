@@ -41,17 +41,12 @@ class: title0
 .left[
 &amp;nbsp; &amp;nbsp; 함수       |&amp;nbsp; 기능
 -----------|-------
-&amp;nbsp; &amp;nbsp; filter()   &amp;nbsp; | &amp;nbsp; 행 추출&amp;nbsp; &amp;nbsp;
-&amp;nbsp; &amp;nbsp; select()   &amp;nbsp; | &amp;nbsp; 열(변수) 추출&amp;nbsp; &amp;nbsp;
-&amp;nbsp; &amp;nbsp; mutate()   &amp;nbsp; | &amp;nbsp; 변수 추가&amp;nbsp; &amp;nbsp;
-&amp;nbsp; &amp;nbsp; arrange()  &amp;nbsp; | &amp;nbsp; 정렬&amp;nbsp; &amp;nbsp;
-&amp;nbsp; &amp;nbsp; summarise()&amp;nbsp; | &amp;nbsp; 통계치 산출&amp;nbsp; &amp;nbsp;
-&amp;nbsp; &amp;nbsp; group_by() &amp;nbsp; | &amp;nbsp; 집단별로 나누기&amp;nbsp; &amp;nbsp;
-&amp;nbsp; &amp;nbsp; left_join()&amp;nbsp; | &amp;nbsp; 데이터 합치기(열)&amp;nbsp; &amp;nbsp;
-&amp;nbsp; &amp;nbsp; bind_rows()&amp;nbsp; | &amp;nbsp; 데이터 합치기(행)&amp;nbsp; &amp;nbsp;
-
+&amp;nbsp; &amp;nbsp; df[df['var'] == 1] &amp;nbsp; | &amp;nbsp; 행 추출&amp;nbsp; &amp;nbsp;
+&amp;nbsp; &amp;nbsp; df['var']          &amp;nbsp; | &amp;nbsp; 열(변수) 추출&amp;nbsp; &amp;nbsp;
+&amp;nbsp; &amp;nbsp; df.sort_values()   &amp;nbsp; | &amp;nbsp; 정렬&amp;nbsp; &amp;nbsp;
+&amp;nbsp; &amp;nbsp; df.groupby()       &amp;nbsp; | &amp;nbsp; 집단별로 나누기&amp;nbsp; &amp;nbsp;
+&amp;nbsp; &amp;nbsp; df.agg()           &amp;nbsp; | &amp;nbsp; 통계치 산출&amp;nbsp; &amp;nbsp;
 ]
-
 ---
 
 name: filter

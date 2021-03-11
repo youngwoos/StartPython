@@ -66,17 +66,12 @@ knitr::include_graphics('img/preprocessing.png')
 .left[
 &nbsp; &nbsp; 함수       |&nbsp; 기능
 -----------|-------
-&nbsp; &nbsp; filter()   &nbsp; | &nbsp; 행 추출&nbsp; &nbsp;
-&nbsp; &nbsp; select()   &nbsp; | &nbsp; 열(변수) 추출&nbsp; &nbsp;
-&nbsp; &nbsp; mutate()   &nbsp; | &nbsp; 변수 추가&nbsp; &nbsp;
-&nbsp; &nbsp; arrange()  &nbsp; | &nbsp; 정렬&nbsp; &nbsp;
-&nbsp; &nbsp; summarise()&nbsp; | &nbsp; 통계치 산출&nbsp; &nbsp;
-&nbsp; &nbsp; group_by() &nbsp; | &nbsp; 집단별로 나누기&nbsp; &nbsp;
-&nbsp; &nbsp; left_join()&nbsp; | &nbsp; 데이터 합치기(열)&nbsp; &nbsp;
-&nbsp; &nbsp; bind_rows()&nbsp; | &nbsp; 데이터 합치기(행)&nbsp; &nbsp;
-
+&nbsp; &nbsp; df[df['var'] == 1] &nbsp; | &nbsp; 행 추출&nbsp; &nbsp;
+&nbsp; &nbsp; df['var']          &nbsp; | &nbsp; 열(변수) 추출&nbsp; &nbsp;
+&nbsp; &nbsp; df.sort_values()   &nbsp; | &nbsp; 정렬&nbsp; &nbsp;
+&nbsp; &nbsp; df.groupby()       &nbsp; | &nbsp; 집단별로 나누기&nbsp; &nbsp;
+&nbsp; &nbsp; df.agg()           &nbsp; | &nbsp; 통계치 산출&nbsp; &nbsp;
 ]
-
 ---
 
 name: filter

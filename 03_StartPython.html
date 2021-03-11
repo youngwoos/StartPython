@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Start Python</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="김영우" />
+    <script src="libs/header-attrs-2.7.1/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+
+
+class: title0
+
+그래프 만들기
+
+---
+&lt;br&gt;
+### .center[그래프 만들기]
+
+&lt;br&gt;
+&lt;img src="img/graph01.png" width="600px" style="display: block; margin: auto;" /&gt;
+
+---
+&lt;br&gt;
+
+.left[
+#### 다양한 그래프
+- 2차원 그래프, 3차원 그래프
+- 지도 그래프
+- 네트워크 그래프
+- 모션 차트
+- 인터랙티브 그래프
+]
+
+.right[
+&lt;img src="img/graph02.png" width="500px" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+name: point
+class: title1
+
+산점도
+
+---
+
+#### 산점도
+
+- 산점도(Scater Plot) : 데이터를 x축과 y축에 점으로 표현한 그래프
+- 나이와 소득처럼, 연속 값으로 된 두 변수의 관계를 표현할 때 사용
+
+
+
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-6-1.png" width="60%" /&gt;
+
+---
+
+#### 준비하기
+
+```python
+import seaborn as sns
+mpg = pd.read_csv('data_mpg.csv')
+```
+
+
+
+
+---
+
+
+#### 1. 산점도 만들기
+
+
+```python
+sns.scatterplot(data = mpg, x = 'displ', y = 'hwy')
+```
+
+&lt;br-back-20&gt;
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-10-1.png" width="60%" /&gt;
+
+
+---
+
+#### 2. 설정 추가하기 - x축 고정
+
+```python
+sns.scatterplot(data = mpg, x = 'displ', y = 'hwy').set(xlim = (3, 6))
+```
+
+&lt;br-back-20&gt;
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-12-1.png" width="60%" /&gt;
+
+---
+
+#### 3. 설정 추가하기 - x축, y축 고정
+
+
+```python
+sns.scatterplot(data = mpg, x = 'displ', y = 'hwy') \
+    .set(xlim = (3, 6), ylim = (10, 30))
+```
+
+&lt;br-back-20&gt;
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-14-1.png" width="60%" /&gt;
+
+---
+
+### 혼자서 해보기
+
+**`mpg` 데이터와 `midwest` 데이터를 이용해서 분석 문제를 해결해 보세요.**
+
+Q1. `mpg` 데이터의 `cty`(도시 연비)와 `hwy`(고속도로 연비) 간에 어떤 관계가 있는지 알아보려고 합니다. &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; x축은 `cty`, y축은 `hwy`로 된 산점도를 만들어 보세요.
+
+Q2. 미국 지역별 인구통계 정보를 담은 `ggplot2` 패키지의 `midwest` 데이터를 이용해서 전체 인구와 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 아시아인 인구 간에 어떤 관계가 있는지 알아보려고 합니다. &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; •x축은 `poptotal`(전체 인구), y축은 `popasian`(아시아인 인구)으로 된 산점도를 만들어 보세요. &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; •전체 인구는 50만 명 이하, 아시아인 인구는 1만 명 이하인 지역만 산점도에 표시되게 설정하세요.
+---
+
+
+Q1. `mpg` 데이터의 `cty`(도시 연비)와 `hwy`(고속도로 연비) 간에 어떤 관계가 있는지 알아보려고 합니다. &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; x축은 `cty`, y축은 `hwy`로 된 산점도를 만들어 보세요.
+
+```python
+sns.scatterplot(data = mpg, x = 'cty', y = 'hwy')
+```
+
+&lt;br-back-20&gt;
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-16-1.png" width="60%" /&gt;
+
+---
+
+Q2. 미국 지역별 인구통계 정보를 담은 `ggplot2` 패키지의 `midwest` 데이터를 이용해서 전체 인구와 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 아시아인 인구 간에 어떤 관계가 있는지 알아보려고 합니다. &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; •x축은 `poptotal`(전체 인구), y축은 `popasian`(아시아인 인구)으로 된 산점도를 만들어 보세요. &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; •전체 인구는 50만 명 이하, 아시아인 인구는 1만 명 이하인 지역만 산점도에 표시되게 설정하세요.
+
+
+
+
+```python
+sns.scatterplot(data = midwest, x = 'poptotal', y = 'popasian') \
+    .set(xlim = (0, 500000), ylim = (0, 10000))
+```
+
+&lt;br-back-20&gt;
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-19-1.png" width="55%" /&gt;
+
+---
+
+name: line
+class: title1
+
+선 그래프
+
+---
+
+#### 선 그래프(Line Chart)
+
+- 데이터를 선으로 표현한 그래프
+- 시계열 그래프(Time Series Chart) : 일정 시간 간격을 두고 나열된 시계열 데이터(Time Series Data)를 선으로 표현한 그래프
+- 환율, 주가지수 등 경제 지표가 시간에 따라 어떻게 변하는지 표현할 때 활용
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-20-1.png" width="55%" /&gt;
+
+---
+
+#### 준비하기
+
+
+```python
+economics = pd.read_csv('data_economics.csv')
+economics
+```
+
+```
+##            date      pce         pop  psavert  uempmed  unemploy
+## 0    1967-07-01    506.7  198712.000     12.6      4.5      2944
+## 1    1967-08-01    509.8  198911.000     12.6      4.7      2945
+## 2    1967-09-01    515.6  199113.000     11.9      4.6      2958
+## 3    1967-10-01    512.2  199311.000     12.9      4.9      3143
+## 4    1967-11-01    517.4  199498.000     12.8      4.7      3066
+## ..          ...      ...         ...      ...      ...       ...
+## 569  2014-12-01  12062.0  319746.157      7.6     12.9      8717
+## 570  2015-01-01  12046.0  319928.646      7.7     13.2      8903
+## 571  2015-02-01  12082.4  320074.511      7.9     12.9      8610
+## 572  2015-03-01  12158.3  320230.786      7.4     12.0      8504
+## 573  2015-04-01  12193.8  320402.295      7.6     11.5      8526
+## 
+## [574 rows x 6 columns]
+```
+
+---
+#### 선 그래프 만들기
+
+
+```python
+sns.lineplot(data = economics, x = 'date', y = 'unemploy')
+```
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-23-1.png" width="60%" /&gt;
+
+---
+
+#### 년도만 추출하기
+
+##### 날짜 타입으로 바꾸기
+
+
+```python
+economics.info()
+```
+
+```
+## &lt;class 'pandas.core.frame.DataFrame'&gt;
+## RangeIndex: 574 entries, 0 to 573
+## Data columns (total 6 columns):
+##  #   Column    Non-Null Count  Dtype  
+## ---  ------    --------------  -----  
+##  0   date      574 non-null    object 
+##  1   pce       574 non-null    float64
+##  2   pop       574 non-null    float64
+##  3   psavert   574 non-null    float64
+##  4   uempmed   574 non-null    float64
+##  5   unemploy  574 non-null    int64  
+## dtypes: float64(4), int64(1), object(1)
+## memory usage: 27.0+ KB
+```
+
+---
+
+#### 년도만 추출하기
+
+##### 날짜 타입으로 바꾸기
+
+```python
+economics['date2'] = pd.to_datetime(economics['date'])
+economics.info()
+```
+
+```
+## &lt;class 'pandas.core.frame.DataFrame'&gt;
+## RangeIndex: 574 entries, 0 to 573
+## Data columns (total 7 columns):
+##  #   Column    Non-Null Count  Dtype         
+## ---  ------    --------------  -----         
+##  0   date      574 non-null    object        
+##  1   pce       574 non-null    float64       
+##  2   pop       574 non-null    float64       
+##  3   psavert   574 non-null    float64       
+##  4   uempmed   574 non-null    float64       
+##  5   unemploy  574 non-null    int64         
+##  6   date2     574 non-null    datetime64[ns]
+## dtypes: datetime64[ns](1), float64(4), int64(1), object(1)
+## memory usage: 31.5+ KB
+```
+
+---
+#### 년도만 추출하기
+
+##### 날짜 타입으로 바꾸기
+
+
+```python
+economics[['date', 'date2']]
+```
+
+```
+##            date      date2
+## 0    1967-07-01 1967-07-01
+## 1    1967-08-01 1967-08-01
+## 2    1967-09-01 1967-09-01
+## 3    1967-10-01 1967-10-01
+## 4    1967-11-01 1967-11-01
+## ..          ...        ...
+## 569  2014-12-01 2014-12-01
+## 570  2015-01-01 2015-01-01
+## 571  2015-02-01 2015-02-01
+## 572  2015-03-01 2015-03-01
+## 573  2015-04-01 2015-04-01
+## 
+## [574 rows x 2 columns]
+```
+
+---
+
+#### 년, 월, 일 추출
+
+.pull-left[
+
+
+```python
+economics['date2'].dt.year
+```
+
+```
+## 0      1967
+## 1      1967
+## 2      1967
+## 3      1967
+## 4      1967
+##        ... 
+## 569    2014
+## 570    2015
+## 571    2015
+## 572    2015
+## 573    2015
+## Name: date2, Length: 574, dtype: int64
+```
+
+]
+
+---
+
+#### 년, 월, 일 추출
+
+.pull-left[
+
+
+```python
+economics['date2'].dt.year
+```
+
+```
+## 0      1967
+## 1      1967
+## 2      1967
+## 3      1967
+## 4      1967
+##        ... 
+## 569    2014
+## 570    2015
+## 571    2015
+## 572    2015
+## 573    2015
+## Name: date2, Length: 574, dtype: int64
+```
+
+]
+
+.pull-right[
+
+
+
+```python
+economics['date'].dt.year
+```
+
+```
+## Error in py_call_impl(callable, dots$args, dots$keywords): AttributeError: Can only use .dt accessor with datetimelike values
+```
+]
+
+---
+
+#### 년, 월, 일 추출
+
+.pull-left[
+
+
+```python
+economics['date2'].dt.month
+```
+
+```
+## 0       7
+## 1       8
+## 2       9
+## 3      10
+## 4      11
+##        ..
+## 569    12
+## 570     1
+## 571     2
+## 572     3
+## 573     4
+## Name: date2, Length: 574, dtype: int64
+```
+]
+.pull-right[
+
+
+
+```python
+economics['date2'].dt.day
+```
+
+```
+## 0      1
+## 1      1
+## 2      1
+## 3      1
+## 4      1
+##       ..
+## 569    1
+## 570    1
+## 571    1
+## 572    1
+## 573    1
+## Name: date2, Length: 574, dtype: int64
+```
+]
+---
+
+#### year 변수 추가하기
+
+```python
+economics['year'] = economics['date2'].dt.year
+economics
+```
+
+```
+##            date      pce         pop  ...  unemploy      date2  year
+## 0    1967-07-01    506.7  198712.000  ...      2944 1967-07-01  1967
+## 1    1967-08-01    509.8  198911.000  ...      2945 1967-08-01  1967
+## 2    1967-09-01    515.6  199113.000  ...      2958 1967-09-01  1967
+## 3    1967-10-01    512.2  199311.000  ...      3143 1967-10-01  1967
+## 4    1967-11-01    517.4  199498.000  ...      3066 1967-11-01  1967
+## ..          ...      ...         ...  ...       ...        ...   ...
+## 569  2014-12-01  12062.0  319746.157  ...      8717 2014-12-01  2014
+## 570  2015-01-01  12046.0  319928.646  ...      8903 2015-01-01  2015
+## 571  2015-02-01  12082.4  320074.511  ...      8610 2015-02-01  2015
+## 572  2015-03-01  12158.3  320230.786  ...      8504 2015-03-01  2015
+## 573  2015-04-01  12193.8  320402.295  ...      8526 2015-04-01  2015
+## 
+## [574 rows x 8 columns]
+```
+
+---
+
+#### 선 그래프 만들기 - 연도별 실업자 수
+
+
+```python
+sns.lineplot(data = economics, x = 'year', y = 'unemploy')
+```
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-34-1.png" width="60%" /&gt;
+
+---
+
+#### 선 그래프 만들기 - 신뢰 구간(confidence interval) 제거
+
+
+```python
+sns.lineplot(data = economics, x = 'year', y = 'unemploy', ci = None)
+```
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-36-1.png" width="60%" /&gt;
+
+---
+
+
+### 혼자서 해보기
+
+**`economics` 데이터를 이용해서 분석 문제를 해결해 보세요.**
+
+Q1. `psavert`(개인 저축률)가 연도별로 어떻게 변해왔는지 알아보려고 합니다. 연도별 개인 저축률의 변화를 &lt;br&gt; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp;나타낸 시계열 그래프를 만들어 보세요(신뢰 구간은 제거하세요).
+
+Q2. 2013년의 월별 개인 저축률의 변화를 나타낸 시계열 그래프를 만들어 보세요.
+
+---
+
+Q1. `psavert`(개인 저축률)가 연도별로 어떻게 변해왔는지 알아보려고 합니다. 연도별 개인 저축률의 변화를 &lt;br&gt; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp;나타낸 시계열 그래프를 만들어 보세요(신뢰 구간은 제거하세요).
+
+
+
+```python
+sns.lineplot(data = economics, x = 'year', y = 'psavert', ci = None)
+```
+
+&lt;br-back-20&gt;
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-38-1.png" width="60%" /&gt;
+
+---
+
+Q2. 2013년의 월별 개인 저축률의 변화를 나타낸 시계열 그래프를 만들어 보세요. &lt;br&gt; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+
+&lt;br-back-20&gt;
+
+```python
+economics['month'] = economics['date2'].dt.month                # month 변수 추가
+df = economics[economics['year'] == 2013]                       # 2013년 추출
+
+sns.lineplot(data = df, x = 'month', y = 'psavert', ci = None)  # 그래프 만들기
+```
+
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-40-1.png" width="55%" /&gt;
+
+---
+
+
+##### 월 모두 표기하기
+
+
+```python
+sns.lineplot(data = df, x = 'month', y = 'psavert', ci = None).set(xticks = df['month'])
+```
+
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-42-1.png" width="55%" /&gt;
+---
+
+
+##### 월 모두 표기하기
+
+
+```python
+sns.lineplot(data = df, x = 'month', y = 'psavert', ci = None).set(xticks = df['month'])
+```
+
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-44-1.png" width="55%" /&gt;
+
+
+---
+
+
+---
+name: bar
+class: title1
+
+막대 그래프
+
+---
+
+#### 막대 그래프
+
+- 막대 그래프(Bar Chart) : 데이터의 크기를 막대의 길이로 표현한 그래프
+- 성별 소득 차이처럼 집단 간 차이를 표현할 때 주로 사용
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-45-1.png" width="60%" /&gt;
+
+---
+
+
+```python
+p = sns.barplot(data = tmp, x = 'drv', y = 'mean_hwy')
+plt.show()
+```
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-46-1.png" width="60%" /&gt;
+
+---
+
+#### 1. 집단별 요약표 만들기
+
+```python
+df_mpg = mpg.groupby('drv').agg(mean_hwy = ('hwy', 'mean'))
+df_mpg
+```
+
+```
+##       mean_hwy
+## drv           
+## 4    19.174757
+## f    28.160377
+## r    21.000000
+```
+
+---
+
+
+#### 2. index를 변수로 만들기
+
+
+
+```python
+df_mpg[df_mpg['drv'] == 'f']
+```
+
+```
+## Error in py_call_impl(callable, dots$args, dots$keywords): KeyError: 'drv'
+```
+
+---
+#### 2. index를 변수로 만들기
+
+
+```python
+df_mpg.info()
+```
+
+```
+## &lt;class 'pandas.core.frame.DataFrame'&gt;
+## Index: 3 entries, 4 to r
+## Data columns (total 1 columns):
+##  #   Column    Non-Null Count  Dtype  
+## ---  ------    --------------  -----  
+##  0   mean_hwy  3 non-null      float64
+## dtypes: float64(1)
+## memory usage: 48.0+ bytes
+```
+
+---
+
+#### 2. index를 변수로 만들기
+
+
+```python
+df_mpg = mpg.groupby('drv').agg(mean_hwy = ('hwy', 'mean')).reset_index()
+df_mpg
+```
+
+```
+##   drv   mean_hwy
+## 0   4  19.174757
+## 1   f  28.160377
+## 2   r  21.000000
+```
+
+--
+
+
+```python
+df_mpg[df_mpg['drv'] == 'f']
+```
+
+```
+##   drv   mean_hwy
+## 1   f  28.160377
+```
+
+
+---
+
+#### 2. 그래프 생성
+
+```python
+sns.barplot(data = df_mpg, x = 'drv', y = 'mean_hwy')
+```
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-53-1.png" width="60%" /&gt;
+
+---
+
+#### 2. 그래프 생성 - 내림차순 정렬
+
+```python
+# 정렬하기
+df_mpg = mpg.groupby('drv').agg(mean_hwy = ('hwy', 'mean')).reset_index() \
+        .sort_values('mean_hwy', ascending = False)
+
+df_mpg
+```
+
+```
+##   drv   mean_hwy
+## 1   f  28.160377
+## 2   r  21.000000
+## 0   4  19.174757
+```
+
+---
+
+#### 2. 그래프 생성 - 내림차순 정렬
+
+
+```python
+# 그래프 출력
+sns.barplot(data = df_mpg, x = 'drv', y = 'mean_hwy')
+```
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-56-1.png" width="60%" /&gt;
+
+---
+
+### 혼자서 해보기
+
+**`mpg` 데이터를 이용해서 분석 문제를 해결해 보세요.**
+
+Q. 어떤 회사가 도시 연비가 높은 `'suv'` 차종을 생산하는지 알아보려고 합니다.`'suv'` 차종을 대상으로 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; `cty`(도시 연비)가 가장 높은 회사 다섯 곳의 평균 `cty`를 막대 그래프로 만들어 보세요.
+&lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; •막대는 연비가 높은 순으로 정렬하세요.
+
+---
+
+Q. 어떤 회사가 도시 연비가 높은 `'suv'` 차종을 생산하는지 알아보려고 합니다.`'suv'` 차종을 대상으로 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; `cty`(도시 연비)가 가장 높은 회사 다섯 곳의 평균 `cty`를 막대 그래프로 만들어 보세요.
+&lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; •막대는 연비가 높은 순으로 정렬하세요.
+
+.pull-left-60[
+
+```python
+# mpg 데이터 불러오기
+mpg = pd.read_csv('data_mpg.csv')
+
+# 평균 표 생성
+df = mpg[mpg['class'] == 'suv'] \
+      .groupby('manufacturer') \
+      .agg(mean_cty = ('cty','mean')) \
+      .sort_values('mean_cty', ascending = False) \
+      .head(5) \
+      .reset_index()
+      
+df
+```
+]
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+.pull-right-40[
+
+```
+##   manufacturer   mean_cty
+## 0       subaru  18.833333
+## 1       toyota  14.375000
+## 2       nissan  13.750000
+## 3         jeep  13.500000
+## 4      mercury  13.250000
+```
+]
+
+---
+
+Q. 어떤 회사가 도시 연비가 높은 `'suv'` 차종을 생산하는지 알아보려고 합니다.`'suv'` 차종을 대상으로 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; `cty`(도시 연비)가 가장 높은 회사 다섯 곳의 평균 `cty`를 막대 그래프로 만들어 보세요.
+&lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; •막대는 연비가 높은 순으로 정렬하세요.
+
+
+```python
+# 그래프 생성
+sns.barplot(data = df, x = 'manufacturer', y = 'mean_cty')
+```
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-60-1.png" width="60%" /&gt;
+
+
+---
+
+---
+name: boxplot
+class: title1
+
+상자그림
+
+---
+
+#### 상자그림
+
+- 상자 그림(Box Plot) : 데이터의 분포(퍼져 있는 형태)를 직사각형 상자 모양으로 표현한 그래프
+- 분포를 알 수 있기 때문에 평균만 볼 때보다 데이터의 특성을 좀 더 자세히 이해할 수 있음
+
+
+```python
+ggplot2::mpg %&gt;%
+  filter(class %in% c('compact', 'subcompact', 'suv')) %&gt;%
+  ggplot(aes(x = class, y = cty)) + geom_boxplot()
+```
+
+---
+
+#### 상자그림 만들기
+
+```python
+sns.boxplot(data = mpg, x = 'drv', y = 'hwy')
+```
+
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-63-1.png" width="60%" /&gt;
+
+---
+
+&lt;!-- ### 혼자서 해보기 --&gt;
+
+&lt;!-- **`mpg` 데이터를 이용해서 분석 문제를 해결해 보세요.** --&gt;
+
+&lt;!-- Q. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요. --&gt;
+
+&lt;!-- --- --&gt;
+
+&lt;!-- Q. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요. --&gt;
+
+&lt;!-- ```{python} --&gt;
+&lt;!-- # mpg 데이터 불러오기 --&gt;
+&lt;!-- mpg = ggplot2::mpg --&gt;
+
+&lt;!-- class_mpg = mpg %&gt;% --&gt;
+&lt;!--   filter(class %in% c('compact', 'subcompact', 'suv')) --&gt;
+&lt;!-- ``` --&gt;
+
+&lt;!-- --- --&gt;
+&lt;!-- Q. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요. --&gt;
+
+&lt;!-- ```{python} --&gt;
+&lt;!-- ggplot(data = class_mpg, aes(x = class, y = cty)) + geom_boxplot() --&gt;
+&lt;!-- ``` --&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": true,
+"ratio": "16:10",
+"navigation": {
+"scroll": true
+}
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
