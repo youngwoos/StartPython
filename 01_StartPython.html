@@ -6,6 +6,8 @@
     <meta name="author" content="김영우" />
     <script src="libs/header-attrs-2.7.1/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/tile-view-0.2.5.9000/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.2.5.9000/tile-view.js"></script>
     <link rel="stylesheet" href="css/custom.css" type="text/css" />
   </head>
   <body>
@@ -19,34 +21,7 @@
 
 class: title0
 
-쉽게 배우는 Python 데이터 분석
-
----
-
-class: no-page-num
-
-&lt;br&gt;
-
-.pull-left[
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
-&lt;img src="https://raw.githubusercontent.com/youngwoos/Doit_textmining/main/cover.png" width="70%" height="70%" /&gt;
-]
-
-.pull-right[
-
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-
-&lt;svg viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;"&gt;  [ comment ]  &lt;path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"&gt;&lt;/path&gt;&lt;/svg&gt; [github.com/youngwoos/Doit_textmining](https://github.com/youngwoos/Doit_textmining)
-
-&lt;svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;"&gt;  [ comment ]  &lt;path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"&gt;&lt;/path&gt;&lt;/svg&gt; [facebook.com/groups/datacommunity](https://facebook.com/groups/datacommunity)
-
-- [네이버책](https://book.naver.com/bookdb/book_detail.nhn?bid=17891971)
-  - [yes24](http://bit.ly/3oUuJOB)
-  - [알라딘](http://bit.ly/3oXOSDn)
-  - [교보문고](https://bit.ly/2LtNOcB)
-]
+쉽게 배우는 Python 데이터 분석 Part 1
 
 ---
 
@@ -71,43 +46,14 @@ class: no-page-num
 
 #### 2. 데이터 프레임의 세계로
 - [데이터 프레임 만들기](#dataframe)
-- [외부 데이터를 R로 가져오기](#read_file)
+- [외부 데이터 가져오기](#read_file)
 - [데이터 프레임을 csv 파일로 저장하기](#write_file)
 
 #### 3. 데이터 분석 기초
 - [데이터 파악하기](#eda)
 - [변수명 바꾸기](#rename)
 - [파생 변수 만들기](#derived_variable)
-- [조건 함수](#ifelse)
-
----
-
-### 목차
-
-#### 4. 자유자재로 데이터 가공하기
-- [조건에 맞는 데이터만 추출하기](#filter)
-- [필요한 변수만 추출하기](#select)
-- [순서대로 정렬하기](#arrange)
-- [파생변수 추가하기](#mutate)
-- [집단별로 요약하기](#groupby_summarise)
-
-#### 5. 그래프 만들기
-- [산점도](#point)
-- [선 그래프](#line)
-- [막대 그래프](#bar)
-- [상자그림](#boxplot)
-
----
-### 목차
-
-#### 6. 데이터 합치기
-- [가로로 합치기 - 열 추가](#left_join)
-- [세로로 합치기 - 행 추가](#bind_rows)
-
-#### 7. 데이터 정제하기
-- [빠진 데이터를 찾아라! - 결측치 정제하기](#missing_value)
-- [이상한 데이터를 찾아라! - 이상치 정제하기](#outlier)
-
+- [조건 함수](#np.where)
 
 ---
 
@@ -278,7 +224,7 @@ mod.summary()
 ## Model:                            OLS   Adj. R-squared:                  0.585
 ## Method:                 Least Squares   F-statistic:                     329.5
 ## Date:                Thu, 11 Mar 2021   Prob (F-statistic):           2.04e-46
-## Time:                        08:07:29   Log-Likelihood:                -645.62
+## Time:                        14:16:08   Log-Likelihood:                -645.62
 ## No. Observations:                 234   AIC:                             1295.
 ## Df Residuals:                     232   BIC:                             1302.
 ## Df Model:                           1                                         
@@ -533,7 +479,7 @@ c2
 ---
 
 
-#### 연속 문자 변수 List 만들기
+#### 연속 문자 List 만들기
 
 ```python
 d2 = ['a', 'b', 'c']
@@ -761,8 +707,8 @@ pd.value_counts(a)
 
 ```
 ## a    2
-## b    1
 ## c    1
+## b    1
 ## dtype: int64
 ```
 
@@ -806,6 +752,8 @@ pd.value_counts()
 ---
 
 #### 라이브러리 메서드(Method)
+
+- DataFrame Class
 
 
 ```python
@@ -884,6 +832,7 @@ a.info()
 ## Error in py_call_impl(callable, dots$args, dots$keywords): AttributeError: 'list' object has no attribute 'info'
 ```
 
+- List에는 `info()`가 없다!
 ---
 
 #### 함수와 메서드
@@ -1211,11 +1160,25 @@ sum(df['math'])/4
 
 ---
 
+#### Q. `math` 합계와 평균 구하기
+
+##### (4) 평균
+
+
+```python
+df['math'].mean()
+```
+
+```
+## 57.5
+```
+
+---
 
 name: read_file
 class: title1
 
-외부 데이터를 R로 가져오기
+외부 데이터 가져오기
 
 ---
 
@@ -1441,7 +1404,6 @@ df_finalexam.to_csv('output_newdata2.csv', index = False)
 df_finalexam.to_excel('output_newdata3.xlsx')
 ```
 
---
 
 ##### index 제거
 
@@ -1997,7 +1959,8 @@ df
 mpg['total'] = (mpg['cty'] + mpg['hwy'])/2  # 통합 연비 변수 생성
 ```
 
---
+---
+
 
 
 ```python
@@ -2025,6 +1988,8 @@ mpg.info()
 ## dtypes: float64(2), int64(4), object(6)
 ## memory usage: 22.1+ KB
 ```
+---
+
 
 ```python
 mpg['total'].mean()
@@ -2036,7 +2001,7 @@ mpg['total'].mean()
 
 ---
 
-name: ifelse
+name: np.where
 class: title1
 
 데이터 수정하기:  
@@ -2073,7 +2038,7 @@ mpg['total'].describe()  # 요약 통계량 산출
 mpg['total'].plot(kind = 'hist')      # 히스토그램 생성
 ```
 
-&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-116-1.png" width="480" /&gt;
+&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-118-1.png" width="480" /&gt;
 
 ---
 
@@ -2178,7 +2143,7 @@ count_test.plot(kind = 'bar')            # 빈도 막대 그래프 생성
 
 &lt;br-back-10&gt;
 
-&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-123-1.png" width="30%" /&gt;
+&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-125-1.png" width="30%" /&gt;
 ---
 
 #### 빈도표, 막대 그래프로 합격 판정 자동차 수 살펴보기
@@ -2203,11 +2168,7 @@ count_test.plot(kind = 'bar', rot = 0)   # 빈도 막대 그래프 생성, x축 
 
 &lt;br-back-10&gt;
 
-&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-126-1.png" width="30%" /&gt;
----
-
-
-
+&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-128-1.png" width="30%" /&gt;
 ---
 
 ### 중첩 조건문 활용하기 - 연비 등급 변수 만들기
@@ -2232,42 +2193,42 @@ mpg['grade'] = np.where(mpg['total'] &gt;= 30, 'A',
                np.where(mpg['total'] &gt;= 20, 'B', 'C'))
 ```
 
-&lt;svg viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;position:relative;display:inline-block;top:.1em;fill:#FF7333;"&gt;  [ comment ]  &lt;path d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"&gt;&lt;/path&gt;&lt;/svg&gt; np.where()가 두 번 반복되므로 열리는 괄호와 닫히는 괄호가 각각 두 개, 쉼표도 각각 두 개
+&lt;svg viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;position:relative;display:inline-block;top:.1em;fill:#FF7333;"&gt;  [ comment ]  &lt;path d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"&gt;&lt;/path&gt;&lt;/svg&gt; `np.where()`가 두 번 반복되므로 열리는 괄호와 닫히는 괄호가 각각 두 개, 쉼표도 각각 두 개
 
 ---
 
 
 ```python
-mpg[['total', 'test', 'grade']].head(20)
+mpg[['total', 'grade']].head(20)
 ```
 
 ```
-##     total  test grade
-## 0    23.5  pass     B
-## 1    25.0  pass     B
-## 2    25.5  pass     B
-## 3    25.5  pass     B
-## 4    21.0  pass     B
-## 5    22.0  pass     B
-## 6    22.5  pass     B
-## 7    22.0  pass     B
-## 8    20.5  pass     B
-## 9    24.0  pass     B
-## 10   23.0  pass     B
-## 11   20.0  pass     B
-## 12   21.0  pass     B
-## 13   21.0  pass     B
-## 14   20.0  pass     B
-## 15   19.5  fail     C
-## 16   21.0  pass     B
-## 17   19.5  fail     C
-## 18   17.0  fail     C
-## 19   13.0  fail     C
+##     total grade
+## 0    23.5     B
+## 1    25.0     B
+## 2    25.5     B
+## 3    25.5     B
+## 4    21.0     B
+## 5    22.0     B
+## 6    22.5     B
+## 7    22.0     B
+## 8    20.5     B
+## 9    24.0     B
+## 10   23.0     B
+## 11   20.0     B
+## 12   21.0     B
+## 13   21.0     B
+## 14   20.0     B
+## 15   19.5     C
+## 16   21.0     B
+## 17   19.5     C
+## 18   17.0     C
+## 19   13.0     C
 ```
 
 ---
 
-#### 빈도표, 막대 그래프로 연비 등급 살펴보기
+#### Q. 빈도표, 막대 그래프로 연비 등급 살펴보기
 
 --
 
@@ -2291,10 +2252,10 @@ count_grade.plot(kind = 'bar', rot = 0)    # 빈도 막대 그래프 생성
 
 &lt;br-back-10&gt;
 
-&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-131-1.png" width="30%" /&gt;
+&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-133-1.png" width="30%" /&gt;
 ---
 
-#### 빈도표, 막대 그래프로 연비 등급 살펴보기
+#### Q. 빈도표, 막대 그래프로 연비 등급 살펴보기
 
 
 ```python
@@ -2316,10 +2277,7 @@ count_grade.plot(kind = 'bar', rot = 0)    # 빈도 막대 그래프 생성
 
 &lt;br-back-10&gt;
 
-&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-134-1.png" width="30%" /&gt;
-
-
----
+&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-136-1.png" width="30%" /&gt;
 
 
 ---
@@ -2486,7 +2444,7 @@ midwest['ratio'] = midwest['asian']/midwest['total']*100
 midwest['ratio'].plot(kind = 'hist')
 ```
 
-&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-143-1.png" width="480" /&gt;
+&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-145-1.png" width="480" /&gt;
 
 ---
 Q4. 아시아 인구 백분율 전체 평균을 초과하면 `'large'`, 그 외에는 `'small'`을 부여한 파생변수를 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;만드세요.
@@ -2545,7 +2503,7 @@ count_group
 count_group.plot(kind = 'bar', rot = 0)
 ```
 
-&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-148-1.png" width="30%" /&gt;
+&lt;img src="01_StartPython_files/figure-html/unnamed-chunk-150-1.png" width="30%" /&gt;
 
 
 

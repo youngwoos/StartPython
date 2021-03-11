@@ -6,6 +6,8 @@
     <meta name="author" content="김영우" />
     <script src="libs/header-attrs-2.7.1/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/tile-view-0.2.5.9000/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.2.5.9000/tile-view.js"></script>
     <link rel="stylesheet" href="css/custom.css" type="text/css" />
   </head>
   <body>
@@ -16,6 +18,35 @@
 
 
 
+
+class: title0
+
+쉽게 배우는 Python 데이터 분석 Part 2
+
+---
+
+class: no-page-num
+
+### 김영우
+
+&lt;img src='img/photo.jpg' style='width: 15%' /&gt;
+
+#### &lt;https://facebook.com/groups/datacommunity&gt;
+#### &lt;https://github.com/youngwoos&gt;
+#### &lt;stats7445@gmail.com&gt;
+
+---
+
+
+### 목차
+
+#### 4. 자유자재로 데이터 가공하기
+- [조건에 맞는 데이터만 추출하기](#filter)
+- [필요한 변수만 추출하기](#select)
+- [순서대로 정렬하기](#arrange)
+- [집단별로 요약하기](#groupby_summarise)
+
+---
 
 
 
@@ -197,24 +228,6 @@ exam[exam['class'] == 1]
 ## 3   4      1    30       98       58
 ```
 
-
----
-
-#### `class`가 1인지 확인
-
-
-```python
-exam['class'] == 1
-```
-
---
-
-#### `class`가 1이면 추출
-
-
-```python
-exam[exam['class'] == 1]
-```
 
 ---
 
@@ -684,8 +697,6 @@ class2['math'].mean()  # 2반 수학 평균 구하기
 ]
 
 ---
-
----
 ### 혼자서 해보기
 
 **`mpg` 데이터를 이용해서 분석 문제를 해결해 보세요.**
@@ -764,7 +775,6 @@ mpg_new['hwy'].mean()
 
 ---
 
----
 name: select
 class: title1
 
@@ -1252,17 +1262,15 @@ mpg[mpg['manufacturer'] == 'audi'].sort_values('hwy', ascending = False).head(5)
 ```
 
 ```
-##    Unnamed: 0 manufacturer       model  displ  year  ...  drv cty hwy  fl    class
-## 2           3         audi          a4    2.0  2008  ...    f  20  31   p  compact
-## 3           4         audi          a4    2.0  2008  ...    f  21  30   p  compact
-## 0           1         audi          a4    1.8  1999  ...    f  18  29   p  compact
-## 1           2         audi          a4    1.8  1999  ...    f  21  29   p  compact
-## 9          10         audi  a4 quattro    2.0  2008  ...    4  20  28   p  compact
+##   manufacturer       model  displ  year  cyl  ... drv cty  hwy  fl    class
+## 2         audi          a4    2.0  2008    4  ...   f  20   31   p  compact
+## 3         audi          a4    2.0  2008    4  ...   f  21   30   p  compact
+## 0         audi          a4    1.8  1999    4  ...   f  18   29   p  compact
+## 1         audi          a4    1.8  1999    4  ...   f  21   29   p  compact
+## 9         audi  a4 quattro    2.0  2008    4  ...   4  20   28   p  compact
 ## 
-## [5 rows x 12 columns]
+## [5 rows x 11 columns]
 ```
-
---
 
 .left[
 
@@ -1754,6 +1762,7 @@ Q4. `popasian`은 해당 지역의 아시아인 인구를 나타냅니다. '전�
 midwest['ratio_asian'] = midwest['popasian']/midwest['poptotal']*100
 ```
 
+&lt;br-back-20&gt;
 
 .pull-left-60[
 

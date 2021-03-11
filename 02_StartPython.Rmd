@@ -18,8 +18,8 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r setup, include=FALSE}
-# xaringanExtra::use_tile_view()
+```{r include=FALSE}
+xaringanExtra::use_tile_view()
 
 library(knitr)
 library(icon)
@@ -36,6 +36,35 @@ knitr::knit_hooks$set(source = function(x, options) {
 })
 ```
 
+
+class: title0
+
+쉽게 배우는 Python 데이터 분석 Part 2
+
+---
+
+class: no-page-num
+
+### 김영우
+
+<img src='img/photo.jpg' style='width: 15%' />
+
+#### <https://facebook.com/groups/datacommunity>
+#### <https://github.com/youngwoos>
+#### <stats7445@gmail.com>
+
+---
+
+
+### 목차
+
+#### 4. 자유자재로 데이터 가공하기
+- [조건에 맞는 데이터만 추출하기](#filter)
+- [필요한 변수만 추출하기](#select)
+- [순서대로 정렬하기](#arrange)
+- [집단별로 요약하기](#groupby_summarise)
+
+---
 
 ```{python echo = F}
 import pandas as pd
@@ -135,22 +164,6 @@ exam['class'] == 1
 exam[exam['class'] == 1]
 ```
 
-
----
-
-#### `class`가 1인지 확인
-
-```{python eval=F}
-exam['class'] == 1
-```
-
---
-
-#### `class`가 1이면 추출
-
-```{python eval = F}
-exam[exam['class'] == 1]
-```
 
 ---
 
@@ -342,8 +355,6 @@ class2['math'].mean()  # 2반 수학 평균 구하기
 ]
 
 ---
-
----
 ### 혼자서 해보기
 
 **`mpg` 데이터를 이용해서 분석 문제를 해결해 보세요.**
@@ -392,7 +403,6 @@ mpg_new['hwy'].mean()
 
 ---
 
----
 name: select
 class: title1
 
@@ -598,8 +608,6 @@ mpg = pd.read_csv('data_mpg.csv')
 ```{python}
 mpg[mpg['manufacturer'] == 'audi'].sort_values('hwy', ascending = False).head(5)
 ```
-
---
 
 .left[
 ```{python, eval = F}
@@ -924,6 +932,7 @@ Q4. `popasian`은 해당 지역의 아시아인 인구를 나타냅니다. '전�
 midwest['ratio_asian'] = midwest['popasian']/midwest['poptotal']*100
 ```
 
+<br-back-20>
 
 .pull-left-60[
 

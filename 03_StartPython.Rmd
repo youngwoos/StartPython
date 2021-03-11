@@ -18,8 +18,8 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r setup, include=FALSE}
-# xaringanExtra::use_tile_view()
+```{r include=FALSE}
+xaringanExtra::use_tile_view()
 
 library(knitr)
 library(icon)
@@ -36,6 +36,35 @@ knitr::knit_hooks$set(source = function(x, options) {
 })
 ```
 
+
+class: title0
+
+쉽게 배우는 Python 데이터 분석 Part 3
+
+---
+
+class: no-page-num
+
+### 김영우
+
+<img src='img/photo.jpg' style='width: 15%' />
+
+#### <https://facebook.com/groups/datacommunity>
+#### <https://github.com/youngwoos>
+#### <stats7445@gmail.com>
+
+---
+
+### 목차
+
+#### 5. 그래프 만들기
+- [산점도](#point)
+- [막대 그래프](#bar)
+- [선 그래프](#line)
+- [상자 그림](#boxplot)
+
+
+---
 
 ```{python echo = F}
 import pandas as pd
@@ -55,7 +84,7 @@ class: title0
 
 <br>
 ```{r echo=F, out.width = '600px', fig.align='center'}
-knitr::include_graphics('img/graph01.png')
+knitr::include_graphics('img/plots.png')
 ```
 
 ---
@@ -152,8 +181,7 @@ plt.show()
 #### 3. 설정 추가하기 - x축, y축 고정
 
 ```{python, eval = F}
-sns.scatterplot(data = mpg, x = 'displ', y = 'hwy') \
-    .set(xlim = (3, 6), ylim = (10, 30))
+sns.scatterplot(data = mpg, x = 'displ', y = 'hwy').set(xlim = (3, 6), ylim = (10, 30))
 ```
 
 <br-back-20>
@@ -164,6 +192,26 @@ plt.show()
 ```
 
 ---
+
+#### 4. 종류별로 표식 색 바꾸기
+
+```{python eval=F}
+sns.scatterplot(data = mpg, x = 'displ', y = 'hwy', hue = 'drv')
+```
+
+<br-back-20>
+
+```{python, echo=F}
+p = sns.scatterplot(data = mpg, x = 'displ', y = 'hwy', hue = 'drv')
+plt.show()
+```
+
+
+
+
+---
+
+
 
 ### 혼자서 해보기
 
@@ -209,244 +257,6 @@ plt.show()
 
 ```
 
----
-
-name: line
-class: title1
-
-선 그래프
-
----
-
-#### 선 그래프(Line Chart)
-
-- 데이터를 선으로 표현한 그래프
-- 시계열 그래프(Time Series Chart) : 일정 시간 간격을 두고 나열된 시계열 데이터(Time Series Data)를 선으로 표현한 그래프
-- 환율, 주가지수 등 경제 지표가 시간에 따라 어떻게 변하는지 표현할 때 활용
-
-```{python, echo = FALSE, out.width = '55%'}
-tmp = pd.read_csv('data_economics.csv')
-tmp['year'] = pd.to_datetime(tmp['date']).dt.year
-p = sns.lineplot(data = tmp, x = 'year', y = 'unemploy', ci = None)
-plt.show()
-```
-
----
-
-#### 준비하기
-
-```{python}
-economics = pd.read_csv('data_economics.csv')
-economics
-```
-
----
-#### 선 그래프 만들기
-
-```{python, eval = F}
-sns.lineplot(data = economics, x = 'date', y = 'unemploy')
-```
-
-```{python, echo = F}
-p = sns.lineplot(data = economics, x = 'date', y = 'unemploy')
-plt.show()
-```
-
----
-
-#### 년도만 추출하기
-
-##### 날짜 타입으로 바꾸기
-
-```{python}
-economics.info()
-```
-
----
-
-#### 년도만 추출하기
-
-##### 날짜 타입으로 바꾸기
-```{python}
-economics['date2'] = pd.to_datetime(economics['date'])
-economics.info()
-```
-
----
-#### 년도만 추출하기
-
-##### 날짜 타입으로 바꾸기
-
-```{python}
-economics[['date', 'date2']]
-```
-
----
-
-#### 년, 월, 일 추출
-
-.pull-left[
-
-```{python}
-economics['date2'].dt.year
-```
-
-]
-
----
-
-#### 년, 월, 일 추출
-
-.pull-left[
-
-```{python}
-economics['date2'].dt.year
-```
-
-]
-
-.pull-right[
-
-
-```{python, error = T}
-economics['date'].dt.year
-```
-]
-
----
-
-#### 년, 월, 일 추출
-
-.pull-left[
-
-```{python}
-economics['date2'].dt.month
-```
-]
-.pull-right[
-
-
-```{python}
-economics['date2'].dt.day
-```
-]
----
-
-#### year 변수 추가하기
-```{python}
-economics['year'] = economics['date2'].dt.year
-economics
-```
-
----
-
-#### 선 그래프 만들기 - 연도별 실업자 수
-
-```{python eval=F}
-sns.lineplot(data = economics, x = 'year', y = 'unemploy')
-```
-
-```{python echo=F}
-p = sns.lineplot(data = economics, x = 'year', y = 'unemploy')
-plt.tight_layout()
-plt.show()
-```
-
----
-
-#### 선 그래프 만들기 - 신뢰 구간(confidence interval) 제거
-
-```{python eval=F}
-sns.lineplot(data = economics, x = 'year', y = 'unemploy', ci = None)
-```
-
-```{python echo=F}
-p = sns.lineplot(data = economics, x = 'year', y = 'unemploy', ci = None)
-plt.tight_layout()
-plt.show()
-```
-
----
-
-
-### 혼자서 해보기
-
-**`economics` 데이터를 이용해서 분석 문제를 해결해 보세요.**
-
-Q1. `psavert`(개인 저축률)가 연도별로 어떻게 변해왔는지 알아보려고 합니다. 연도별 개인 저축률의 변화를 <br> &nbsp;&nbsp; &nbsp; &nbsp;나타낸 시계열 그래프를 만들어 보세요(신뢰 구간은 제거하세요).
-
-Q2. 2013년의 월별 개인 저축률의 변화를 나타낸 시계열 그래프를 만들어 보세요.
-
----
-
-Q1. `psavert`(개인 저축률)가 연도별로 어떻게 변해왔는지 알아보려고 합니다. 연도별 개인 저축률의 변화를 <br> &nbsp;&nbsp; &nbsp; &nbsp;나타낸 시계열 그래프를 만들어 보세요(신뢰 구간은 제거하세요).
-
-
-```{python eval = F}
-sns.lineplot(data = economics, x = 'year', y = 'psavert', ci = None)
-```
-
-<br-back-20>
-
-```{python echo = F}
-p = sns.lineplot(data = economics, x = 'year', y = 'psavert', ci = None)
-plt.show()
-```
-
----
-
-Q2. 2013년의 월별 개인 저축률의 변화를 나타낸 시계열 그래프를 만들어 보세요. <br> &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-
-<br-back-20>
-```{python eval=F}
-economics['month'] = economics['date2'].dt.month                # month 변수 추가
-df = economics[economics['year'] == 2013]                       # 2013년 추출
-
-sns.lineplot(data = df, x = 'month', y = 'psavert', ci = None)  # 그래프 만들기
-```
-
-
-```{python echo=F, out.width = '55%'}
-economics['month'] = economics['date2'].dt.month                # month 변수 추가
-df = economics[economics['year'] == 2013]                       # 2013년 추출
-
-sns.lineplot(data = df, x = 'month', y = 'psavert', ci = None)  # 그래프 만들기
-```
-
----
-
-
-##### 월 모두 표기하기
-
-```{python eval = F}
-sns.lineplot(data = df, x = 'month', y = 'psavert', ci = None).set(xticks = df['month'])
-```
-
-
-```{python echo = F, out.width = '55%'}
-# 그래프 만들기
-p = sns.lineplot(data = df, x = 'month', y = 'psavert', ci = None).set(xticks = df['month'])
-plt.show()
-```
----
-
-
-##### 월 모두 표기하기
-
-```{python eval = F}
-sns.lineplot(data = df, x = 'month', y = 'psavert', ci = None).set(xticks = df['month'])
-```
-
-
-```{python echo = F, out.width = '55%'}
-# 그래프 만들기
-p = sns.lineplot(data = df, x = 'month', y = 'psavert', ci = None).set(xticks = df['month'])
-plt.show()
-```
-
-
----
-
 
 ---
 name: bar
@@ -470,12 +280,6 @@ plt.show()
 
 ```
 
----
-
-```{python}
-p = sns.barplot(data = tmp, x = 'drv', y = 'mean_hwy')
-plt.show()
-```
 
 ---
 
@@ -495,8 +299,6 @@ df_mpg
 df_mpg[df_mpg['drv'] == 'f']
 ```
 
----
-#### 2. index를 변수로 만들기
 
 ```{python}
 df_mpg.info()
@@ -513,10 +315,18 @@ df_mpg
 
 --
 
+.pull-left[
+
+```{python}
+df_mpg.info()
+```
+]
+.pull-right[
+
 ```{python}
 df_mpg[df_mpg['drv'] == 'f']
 ```
-
+]
 
 ---
 
@@ -624,7 +434,218 @@ plt.show()
 
 ---
 
+name: line
+class: title1
+
+선 그래프
+
 ---
+
+#### 선 그래프(Line Chart)
+
+- 데이터를 선으로 표현한 그래프
+- 시계열 그래프(Time Series Chart) : 일정 시간 간격을 두고 나열된 시계열 데이터(Time Series Data)를 선으로 표현한 그래프
+- 환율, 주가지수 등 경제 지표가 시간에 따라 어떻게 변하는지 표현할 때 활용
+
+```{python, echo = FALSE, out.width = '55%'}
+tmp = pd.read_csv('data_economics.csv')
+tmp['year'] = pd.to_datetime(tmp['date']).dt.year
+p = sns.lineplot(data = tmp, x = 'year', y = 'unemploy', ci = None)
+plt.show()
+```
+
+---
+
+#### 준비하기
+
+```{python}
+economics = pd.read_csv('data_economics.csv')
+economics
+```
+
+---
+#### 선 그래프 만들기
+
+```{python, eval = F}
+sns.lineplot(data = economics, x = 'date', y = 'unemploy')
+```
+
+```{python, echo = F}
+p = sns.lineplot(data = economics, x = 'date', y = 'unemploy')
+plt.show()
+```
+
+---
+
+#### 날짜 타입으로 바꾸기
+
+```{python}
+economics.info()
+```
+---
+
+#### 날짜 타입으로 바꾸기
+```{python}
+economics['date2'] = pd.to_datetime(economics['date'])
+economics.info()
+```
+
+---
+#### 날짜 타입으로 바꾸기
+
+```{python}
+economics[['date', 'date2']]
+```
+
+---
+
+#### 년, 월, 일 추출
+
+.pull-left[
+
+```{python}
+economics['date2'].dt.year
+```
+
+]
+
+---
+
+#### 년, 월, 일 추출
+
+.pull-left[
+
+```{python}
+economics['date2'].dt.year
+```
+
+]
+
+.pull-right[
+
+
+```{python, error = T}
+economics['date'].dt.year
+```
+]
+
+---
+
+#### 년, 월, 일 추출
+
+.pull-left[
+
+```{python}
+economics['date2'].dt.month
+```
+]
+.pull-right[
+
+
+```{python}
+economics['date2'].dt.day
+```
+]
+---
+
+#### year 변수 추가하기
+```{python}
+economics['year'] = economics['date2'].dt.year
+economics
+```
+
+---
+
+#### 선 그래프 만들기 - 연도별 실업자 수
+
+```{python eval=F}
+sns.lineplot(data = economics, x = 'year', y = 'unemploy')
+```
+
+```{python echo=F}
+p = sns.lineplot(data = economics, x = 'year', y = 'unemploy')
+plt.tight_layout()
+plt.show()
+```
+
+---
+
+#### 선 그래프 만들기 - 신뢰 구간(confidence interval) 제거
+
+```{python eval=F}
+sns.lineplot(data = economics, x = 'year', y = 'unemploy', ci = None)
+```
+
+```{python echo=F}
+p = sns.lineplot(data = economics, x = 'year', y = 'unemploy', ci = None)
+plt.tight_layout()
+plt.show()
+```
+
+---
+
+
+### 혼자서 해보기
+
+**`economics` 데이터를 이용해서 분석 문제를 해결해 보세요.**
+
+Q1. `psavert`(개인 저축률)가 연도별로 어떻게 변해왔는지 알아보려고 합니다. 연도별 개인 저축률의 변화를 <br> &nbsp;&nbsp; &nbsp; &nbsp;나타낸 시계열 그래프를 만들어 보세요(신뢰 구간은 제거하세요).
+
+Q2. 2013년의 월별 개인 저축률의 변화를 나타낸 시계열 그래프를 만들어 보세요(신뢰 구간은 제거하세요).
+
+---
+
+Q1. `psavert`(개인 저축률)가 연도별로 어떻게 변해왔는지 알아보려고 합니다. 연도별 개인 저축률의 변화를 <br> &nbsp;&nbsp; &nbsp; &nbsp;나타낸 시계열 그래프를 만들어 보세요(신뢰 구간은 제거하세요).
+
+
+```{python eval = F}
+sns.lineplot(data = economics, x = 'year', y = 'psavert', ci = None)
+```
+
+<br-back-20>
+
+```{python echo = F}
+p = sns.lineplot(data = economics, x = 'year', y = 'psavert', ci = None)
+plt.show()
+```
+
+---
+
+Q2. 2013년의 월별 개인 저축률의 변화를 나타낸 시계열 그래프를 만들어 보세요(신뢰 구간은 제거하세요).
+
+<br-back-20>
+```{python eval=F}
+economics['month'] = economics['date2'].dt.month                # month 변수 추가
+df = economics[economics['year'] == 2013]                       # 2013년 추출
+
+sns.lineplot(data = df, x = 'month', y = 'psavert', ci = None)  # 그래프 만들기
+```
+
+
+```{python echo=F, out.width = '55%'}
+economics['month'] = economics['date2'].dt.month                # month 변수 추가
+df = economics[economics['year'] == 2013]                       # 2013년 추출
+
+sns.lineplot(data = df, x = 'month', y = 'psavert', ci = None)  # 그래프 만들기
+```
+
+---
+
+Q2. 2013년의 월별 개인 저축률의 변화를 나타낸 시계열 그래프를 만들어 보세요(신뢰 구간은 제거하세요).
+
+```{python eval = F}
+# 월 모두 표기하기
+sns.lineplot(data = df, x = 'month', y = 'psavert', ci = None).set(xticks = df['month'])
+```
+
+
+```{python echo = F, out.width = '55%'}
+# 그래프 만들기
+p = sns.lineplot(data = df, x = 'month', y = 'psavert', ci = None).set(xticks = df['month'])
+plt.show()
+```
+---
+
 name: boxplot
 class: title1
 
@@ -682,8 +703,9 @@ plt.show()
 
 ```{python}
 # 순서 구하기
-class_order = mpg.groupby('drv')['hwy'].median().sort_values(ascending = False)
-class_order
+drv_order = mpg.groupby('drv')['hwy'].median().sort_values(ascending = False)
+drv_order
+drv_order.index
 ```
 
 ---
@@ -692,11 +714,11 @@ class_order
 
 ```{python eval = F}
 # 박스플롯에 적용하기
-sns.boxplot(data = mpg, x = 'drv', y = 'hwy', order = class_order.index)
+sns.boxplot(data = mpg, x = 'drv', y = 'hwy', order = drv_order.index)
 ```
 
-```{python echo = F, out.width = '80%'}
-p = sns.boxplot(data = mpg, x = 'drv', y = 'hwy', order = class_order.index)
+```{python echo = F, out.width = '60%'}
+p = sns.boxplot(data = mpg, x = 'drv', y = 'hwy', order = drv_order.index)
 plt.show()
 ```
 
@@ -715,7 +737,7 @@ Q2. 상자 그림을 중앙값이 큰 순으로 정렬하세요.
 
 ---
 
-Q. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 <br> &nbsp; &nbsp; &nbsp; &nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요.
+Q1. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 <br> &nbsp; &nbsp; &nbsp; &nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요.
 
 ```{python eval = F}
 # mpg 데이터 불러오기
@@ -728,7 +750,7 @@ df = mpg[mpg['class'].isin(['compact', 'subcompact', 'suv'])]
 sns.boxplot(data = df, x = 'class', y = 'cty')
 ```
 
-```{python echo = F, out.width = '60%'}
+```{python echo = F, out.width = '45%'}
 # mpg 데이터 불러오기
 mpg = pd.read_csv('data_mpg.csv')
 
@@ -753,7 +775,7 @@ class_order = df.groupby('class')['cty'].median().sort_values(ascending = False)
 sns.boxplot(data = df, x = 'class', y = 'cty', order = class_order.index)
 ```
 
-```{python echo = F, out.width = '80%'}
+```{python echo = F, out.width = '60%'}
 # 순서 구하기
 class_order = df.groupby('class')['cty'].median().sort_values(ascending = False)
 
@@ -762,3 +784,22 @@ p = sns.boxplot(data = df, x = 'class', y = 'cty', order = class_order.index)
 
 plt.show()
 ```
+
+---
+
+#### tips - 그래프 설정
+
+```{python eval = F}
+import matplotlib.pyplot as plt
+
+# 그래프 크기 설정
+plt.rcParams['figure.figsize'] = [6, 4]
+
+# 그래프 해상도 설정
+plt.rcParams['figure.dpi'] = 100
+
+# 글자 폰트 크기 설정
+plt.rcParams.update({'font.size': '15'})
+
+```
+

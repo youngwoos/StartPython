@@ -18,8 +18,8 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r setup, include=FALSE}
-# xaringanExtra::use_tile_view()
+```{r include=FALSE}
+xaringanExtra::use_tile_view()
 
 library(knitr)
 library(icon)
@@ -39,36 +39,7 @@ knitr::knit_hooks$set(source = function(x, options) {
 
 class: title0
 
-쉽게 배우는 Python 데이터 분석
-
----
-
-class: no-page-num
-
-<br>
-
-.pull-left[
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-```{r, echo=FALSE, out.width='70%', out.height='70%'}
-include_graphics('https://raw.githubusercontent.com/youngwoos/Doit_textmining/main/cover.png')
-```
-]
-
-.pull-right[
-
-<br>
-<br>
-<br>
-
-`r fontawesome('github')` [github.com/youngwoos/Doit_textmining](https://github.com/youngwoos/Doit_textmining)
-
-`r fontawesome('facebook-square')` [facebook.com/groups/datacommunity](https://facebook.com/groups/datacommunity)
-
-- [네이버책](https://book.naver.com/bookdb/book_detail.nhn?bid=17891971)
-  - [yes24](http://bit.ly/3oUuJOB)
-  - [알라딘](http://bit.ly/3oXOSDn)
-  - [교보문고](https://bit.ly/2LtNOcB)
-]
+쉽게 배우는 Python 데이터 분석 Part 1
 
 ---
 
@@ -93,43 +64,14 @@ class: no-page-num
 
 #### 2. 데이터 프레임의 세계로
 - [데이터 프레임 만들기](#dataframe)
-- [외부 데이터를 R로 가져오기](#read_file)
+- [외부 데이터 가져오기](#read_file)
 - [데이터 프레임을 csv 파일로 저장하기](#write_file)
 
 #### 3. 데이터 분석 기초
 - [데이터 파악하기](#eda)
 - [변수명 바꾸기](#rename)
 - [파생 변수 만들기](#derived_variable)
-- [조건 함수](#ifelse)
-
----
-
-### 목차
-
-#### 4. 자유자재로 데이터 가공하기
-- [조건에 맞는 데이터만 추출하기](#filter)
-- [필요한 변수만 추출하기](#select)
-- [순서대로 정렬하기](#arrange)
-- [파생변수 추가하기](#mutate)
-- [집단별로 요약하기](#groupby_summarise)
-
-#### 5. 그래프 만들기
-- [산점도](#point)
-- [선 그래프](#line)
-- [막대 그래프](#bar)
-- [상자그림](#boxplot)
-
----
-### 목차
-
-#### 6. 데이터 합치기
-- [가로로 합치기 - 열 추가](#left_join)
-- [세로로 합치기 - 행 추가](#bind_rows)
-
-#### 7. 데이터 정제하기
-- [빠진 데이터를 찾아라! - 결측치 정제하기](#missing_value)
-- [이상한 데이터를 찾아라! - 이상치 정제하기](#outlier)
-
+- [조건 함수](#np.where)
 
 ---
 
@@ -355,7 +297,7 @@ c2
 ---
 
 
-#### 연속 문자 변수 List 만들기
+#### 연속 문자 List 만들기
 ```{python}
 d2 = ['a', 'b', 'c']
 d2
@@ -528,6 +470,8 @@ pd.value_counts()
 
 #### 라이브러리 메서드(Method)
 
+- DataFrame Class
+
 ```{python}
 mpg = pd.read_csv('data_mpg.csv')
 type(mpg)
@@ -558,6 +502,7 @@ type(a)
 a.info()
 ```
 
+- List에는 `info()`가 없다!
 ---
 
 #### 함수와 메서드
@@ -812,11 +757,20 @@ sum(df['math'])/4
 
 ---
 
+#### Q. `math` 합계와 평균 구하기
+
+##### (4) 평균
+
+```{python}
+df['math'].mean()
+```
+
+---
 
 name: read_file
 class: title1
 
-외부 데이터를 R로 가져오기
+외부 데이터 가져오기
 
 ---
 
@@ -940,7 +894,6 @@ df_finalexam.to_csv('output_newdata2.csv', index = False)
 df_finalexam.to_excel('output_newdata3.xlsx')
 ```
 
---
 
 ##### index 제거
 
@@ -1250,16 +1203,21 @@ df
 mpg['total'] = (mpg['cty'] + mpg['hwy'])/2  # 통합 연비 변수 생성
 ```
 
---
+---
+
 
 ```{python}
 mpg.info()
+```
+---
+
+```{python}
 mpg['total'].mean()
 ```
 
 ---
 
-name: ifelse
+name: np.where
 class: title1
 
 데이터 수정하기:  
@@ -1362,10 +1320,6 @@ plt.show()
 ```
 ---
 
-
-
----
-
 ### 중첩 조건문 활용하기 - 연비 등급 변수 만들기
 
 .left[
@@ -1387,17 +1341,17 @@ mpg['grade'] = np.where(mpg['total'] >= 30, 'A',
                np.where(mpg['total'] >= 20, 'B', 'C'))
 ```
 
-`r icon_style(fontawesome("exclamation-triangle"), fill = "#FF7333")` np.where()가 두 번 반복되므로 열리는 괄호와 닫히는 괄호가 각각 두 개, 쉼표도 각각 두 개
+`r icon_style(fontawesome("exclamation-triangle"), fill = "#FF7333")` `np.where()`가 두 번 반복되므로 열리는 괄호와 닫히는 괄호가 각각 두 개, 쉼표도 각각 두 개
 
 ---
 
 ```{python}
-mpg[['total', 'test', 'grade']].head(20)
+mpg[['total', 'grade']].head(20)
 ```
 
 ---
 
-#### 빈도표, 막대 그래프로 연비 등급 살펴보기
+#### Q. 빈도표, 막대 그래프로 연비 등급 살펴보기
 
 --
 
@@ -1418,7 +1372,7 @@ plt.show()
 ```
 ---
 
-#### 빈도표, 막대 그래프로 연비 등급 살펴보기
+#### Q. 빈도표, 막대 그래프로 연비 등급 살펴보기
 
 ```{python}
 count_grade = mpg['grade'].value_counts().sort_index()  # 등급 빈도표 생성, index 정렬
@@ -1435,9 +1389,6 @@ count_grade.plot(kind = 'bar', rot = 0)    # 빈도 막대 그래프 생성
 count_grade.plot(kind = 'bar', rot = 0)    # 빈도 막대 그래프 생성
 plt.show()
 ```
-
-
----
 
 
 ---

@@ -1,0 +1,38 @@
+---
+title: 'Start Python'
+author: '김영우'
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: ['default', 'css/custom.css']
+    lib_dir: libs
+    chakra: libs/remark-latest.min.js
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+      ratio: '16:10'
+      navigation:
+        scroll: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r child="01_StartPython.Rmd"}
+```
+
+<!-- --- -->
+
+<!-- ```{r child="02_StartPython.Rmd"} -->
+<!-- ``` -->
+
+<!-- --- -->
+
+<!-- ```{r child="03_StartPython.Rmd"} -->
+<!-- ``` -->
+
+<!-- --- -->
+
+
+<!-- ```{r child="05-4.Rmd"} -->
+<!-- ``` -->
