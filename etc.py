@@ -244,7 +244,7 @@ plt.rcParams['figure.figsize'] = [6, 4]
 
 
 
-# # 극단치 처리
+# # 극단치 처리 - 1.5 iqr 활용
 # 
 # 
 # 
