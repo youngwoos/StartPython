@@ -357,15 +357,6 @@ economics['date'].dt.year
 
 ```
 ## Error in py_call_impl(callable, dots$args, dots$keywords): AttributeError: Can only use .dt accessor with datetimelike values
-## 
-## Detailed traceback: 
-##   File "&lt;string&gt;", line 1, in &lt;module&gt;
-##   File "/home/rstudio/.local/share/r-miniconda/envs/python_210307/lib/python3.8/site-packages/pandas/core/generic.py", line 5461, in __getattr__
-##     return object.__getattribute__(self, name)
-##   File "/home/rstudio/.local/share/r-miniconda/envs/python_210307/lib/python3.8/site-packages/pandas/core/accessor.py", line 180, in __get__
-##     accessor_obj = self._accessor(obj)
-##   File "/home/rstudio/.local/share/r-miniconda/envs/python_210307/lib/python3.8/site-packages/pandas/core/indexes/accessors.py", line 494, in __new__
-##     raise AttributeError("Can only use .dt accessor with datetimelike values")
 ```
 ]
 
@@ -591,13 +582,6 @@ df_mpg[df_mpg['drv'] == 'f']
 
 ```
 ## Error in py_call_impl(callable, dots$args, dots$keywords): KeyError: 'drv'
-## 
-## Detailed traceback: 
-##   File "&lt;string&gt;", line 1, in &lt;module&gt;
-##   File "/home/rstudio/.local/share/r-miniconda/envs/python_210307/lib/python3.8/site-packages/pandas/core/frame.py", line 3024, in __getitem__
-##     indexer = self.columns.get_loc(key)
-##   File "/home/rstudio/.local/share/r-miniconda/envs/python_210307/lib/python3.8/site-packages/pandas/core/indexes/base.py", line 3082, in get_loc
-##     raise KeyError(key) from err
 ```
 
 ---
@@ -755,20 +739,22 @@ sns.barplot(data = df, x = 'manufacturer', y = 'mean_cty')
 name: boxplot
 class: title1
 
-상자그림
+상자 그림
 
 ---
 
-#### 상자그림
+#### 상자 그림
 
 - 상자 그림(Box Plot) : 데이터의 분포(퍼져 있는 형태)를 직사각형 상자 모양으로 표현한 그래프
 - 분포를 알 수 있기 때문에 평균만 볼 때보다 데이터의 특성을 좀 더 자세히 이해할 수 있음
+
+&lt;br&gt;
 
 &lt;img src="03_StartPython_files/figure-html/unnamed-chunk-60-1.png" width="60%" /&gt;
 
 ---
 
-#### 상자그림 만들기
+#### 상자 그림 만들기
 
 ```python
 sns.boxplot(data = mpg, x = 'drv', y = 'hwy')
@@ -793,7 +779,7 @@ mpg.groupby('drv').describe()['hwy'].round(1)
 
 ---
 
-#### 상자그림 정렬하기
+#### 상자 그림 정렬하기
 
 
 ```python
@@ -804,40 +790,30 @@ sns.boxplot(data = mpg, x = 'drv', y = 'hwy', order = ['f', 'r', '4'])
 
 ---
 
-#### 상자그림 정렬하기
+#### 상자 그림 정렬하기
 
 
 ```python
 # 순서 구하기
-class_order = mpg.groupby('drv') \
-                 .agg(median_hwy = ('hwy', 'median')) \
-                 .sort_values('median_hwy', ascending = False)
+class_order = mpg.groupby('drv')['hwy'].median().sort_values(ascending = False)
 class_order
 ```
 
 ```
-##      median_hwy
-## drv            
-## f            28
-## r            21
-## 4            18
-```
-
-```python
-class_order.index
-```
-
-```
-## Index(['f', 'r', '4'], dtype='object', name='drv')
+## drv
+## f    28
+## r    21
+## 4    18
+## Name: hwy, dtype: int64
 ```
 
 ---
 
-#### 상자그림 정렬하기
+#### 상자 그림 정렬하기
 
 
 ```python
-# 상자 그림에 적용
+# 박스플롯에 적용하기
 sns.boxplot(data = mpg, x = 'drv', y = 'hwy', order = class_order.index)
 ```
 
@@ -852,7 +828,9 @@ sns.boxplot(data = mpg, x = 'drv', y = 'hwy', order = class_order.index)
 
 **`mpg` 데이터를 이용해서 분석 문제를 해결해 보세요.**
 
-Q. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요.
+Q1. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요.
+
+Q2. 상자 그림을 중앙값이 큰 순으로 정렬하세요.
 
 ---
 
@@ -875,55 +853,18 @@ sns.boxplot(data = df, x = 'class', y = 'cty')
 
 ---
 
-Q. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요.
-
-
-
-```python
-# 박스플롯 정렬하기
-sns.boxplot(data = df, x = 'class', y = 'cty', order = ['compact', 'subcompact', 'suv'])
-```
-
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-72-1.png" width="80%" /&gt;
-
----
-
-Q. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요.
-
-
+Q2. 상자 그림을 중앙값이 큰 순으로 정렬하세요.
 
 
 ```python
 # 순서 구하기
-class_order = df.groupby('class') \
-                .agg(median_cty = ('cty', 'median')) \
-                .sort_values('median_cty', ascending = False) \
-                .reset_index()
-                
-class_order
+class_order = df.groupby('class')['cty'].median().sort_values(ascending = False)
+
+# 박스플롯에 적용하기
+sns.boxplot(data = df, x = 'class', y = 'cty', order = class_order.index)
 ```
 
-```
-##         class  median_cty
-## 0     compact          20
-## 1  subcompact          19
-## 2         suv          13
-```
-
----
-
-Q. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요.
-
-
-
-```python
-# 박스플롯 정렬하기
-sns.boxplot(data = df, x = 'class', y = 'cty', order = class_order['class'])
-```
-
-&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-75-1.png" width="80%" /&gt;
-
-
+&lt;img src="03_StartPython_files/figure-html/unnamed-chunk-72-1.png" width="80%" /&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="libs/remark-latest.min.js"></script>

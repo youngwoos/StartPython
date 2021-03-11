@@ -628,24 +628,26 @@ plt.show()
 name: boxplot
 class: title1
 
-상자그림
+상자 그림
 
 ---
 
-#### 상자그림
+#### 상자 그림
 
 - 상자 그림(Box Plot) : 데이터의 분포(퍼져 있는 형태)를 직사각형 상자 모양으로 표현한 그래프
 - 분포를 알 수 있기 때문에 평균만 볼 때보다 데이터의 특성을 좀 더 자세히 이해할 수 있음
 
+<br>
+
 ```{python echo=F}
 tmp = mpg[mpg['class'].isin(['compact', 'subcompact', 'suv'])]
-p = sns.boxplot(data = df, x = 'class', y = 'cty')
+p = sns.boxplot(data = tmp, x = 'class', y = 'cty')
 plt.show()
 ```
 
 ---
 
-#### 상자그림 만들기
+#### 상자 그림 만들기
 ```{python eval = F}
 sns.boxplot(data = mpg, x = 'drv', y = 'hwy')
 ```
@@ -663,7 +665,7 @@ mpg.groupby('drv').describe()['hwy'].round(1)
 
 ---
 
-#### 상자그림 정렬하기
+#### 상자 그림 정렬하기
 
 ```{python eval = F}
 sns.boxplot(data = mpg, x = 'drv', y = 'hwy', order = ['f', 'r', '4'])
@@ -676,24 +678,20 @@ plt.show()
 
 ---
 
-#### 상자그림 정렬하기
+#### 상자 그림 정렬하기
 
 ```{python}
 # 순서 구하기
-class_order = mpg.groupby('drv') \
-                 .agg(median_hwy = ('hwy', 'median')) \
-                 .sort_values('median_hwy', ascending = False)
+class_order = mpg.groupby('drv')['hwy'].median().sort_values(ascending = False)
 class_order
-
-class_order.index
 ```
 
 ---
 
-#### 상자그림 정렬하기
+#### 상자 그림 정렬하기
 
 ```{python eval = F}
-# 상자 그림에 적용
+# 박스플롯에 적용하기
 sns.boxplot(data = mpg, x = 'drv', y = 'hwy', order = class_order.index)
 ```
 
@@ -711,7 +709,9 @@ plt.show()
 
 **`mpg` 데이터를 이용해서 분석 문제를 해결해 보세요.**
 
-Q. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 <br> &nbsp; &nbsp; &nbsp; &nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요.
+Q1. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 <br> &nbsp; &nbsp; &nbsp; &nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요.
+
+Q2. 상자 그림을 중앙값이 큰 순으로 정렬하세요.
 
 ---
 
@@ -743,49 +743,22 @@ plt.show()
 
 ---
 
-Q. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 <br> &nbsp; &nbsp; &nbsp; &nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요.
+Q2. 상자 그림을 중앙값이 큰 순으로 정렬하세요.
 
-
-```{python eval = F}
-# 박스플롯 정렬하기
-sns.boxplot(data = df, x = 'class', y = 'cty', order = ['compact', 'subcompact', 'suv'])
-```
-
-```{python echo = F, out.width = '80%'}
-p = sns.boxplot(data = df, x = 'class', y = 'cty', order = ['compact', 'subcompact', 'suv'])
-plt.show()
-```
-
----
-
-Q. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 <br> &nbsp; &nbsp; &nbsp; &nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요.
-
-
-
-```{python}
+```{python eval=F}
 # 순서 구하기
-class_order = df.groupby('class') \
-                .agg(median_cty = ('cty', 'median')) \
-                .sort_values('median_cty', ascending = False) \
-                .reset_index()
-                
-class_order
-```
+class_order = df.groupby('class')['cty'].median().sort_values(ascending = False)
 
----
-
-Q. `class`(자동차 종류)가 `'compact'`, `'subcompact'`, `'suv'`인 자동차의 `cty`(도시 연비)가 <br> &nbsp; &nbsp; &nbsp; &nbsp; 어떻게 다른지 비교해보려고 합니다. 세 차종의 `cty`를 나타낸 상자 그림을 만들어보세요.
-
-
-```{python eval = F}
-# 박스플롯 정렬하기
-sns.boxplot(data = df, x = 'class', y = 'cty', order = class_order['class'])
+# 박스플롯에 적용하기
+sns.boxplot(data = df, x = 'class', y = 'cty', order = class_order.index)
 ```
 
 ```{python echo = F, out.width = '80%'}
-# 박스플롯 정렬하기
-p = sns.boxplot(data = df, x = 'class', y = 'cty', order = class_order['class'])
+# 순서 구하기
+class_order = df.groupby('class')['cty'].median().sort_values(ascending = False)
+
+# 박스플롯에 적용하기
+p = sns.boxplot(data = df, x = 'class', y = 'cty', order = class_order.index)
+
 plt.show()
 ```
-
-
